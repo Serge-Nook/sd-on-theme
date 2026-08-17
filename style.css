@@ -1,0 +1,21 @@
+/*
+Theme Name: SD-ON Theme
+Theme URI: https://sd-on.ru/
+Author: Serge Nook
+Author URI: https://sd-on.ru/
+Description: Универсальная адаптивная тема для новостных сайтов, блогов, игровых порталов и журналов. Внешний вид полностью настраивается из панели управления WordPress: макет, шапка, меню, слайдер, фон, шрифты, цвета, сетка новостей и футер.
+Version: 1.0.0
+Requires at least: 6.3
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sd-on-theme
+Tags: news, blog, magazine, one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-logo, custom-menu, custom-background, featured-images, translation-ready, block-styles, wide-blocks, accessibility-ready
+*/
+
+/*
+ * Оформление темы вынесено в assets/css/main.css (подключается через wp_enqueue_style),
+ * динамические стили формируются из настроек темы в inc/dynamic-css.php.
+ * Этот файл нужен WordPress только для мета-данных темы.
+ */

@@ -1,0 +1,1211 @@
+/**
+ * SD-ON Theme — базовые стили.
+ *
+ * Принцип Mobile First: базовые правила описывают смартфон,
+ * медиазапросы min-width расширяют макет для планшетов и ПК.
+ * Все настраиваемые значения приходят из CSS-переменных (inc/dynamic-css.php).
+ */
+
+/* -------------------------------------------------- Переменные */
+
+:root {
+	--sdon-primary: #2f6df6;
+	--sdon-secondary: #12b1c8;
+	--sdon-text: #1f2430;
+	--sdon-headings: #101322;
+	--sdon-link: #2f6df6;
+	--sdon-link-hover: #0b46c2;
+	--sdon-surface: #fff;
+	--sdon-menu-bg: #fff;
+	--sdon-menu-text: #101322;
+	--sdon-button-bg: #2f6df6;
+	--sdon-button-text: #fff;
+	--sdon-button-hover: #0b46c2;
+	--sdon-footer-bg: #101322;
+	--sdon-footer-text: #c9cede;
+	--sdon-body-bg: #f4f6fb;
+	--sdon-body-bg-image: none;
+	--sdon-body-bg-size: cover;
+	--sdon-body-bg-repeat: no-repeat;
+	--sdon-body-bg-position: center center;
+	--sdon-body-bg-attachment: scroll;
+	--sdon-container: 1200px;
+	--sdon-logo-max-width: 220px;
+	--sdon-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+	--sdon-font-headings: var(--sdon-font-body);
+	--sdon-font-menu: var(--sdon-font-body);
+	--sdon-font-size: 17px;
+	--sdon-font-weight: 400;
+	--sdon-font-weight-headings: 700;
+	--sdon-line-height: 1.65;
+	--sdon-news-columns: 3;
+	--sdon-footer-columns: 3;
+	--sdon-slider-height: 58vh;
+	--sdon-slider-speed: 600ms;
+	--sdon-bg-animation-opacity: 0.4;
+	--sdon-radius: 14px;
+	--sdon-gap: 24px;
+	--sdon-border: rgba(16, 19, 34, 0.12);
+	--sdon-shadow: 0 6px 24px rgba(16, 19, 34, 0.08);
+}
+
+[data-sdon-scheme="dark"] {
+	--sdon-border: rgba(255, 255, 255, 0.14);
+	--sdon-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* -------------------------------------------------- База */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	background-color: var(--sdon-body-bg);
+	background-image: var(--sdon-body-bg-image);
+	background-size: var(--sdon-body-bg-size);
+	background-repeat: var(--sdon-body-bg-repeat);
+	background-position: var(--sdon-body-bg-position);
+	background-attachment: var(--sdon-body-bg-attachment);
+	color: var(--sdon-text);
+	font-family: var(--sdon-font-body);
+	font-size: var(--sdon-font-size);
+	font-weight: var(--sdon-font-weight);
+	line-height: var(--sdon-line-height);
+	word-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 0.6em;
+	color: var(--sdon-headings);
+	font-family: var(--sdon-font-headings);
+	font-weight: var(--sdon-font-weight-headings);
+	line-height: 1.25;
+	overflow-wrap: break-word;
+}
+
+h1 {
+	font-size: clamp(1.7rem, 1.4rem + 1.6vw, 2.6rem);
+}
+
+h2 {
+	font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+}
+
+h3 {
+	font-size: clamp(1.2rem, 1.1rem + 0.6vw, 1.5rem);
+}
+
+p,
+ul,
+ol,
+figure,
+table,
+pre {
+	margin: 0 0 1.2em;
+}
+
+a {
+	color: var(--sdon-link);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus {
+	color: var(--sdon-link-hover);
+}
+
+:focus-visible {
+	outline: 3px solid var(--sdon-primary);
+	outline-offset: 2px;
+}
+
+img,
+video,
+iframe,
+embed,
+object {
+	max-width: 100%;
+	height: auto;
+}
+
+img {
+	display: block;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	padding: 8px 10px;
+	border: 1px solid var(--sdon-border);
+	text-align: left;
+}
+
+pre,
+code {
+	font-family: ui-monospace, Consolas, "Liberation Mono", monospace;
+}
+
+pre {
+	overflow-x: auto;
+	padding: 16px;
+	border-radius: var(--sdon-radius);
+	background: rgba(16, 19, 34, 0.06);
+}
+
+blockquote {
+	margin: 0 0 1.2em;
+	padding: 4px 0 4px 18px;
+	border-left: 4px solid var(--sdon-primary);
+	font-style: italic;
+}
+
+/* -------------------------------------------------- Доступность */
+
+.screen-reader-text {
+	position: absolute !important;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	word-wrap: normal !important;
+}
+
+.skip-link:focus {
+	position: fixed !important;
+	z-index: 1000;
+	top: 12px;
+	left: 12px;
+	clip: auto;
+	clip-path: none;
+	width: auto;
+	height: auto;
+	padding: 10px 16px;
+	border-radius: 8px;
+	background: var(--sdon-surface);
+	color: var(--sdon-link);
+	font-size: 1rem;
+}
+
+/* -------------------------------------------------- Контейнер и макет */
+
+.sdon-container {
+	width: 100%;
+	max-width: var(--sdon-container);
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.sdon-container-full .sdon-container {
+	max-width: 100%;
+}
+
+.sdon-site {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.sdon-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--sdon-gap);
+	padding-top: 32px;
+	padding-bottom: 48px;
+}
+
+.sdon-main {
+	min-width: 0;
+}
+
+.sdon-sidebar {
+	min-width: 0;
+}
+
+.sdon-mobile-sidebar-first .sdon-main {
+	order: 2;
+}
+
+.sdon-mobile-sidebar-first .sdon-sidebar {
+	order: 1;
+}
+
+/* -------------------------------------------------- Шапка */
+
+.sdon-header {
+	position: relative;
+	z-index: 20;
+	background: var(--sdon-menu-bg);
+	color: var(--sdon-menu-text);
+	box-shadow: var(--sdon-shadow);
+}
+
+.sdon-header--sticky {
+	position: sticky;
+	top: 0;
+}
+
+.sdon-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.sdon-branding {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+}
+
+.sdon-branding__logo img {
+	width: auto;
+	max-width: min(var(--sdon-logo-max-width), 60vw);
+	height: auto;
+}
+
+.sdon-branding__title {
+	margin: 0;
+	color: var(--sdon-menu-text);
+	font-family: var(--sdon-font-headings);
+	font-size: 1.25rem;
+	line-height: 1.2;
+}
+
+.sdon-branding__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.sdon-branding__tagline {
+	margin: 2px 0 0;
+	font-size: 0.82rem;
+	opacity: 0.75;
+}
+
+.sdon-header__actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.sdon-scheme-toggle,
+.sdon-menu-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	padding: 0;
+	border: 1px solid var(--sdon-border);
+	border-radius: 10px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+}
+
+.sdon-scheme-toggle__icon::before {
+	content: "☾";
+	font-size: 1.1rem;
+}
+
+[data-sdon-scheme="dark"] .sdon-scheme-toggle__icon::before {
+	content: "☀";
+}
+
+.sdon-menu-toggle__bars,
+.sdon-menu-toggle__bars::before,
+.sdon-menu-toggle__bars::after {
+	display: block;
+	width: 20px;
+	height: 2px;
+	background: currentColor;
+}
+
+.sdon-menu-toggle__bars {
+	position: relative;
+}
+
+.sdon-menu-toggle__bars::before,
+.sdon-menu-toggle__bars::after {
+	position: absolute;
+	left: 0;
+	content: "";
+}
+
+.sdon-menu-toggle__bars::before {
+	top: -6px;
+}
+
+.sdon-menu-toggle__bars::after {
+	top: 6px;
+}
+
+/* -------------------------------------------------- Меню */
+
+.sdon-nav {
+	position: fixed;
+	z-index: 30;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	width: min(320px, 86vw);
+	height: 100%;
+	padding: 72px 20px 24px;
+	overflow-y: auto;
+	transform: translateX(100%);
+	transition: transform 0.25s ease;
+	background: var(--sdon-menu-bg);
+	box-shadow: var(--sdon-shadow);
+}
+
+.sdon-nav.is-open {
+	transform: translateX(0);
+}
+
+.sdon-menu,
+.sdon-menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sdon-menu li {
+	position: relative;
+}
+
+.sdon-menu a {
+	display: block;
+	padding: 12px 10px;
+	color: var(--sdon-menu-text);
+	font-family: var(--sdon-font-menu);
+	text-decoration: none;
+}
+
+.sdon-menu-uppercase .sdon-menu > li > a {
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	letter-spacing: 0.03em;
+}
+
+.sdon-menu .current-menu-item > a,
+.sdon-menu a:hover,
+.sdon-menu a:focus {
+	color: var(--sdon-primary);
+}
+
+.sdon-menu .sub-menu {
+	display: none;
+	padding-left: 12px;
+}
+
+.sdon-menu li.is-open > .sub-menu {
+	display: block;
+}
+
+.sdon-submenu-toggle {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+}
+
+.sdon-submenu-toggle__icon::before {
+	content: "▾";
+}
+
+.sdon-submenu-toggle[aria-expanded="true"] .sdon-submenu-toggle__icon::before {
+	content: "▴";
+}
+
+.sdon-nav__search .sdon-search {
+	display: flex;
+	gap: 6px;
+}
+
+.sdon-search__field {
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 9px 12px;
+	border: 1px solid var(--sdon-border);
+	border-radius: 10px;
+	background: var(--sdon-surface);
+	color: var(--sdon-text);
+	font: inherit;
+}
+
+.sdon-search__submit {
+	padding: 9px 14px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--sdon-button-bg);
+	color: var(--sdon-button-text);
+	cursor: pointer;
+}
+
+/* -------------------------------------------------- Кнопки */
+
+.sdon-button,
+.sdon-comments .submit,
+button.sdon-button {
+	display: inline-block;
+	padding: 11px 20px;
+	border: 0;
+	border-radius: 10px;
+	background: var(--sdon-button-bg);
+	color: var(--sdon-button-text);
+	font: inherit;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.sdon-button:hover,
+.sdon-button:focus {
+	background: var(--sdon-button-hover);
+	color: var(--sdon-button-text);
+}
+
+.sdon-button--ghost {
+	padding: 8px 0;
+	background: transparent;
+	color: var(--sdon-link);
+	font-weight: 600;
+}
+
+.sdon-button--ghost:hover,
+.sdon-button--ghost:focus {
+	background: transparent;
+	color: var(--sdon-link-hover);
+	text-decoration: underline;
+}
+
+/* -------------------------------------------------- Слайдер */
+
+.sdon-slider {
+	position: relative;
+	overflow: hidden;
+	min-height: 240px;
+	height: var(--sdon-slider-height);
+	background: #0b0d14;
+	--sdon-slide-overlay: 0.4;
+}
+
+.sdon-slider__track {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.sdon-slide {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: flex-end;
+	opacity: 0;
+	transition: opacity var(--sdon-slider-speed) ease;
+	pointer-events: none;
+}
+
+.sdon-slide.is-active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.sdon-slide__image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.sdon-slide__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(4, 6, 12, var(--sdon-slide-overlay));
+}
+
+.sdon-slide__content {
+	position: relative;
+	padding-top: 32px;
+	padding-bottom: 40px;
+	color: #fff;
+}
+
+.sdon-slide__title {
+	margin-bottom: 10px;
+	color: #fff;
+	font-size: clamp(1.5rem, 1.1rem + 2.4vw, 3rem);
+}
+
+.sdon-slide__text {
+	max-width: 60ch;
+	margin-bottom: 18px;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.sdon-slider__arrow {
+	position: absolute;
+	top: 50%;
+	width: 44px;
+	height: 44px;
+	transform: translateY(-50%);
+	border: 0;
+	border-radius: 50%;
+	background: rgba(8, 10, 18, 0.55);
+	color: #fff;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.sdon-slider__arrow--prev {
+	left: 10px;
+}
+
+.sdon-slider__arrow--next {
+	right: 10px;
+}
+
+.sdon-slider__dots {
+	position: absolute;
+	bottom: 12px;
+	left: 50%;
+	display: flex;
+	gap: 8px;
+	transform: translateX(-50%);
+}
+
+.sdon-slider__dot {
+	width: 12px;
+	height: 12px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.5);
+	cursor: pointer;
+}
+
+.sdon-slider__dot.is-active {
+	background: #fff;
+}
+
+/* -------------------------------------------------- Сетка новостей */
+
+.sdon-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--sdon-gap);
+	margin-bottom: 32px;
+}
+
+.sdon-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid var(--sdon-border);
+	border-radius: var(--sdon-radius);
+	background: var(--sdon-surface);
+	box-shadow: var(--sdon-shadow);
+}
+
+.sdon-card__image img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+}
+
+.sdon-card__body {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	gap: 8px;
+	padding: 18px;
+}
+
+.sdon-card__title {
+	margin: 0;
+	font-size: 1.15rem;
+}
+
+.sdon-card__title a {
+	color: var(--sdon-headings);
+	text-decoration: none;
+}
+
+.sdon-card__title a:hover,
+.sdon-card__title a:focus {
+	color: var(--sdon-link);
+}
+
+.sdon-card__excerpt {
+	margin: 0;
+	flex: 1 1 auto;
+}
+
+.sdon-card__button {
+	align-self: flex-start;
+}
+
+.sdon-categories {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.sdon-category {
+	padding: 3px 10px;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--sdon-primary) 14%, transparent);
+	color: var(--sdon-primary);
+	font-size: 0.78rem;
+	text-decoration: none;
+}
+
+.sdon-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	font-size: 0.82rem;
+	opacity: 0.8;
+}
+
+.sdon-meta a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* -------------------------------------------------- Запись и страницы */
+
+.sdon-entry,
+.sdon-no-results,
+.sdon-error-404,
+.sdon-comments,
+.sdon-archive-header {
+	padding: 24px;
+	border-radius: var(--sdon-radius);
+	background: var(--sdon-surface);
+	box-shadow: var(--sdon-shadow);
+}
+
+.sdon-archive-header,
+.sdon-entry {
+	margin-bottom: var(--sdon-gap);
+}
+
+.sdon-entry__thumbnail {
+	margin: 0 0 20px;
+}
+
+.sdon-entry__thumbnail img {
+	width: 100%;
+	border-radius: var(--sdon-radius);
+}
+
+.sdon-entry__content > *:last-child {
+	margin-bottom: 0;
+}
+
+.sdon-tags a {
+	display: inline-block;
+	margin: 0 6px 6px 0;
+	padding: 3px 10px;
+	border: 1px solid var(--sdon-border);
+	border-radius: 999px;
+	font-size: 0.8rem;
+	text-decoration: none;
+}
+
+.sdon-breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 16px;
+	padding: 0;
+	list-style: none;
+	font-size: 0.85rem;
+}
+
+.sdon-breadcrumbs li:not(:last-child)::after {
+	margin-left: 8px;
+	content: "/";
+	opacity: 0.5;
+}
+
+/* -------------------------------------------------- Виджеты */
+
+.widget {
+	margin-bottom: var(--sdon-gap);
+	padding: 20px;
+	border-radius: var(--sdon-radius);
+	background: var(--sdon-surface);
+	box-shadow: var(--sdon-shadow);
+}
+
+.widget:last-child {
+	margin-bottom: 0;
+}
+
+.widget-title {
+	margin-bottom: 12px;
+	font-size: 1.05rem;
+}
+
+.widget ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.widget li + li {
+	margin-top: 8px;
+}
+
+.sdon-recent-posts__item {
+	display: flex;
+	gap: 12px;
+}
+
+.sdon-recent-posts__image img {
+	width: 72px;
+	height: 72px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.sdon-recent-posts__title {
+	display: block;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.sdon-recent-posts__body time {
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+/* -------------------------------------------------- Навигация по страницам */
+
+.navigation.pagination,
+.sdon-page-links,
+.nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}
+
+.page-numbers {
+	display: inline-block;
+	min-width: 40px;
+	padding: 9px 12px;
+	border: 1px solid var(--sdon-border);
+	border-radius: 10px;
+	background: var(--sdon-surface);
+	text-align: center;
+	text-decoration: none;
+}
+
+.page-numbers.current {
+	background: var(--sdon-button-bg);
+	color: var(--sdon-button-text);
+	border-color: transparent;
+}
+
+.post-navigation {
+	margin: var(--sdon-gap) 0;
+}
+
+.post-navigation .nav-links {
+	gap: var(--sdon-gap);
+}
+
+.post-navigation a {
+	display: block;
+	padding: 16px;
+	border-radius: var(--sdon-radius);
+	background: var(--sdon-surface);
+	box-shadow: var(--sdon-shadow);
+	text-decoration: none;
+}
+
+.sdon-post-nav__label {
+	display: block;
+	font-size: 0.8rem;
+	opacity: 0.7;
+}
+
+/* -------------------------------------------------- Комментарии */
+
+.sdon-comments__list,
+.sdon-comments__list ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sdon-comments__list .children {
+	margin-left: 16px;
+	padding-left: 12px;
+	border-left: 2px solid var(--sdon-border);
+	list-style: none;
+}
+
+.sdon-comments .comment-body {
+	margin-bottom: 20px;
+}
+
+.sdon-comments input[type="text"],
+.sdon-comments input[type="email"],
+.sdon-comments input[type="url"],
+.sdon-comments textarea {
+	width: 100%;
+	max-width: 100%;
+	padding: 10px 12px;
+	border: 1px solid var(--sdon-border);
+	border-radius: 10px;
+	background: var(--sdon-surface);
+	color: var(--sdon-text);
+	font: inherit;
+}
+
+/* -------------------------------------------------- Футер */
+
+.sdon-footer {
+	margin-top: auto;
+	padding: 40px 0 24px;
+	background: var(--sdon-footer-bg);
+	color: var(--sdon-footer-text);
+}
+
+.sdon-footer a {
+	color: inherit;
+}
+
+.sdon-footer .widget {
+	padding: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.sdon-footer .widget-title {
+	color: var(--sdon-footer-text);
+}
+
+.sdon-footer__widgets {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--sdon-gap);
+	margin-bottom: 24px;
+}
+
+.sdon-footer-menu {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 20px;
+	margin: 0 0 16px;
+	padding: 0;
+	list-style: none;
+}
+
+.sdon-footer__bottom {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+	font-size: 0.9rem;
+}
+
+.sdon-socials {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* -------------------------------------------------- Кнопка «Наверх» и фон */
+
+.sdon-to-top {
+	position: fixed;
+	z-index: 40;
+	right: 16px;
+	bottom: 16px;
+	width: 46px;
+	height: 46px;
+	border: 0;
+	border-radius: 50%;
+	background: var(--sdon-button-bg);
+	color: var(--sdon-button-text);
+	font-size: 1.2rem;
+	cursor: pointer;
+	box-shadow: var(--sdon-shadow);
+}
+
+.sdon-to-top[hidden] {
+	display: none;
+}
+
+.sdon-bg-canvas {
+	position: fixed;
+	z-index: 0;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: var(--sdon-bg-animation-opacity);
+	pointer-events: none;
+}
+
+.sdon-preloader {
+	position: fixed;
+	z-index: 100;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--sdon-body-bg);
+}
+
+.sdon-preloader.is-hidden {
+	display: none;
+}
+
+.sdon-preloader span {
+	width: 34px;
+	height: 34px;
+	border: 3px solid var(--sdon-border);
+	border-top-color: var(--sdon-primary);
+	border-radius: 50%;
+	animation: sdon-spin 0.9s linear infinite;
+}
+
+@keyframes sdon-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* -------------------------------------------------- Планшет */
+
+@media (min-width: 600px) {
+	.sdon-container {
+		padding: 0 24px;
+	}
+
+	.sdon-grid {
+		grid-template-columns: repeat(min(2, var(--sdon-news-columns)), minmax(0, 1fr));
+	}
+
+	.sdon-footer__widgets {
+		grid-template-columns: repeat(min(2, var(--sdon-footer-columns)), minmax(0, 1fr));
+	}
+}
+
+/* -------------------------------------------------- ПК */
+
+@media (min-width: 900px) {
+	.sdon-grid {
+		grid-template-columns: repeat(var(--sdon-news-columns), minmax(0, 1fr));
+	}
+
+	.sdon-footer__widgets {
+		grid-template-columns: repeat(var(--sdon-footer-columns), minmax(0, 1fr));
+	}
+
+	.sdon-layout {
+		padding-top: 40px;
+	}
+
+	.sdon-layout-2 {
+		--sdon-sidebar-width: 320px;
+	}
+
+	.sdon-layout-2 .sdon-layout {
+		grid-template-columns: minmax(0, 1fr) var(--sdon-sidebar-width);
+	}
+
+	.sdon-layout-2.sdon-sidebar-left .sdon-layout {
+		grid-template-columns: var(--sdon-sidebar-width) minmax(0, 1fr);
+	}
+
+	.sdon-layout-2.sdon-sidebar-left .sdon-main {
+		order: 2;
+	}
+
+	.sdon-layout-2.sdon-sidebar-left .sdon-sidebar {
+		order: 1;
+	}
+
+	.sdon-layout-3 .sdon-layout {
+		grid-template-columns: 260px minmax(0, 1fr) 260px;
+	}
+
+	.sdon-layout-3 .sdon-main {
+		order: 2;
+	}
+
+	.sdon-layout-3 .sdon-sidebar--primary {
+		order: 1;
+	}
+
+	.sdon-layout-3 .sdon-sidebar--secondary {
+		order: 3;
+	}
+
+	.sdon-layout--full {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.sdon-sticky-sidebar .sdon-sidebar {
+		position: sticky;
+		top: 90px;
+		align-self: start;
+	}
+
+	.sdon-menu-toggle {
+		display: none;
+	}
+
+	.sdon-menu-multilevel .sdon-nav {
+		position: static;
+		width: auto;
+		height: auto;
+		flex-direction: row;
+		align-items: center;
+		padding: 0;
+		overflow: visible;
+		transform: none;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.sdon-menu-multilevel .sdon-menu {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	.sdon-menu-multilevel .sdon-menu .sub-menu {
+		position: absolute;
+		z-index: 40;
+		top: 100%;
+		left: 0;
+		display: block;
+		visibility: hidden;
+		min-width: 220px;
+		padding: 8px 0;
+		border-radius: var(--sdon-radius);
+		background: var(--sdon-menu-bg);
+		box-shadow: var(--sdon-shadow);
+		opacity: 0;
+		transition: opacity 0.18s ease;
+	}
+
+	.sdon-menu-multilevel .sdon-menu .sub-menu .sub-menu {
+		top: 0;
+		left: 100%;
+	}
+
+	.sdon-menu-multilevel .sdon-menu li.is-open > .sub-menu,
+	.sdon-menu-multilevel .sdon-menu li:focus-within > .sub-menu {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.sdon-menu-multilevel .sdon-submenu-toggle {
+		position: static;
+		width: 24px;
+		height: 24px;
+	}
+
+	.sdon-menu-multilevel .sdon-menu > li {
+		display: flex;
+		align-items: center;
+	}
+
+	.sdon-menu-multilevel .sdon-menu .sub-menu li {
+		display: block;
+	}
+
+	.sdon-header--center .sdon-header__inner {
+		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.sdon-header--center .sdon-nav {
+		order: 3;
+		flex-basis: 100%;
+		justify-content: center;
+	}
+
+	.sdon-menu-offcanvas .sdon-menu-toggle {
+		display: inline-flex;
+	}
+}
+
+/* -------------------------------------------------- Печать и уменьшенное движение */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+@media print {
+	.sdon-header,
+	.sdon-footer,
+	.sdon-sidebar,
+	.sdon-slider,
+	.sdon-to-top,
+	.sdon-bg-canvas {
+		display: none !important;
+	}
+}
