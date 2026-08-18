@@ -184,7 +184,7 @@ function sdon_sanitize_imported_settings( $settings ) {
 		$is_color = 0 === strpos( $key, 'color_' )
 			|| 0 === strpos( $key, 'dark_color_' )
 			|| 'bg_color' === $key
-			|| in_array( $key, array( 'bg_gradient_from', 'bg_gradient_to' ), true );
+			|| in_array( $key, array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color' ), true );
 
 		if ( $is_color ) {
 			$color = sanitize_hex_color( $value );

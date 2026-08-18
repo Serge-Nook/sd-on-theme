@@ -22,7 +22,6 @@ function sdon_postmessage_map() {
 		'color_headings'     => '--sdon-headings',
 		'color_link'         => '--sdon-link',
 		'color_link_hover'   => '--sdon-link-hover',
-		'color_surface'      => '--sdon-surface',
 		'color_menu_bg'      => '--sdon-menu-bg',
 		'color_menu_text'    => '--sdon-menu-text',
 		'color_button_bg'    => '--sdon-button-bg',
@@ -935,13 +934,7 @@ function sdon_customize_background( $wp_customize ) {
 			'label'       => __( 'Анимированный фон', 'sd-on-theme' ),
 			'description' => __( 'Анимация рисуется на canvas и останавливается, когда вкладка неактивна.', 'sd-on-theme' ),
 			'type'        => 'select',
-			'choices'     => array(
-				'none'   => __( 'Отключить анимацию', 'sd-on-theme' ),
-				'stars'  => __( 'Звёзды — «Сквозь вселенную»', 'sd-on-theme' ),
-				'matrix' => __( 'Матрица', 'sd-on-theme' ),
-				'maze'   => __( 'Лабиринт', 'sd-on-theme' ),
-				'pipes'  => __( 'Трубопровод', 'sd-on-theme' ),
-			),
+			'choices'     => sdon_bg_animation_choices(),
 		)
 	);
 
@@ -963,6 +956,55 @@ function sdon_customize_background( $wp_customize ) {
 				'step' => 5,
 			),
 			'active_callback' => $has_animation,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'bg_animation_speed',
+		array(
+			'section'         => 'sdon_background',
+			'label'           => __( 'Скорость анимации', 'sd-on-theme' ),
+			'description'     => __( '100% — обычная скорость.', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => '%',
+			'input_attrs'     => array(
+				'min'  => 10,
+				'max'  => 300,
+				'step' => 10,
+			),
+			'active_callback' => $has_animation,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'bg_animation_shuffle',
+		array(
+			'section'         => 'sdon_background',
+			'label'           => __( 'Автоматически менять анимации', 'sd-on-theme' ),
+			'description'     => __( 'Анимации переключаются в случайном порядке.', 'sd-on-theme' ),
+			'type'            => 'checkbox',
+			'active_callback' => $has_animation,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'bg_animation_shuffle_interval',
+		array(
+			'section'         => 'sdon_background',
+			'label'           => __( 'Интервал переключения', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'сек', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 10,
+				'max'  => 600,
+				'step' => 5,
+			),
+			'active_callback' => static function () {
+				return 'none' !== sdon_opt( 'bg_animation' ) && (bool) sdon_opt( 'bg_animation_shuffle' );
+			},
 		)
 	);
 
@@ -1136,6 +1178,23 @@ function sdon_customize_colors( $wp_customize ) {
 			)
 		);
 	}
+
+	sdon_customize_add(
+		$wp_customize,
+		'content_opacity',
+		array(
+			'section'     => 'sdon_colors',
+			'label'       => __( 'Прозрачность фона блоков с контентом', 'sd-on-theme' ),
+			'description' => __( '100% — полностью непрозрачный фон. Меньшие значения показывают фон сайта сквозь блоки.', 'sd-on-theme' ),
+			'type'        => 'range',
+			'unit'        => '%',
+			'input_attrs' => array(
+				'min'  => 5,
+				'max'  => 100,
+				'step' => 5,
+			),
+		)
+	);
 }
 
 /**
@@ -1217,6 +1276,77 @@ function sdon_customize_news( $wp_customize ) {
 
 	sdon_customize_add(
 		$wp_customize,
+		'news_image_position',
+		array(
+			'section'         => 'sdon_news',
+			'label'           => __( 'Положение картинки в блоке', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => array(
+				'center'        => __( 'Посередине', 'sd-on-theme' ),
+				'center-top'    => __( 'Посередине сверху', 'sd-on-theme' ),
+				'center-bottom' => __( 'Посередине снизу', 'sd-on-theme' ),
+			),
+			'active_callback' => static function () {
+				return (bool) sdon_opt( 'news_show_image' );
+			},
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'news_card_border',
+		array(
+			'section' => 'sdon_news',
+			'label'   => __( 'Обводка блоков новостей', 'sd-on-theme' ),
+			'type'    => 'checkbox',
+		)
+	);
+
+	$has_border = static function () {
+		return (bool) sdon_opt( 'news_card_border' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'news_card_border_width',
+		array(
+			'section'         => 'sdon_news',
+			'label'           => __( 'Толщина обводки', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => 'px',
+			'input_attrs'     => array(
+				'min'  => 1,
+				'max'  => 8,
+				'step' => 1,
+			),
+			'active_callback' => $has_border,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'news_card_border_color',
+		array(
+			'section'         => 'sdon_news',
+			'label'           => __( 'Цвет обводки', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $has_border,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'single_show_image',
+		array(
+			'section'     => 'sdon_news',
+			'label'       => __( 'Картинка в начале открытой новости', 'sd-on-theme' ),
+			'description' => __( 'Отключите, если изображение не нужно показывать на странице материала.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
 		'news_button_text',
 		array(
 			'section'         => 'sdon_news',
@@ -1295,14 +1425,7 @@ function sdon_customize_footer( $wp_customize ) {
 		)
 	);
 
-	$socials = array(
-		'social_vk'       => __( 'ВКонтакте', 'sd-on-theme' ),
-		'social_telegram' => __( 'Telegram', 'sd-on-theme' ),
-		'social_youtube'  => __( 'YouTube', 'sd-on-theme' ),
-		'social_x'        => __( 'X (Twitter)', 'sd-on-theme' ),
-		'social_github'   => __( 'GitHub', 'sd-on-theme' ),
-		'social_rss'      => __( 'RSS', 'sd-on-theme' ),
-	);
+	$socials = sdon_social_networks();
 
 	$socials_visible = static function () {
 		return (bool) sdon_opt( 'footer_show_socials' );

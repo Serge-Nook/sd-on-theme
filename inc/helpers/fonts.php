@@ -3,7 +3,8 @@
  * Шрифты темы: встроенные наборы и пользовательские загрузки.
  *
  * Пользовательские шрифты хранятся в опции sdon_custom_fonts и подключаются
- * через @font-face, без внешних запросов к сторонним сервисам.
+ * через @font-face. Шрифты Google Fonts подключаются только тогда, когда
+ * выбраны в настройках темы.
  *
  * @package SD_ON_Theme
  */
@@ -48,6 +49,93 @@ function sdon_builtin_fonts() {
 }
 
 /**
+ * Шрифты Google Fonts, доступные в настройках.
+ *
+ * @return array<string, array{label: string, family: string, fallback: string}>
+ */
+function sdon_google_fonts() {
+	$sans  = 'system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif';
+	$serif = 'Georgia, "Times New Roman", serif';
+
+	$fonts = array(
+		'rubik'            => array( 'Rubik', $sans ),
+		'cormorant'        => array( 'Cormorant', $serif ),
+		'alegreya-sans'    => array( 'Alegreya Sans', $sans ),
+		'ibm-plex-sans'    => array( 'IBM Plex Sans', $sans ),
+		'open-sans'        => array( 'Open Sans', $sans ),
+		'philosopher'      => array( 'Philosopher', $sans ),
+		'comfortaa'        => array( 'Comfortaa', $sans ),
+		'noto-sans'        => array( 'Noto Sans', $sans ),
+		'yanone'           => array( 'Yanone Kaffeesatz', $sans ),
+		'caveat'           => array( 'Caveat', 'cursive' ),
+		'pt-sans'          => array( 'PT Sans', $sans ),
+		'pt-serif'         => array( 'PT Serif', $serif ),
+		'playfair-display' => array( 'Playfair Display', $serif ),
+		'exo-2'            => array( 'Exo 2', $sans ),
+		'fira-sans'        => array( 'Fira Sans', $sans ),
+	);
+
+	$result = array();
+
+	foreach ( $fonts as $key => $font ) {
+		$result[ $key ] = array(
+			'label'    => $font[0],
+			'family'   => $font[0],
+			'fallback' => $font[1],
+		);
+	}
+
+	return $result;
+}
+
+/**
+ * Семейства Google Fonts, выбранные в настройках темы.
+ *
+ * @return string[] Названия семейств для запроса к Google Fonts.
+ */
+function sdon_used_google_families() {
+	$google   = sdon_google_fonts();
+	$families = array();
+
+	foreach ( array( 'font_body', 'font_headings', 'font_menu' ) as $setting ) {
+		$value = (string) sdon_opt( $setting );
+
+		if ( 0 !== strpos( $value, 'google:' ) ) {
+			continue;
+		}
+
+		$key = substr( $value, 7 );
+
+		if ( isset( $google[ $key ] ) ) {
+			$families[] = $google[ $key ]['family'];
+		}
+	}
+
+	return array_values( array_unique( $families ) );
+}
+
+/**
+ * Адрес таблицы стилей Google Fonts для выбранных шрифтов.
+ *
+ * @return string Пустая строка, если Google-шрифты не используются.
+ */
+function sdon_google_fonts_url() {
+	$families = sdon_used_google_families();
+
+	if ( empty( $families ) ) {
+		return '';
+	}
+
+	$query = array();
+
+	foreach ( $families as $family ) {
+		$query[] = 'family=' . str_replace( '%20', '+', rawurlencode( $family ) ) . ':wght@400;700';
+	}
+
+	return 'https://fonts.googleapis.com/css2?' . implode( '&', $query ) . '&display=swap';
+}
+
+/**
  * Пользовательские шрифты, загруженные через админ-панель.
  *
  * @return array<string, array{label: string, files: array<string, string>}>
@@ -68,6 +156,14 @@ function sdon_font_choices() {
 
 	foreach ( sdon_builtin_fonts() as $key => $font ) {
 		$choices[ $key ] = $font['label'];
+	}
+
+	foreach ( sdon_google_fonts() as $key => $font ) {
+		$choices[ 'google:' . $key ] = sprintf(
+			/* translators: %s: название шрифта Google Fonts. */
+			__( '%s (Google Fonts)', 'sd-on-theme' ),
+			$font['label']
+		);
 	}
 
 	foreach ( sdon_custom_fonts() as $key => $font ) {
@@ -92,6 +188,15 @@ function sdon_font_stack( $value ) {
 
 	if ( isset( $builtin[ $value ] ) ) {
 		return $builtin[ $value ]['stack'];
+	}
+
+	if ( 0 === strpos( (string) $value, 'google:' ) ) {
+		$key    = substr( $value, 7 );
+		$google = sdon_google_fonts();
+
+		if ( isset( $google[ $key ] ) ) {
+			return sprintf( '"%s", %s', $google[ $key ]['family'], $google[ $key ]['fallback'] );
+		}
 	}
 
 	if ( 0 === strpos( (string) $value, 'custom:' ) ) {

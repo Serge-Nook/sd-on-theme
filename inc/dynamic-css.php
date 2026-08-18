@@ -107,6 +107,23 @@ function sdon_background_css() {
 }
 
 /**
+ * Цвет блоков с учётом настроенной прозрачности.
+ *
+ * @param string $hex Цвет блоков в шестнадцатиричном виде.
+ * @return string Значение для CSS-свойства background.
+ */
+function sdon_surface_background( $hex ) {
+	$opacity = min( 100, max( 5, (int) sdon_opt( 'content_opacity' ) ) );
+	$rgb     = sdon_hex_to_rgb( $hex );
+
+	if ( 100 === $opacity || empty( $rgb ) ) {
+		return (string) $hex;
+	}
+
+	return sprintf( 'rgba(%1$d,%2$d,%3$d,%4$s)', $rgb[0], $rgb[1], $rgb[2], round( $opacity / 100, 2 ) );
+}
+
+/**
  * Итоговый динамический CSS темы.
  *
  * @return string
@@ -137,6 +154,10 @@ function sdon_dynamic_css() {
 	$root .= sprintf( '--sdon-slider-height:%s;', $height );
 	$root .= sprintf( '--sdon-slider-speed:%dms;', (int) sdon_opt( 'slider_speed' ) );
 	$root .= sprintf( '--sdon-bg-animation-opacity:%s;', (int) sdon_opt( 'bg_animation_opacity' ) / 100 );
+	$root .= sprintf( '--sdon-surface-bg:%s;', sdon_surface_background( sdon_opt( 'color_surface' ) ) );
+	$root .= sprintf( '--sdon-card-border-width:%dpx;', sdon_is( 'news_card_border' ) ? min( 8, max( 0, (int) sdon_opt( 'news_card_border_width' ) ) ) : 0 );
+	$root .= sprintf( '--sdon-card-border-color:%s;', sdon_opt( 'news_card_border_color' ) );
+	$root .= sprintf( '--sdon-card-image-position:%s;', sdon_card_image_position() );
 
 	$css = ':root{' . $root . '}';
 
@@ -144,6 +165,8 @@ function sdon_dynamic_css() {
 
 	if ( '' !== $dark ) {
 		$mode = sdon_opt( 'color_scheme_mode' );
+
+		$dark .= sprintf( '--sdon-surface-bg:%s;', sdon_surface_background( sdon_opt( 'dark_color_surface' ) ) );
 
 		if ( 'dark' === $mode ) {
 			$css .= ':root{' . $dark . '}';

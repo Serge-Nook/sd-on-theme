@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 		<?php endif; ?>
 	</header>
 
-	<?php if ( has_post_thumbnail() ) : ?>
+	<?php if ( sdon_is( 'single_show_image' ) && has_post_thumbnail() ) : ?>
 		<figure class="sdon-entry__thumbnail">
 			<?php the_post_thumbnail( 'large', array( 'sizes' => '(max-width: 899px) 100vw, 800px' ) ); ?>
 			<?php if ( get_the_post_thumbnail_caption() ) : ?>

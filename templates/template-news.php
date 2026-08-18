@@ -24,20 +24,18 @@ $sdon_news = new WP_Query(
 	)
 );
 ?>
-<header class="sdon-archive-header">
-	<h1 class="sdon-archive-header__title"><?php the_title(); ?></h1>
-	<?php
-	while ( have_posts() ) {
-		the_post();
+<h1 class="sdon-page-title"><?php the_title(); ?></h1>
+<?php
+while ( have_posts() ) {
+	the_post();
 
-		if ( '' !== trim( (string) get_the_content() ) ) {
-			echo '<div class="sdon-archive-header__description">';
-			the_content();
-			echo '</div>';
-		}
+	if ( '' !== trim( (string) get_the_content() ) ) {
+		echo '<div class="sdon-page-description">';
+		the_content();
+		echo '</div>';
 	}
-	?>
-</header>
+}
+?>
 
 <?php if ( $sdon_news->have_posts() ) : ?>
 	<div class="sdon-grid">

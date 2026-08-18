@@ -155,19 +155,31 @@ function sdon_footer_copyright() {
 }
 
 /**
+ * Поддерживаемые социальные сети: ключ настройки => подпись.
+ *
+ * @return array<string, string>
+ */
+function sdon_social_networks() {
+	return array(
+		'social_vk'       => __( 'ВКонтакте', 'sd-on-theme' ),
+		'social_telegram' => __( 'Telegram', 'sd-on-theme' ),
+		'social_max'      => __( 'МАКС', 'sd-on-theme' ),
+		'social_youtube'  => __( 'YouTube', 'sd-on-theme' ),
+		'social_rutube'   => __( 'Rutube', 'sd-on-theme' ),
+		'social_x'        => __( 'X (Twitter)', 'sd-on-theme' ),
+		'social_github'   => __( 'GitHub', 'sd-on-theme' ),
+		'social_gitverse' => __( 'GitVerse', 'sd-on-theme' ),
+		'social_rss'      => __( 'RSS', 'sd-on-theme' ),
+	);
+}
+
+/**
  * Список социальных сетей с заданными ссылками.
  *
  * @return array<int, array{key: string, label: string, url: string}>
  */
 function sdon_socials() {
-	$networks = array(
-		'social_vk'       => __( 'ВКонтакте', 'sd-on-theme' ),
-		'social_telegram' => __( 'Telegram', 'sd-on-theme' ),
-		'social_youtube'  => __( 'YouTube', 'sd-on-theme' ),
-		'social_x'        => __( 'X (Twitter)', 'sd-on-theme' ),
-		'social_github'   => __( 'GitHub', 'sd-on-theme' ),
-		'social_rss'      => __( 'RSS', 'sd-on-theme' ),
-	);
+	$networks = sdon_social_networks();
 
 	$items = array();
 
@@ -199,6 +211,74 @@ function sdon_is_news_grid() {
 	}
 
 	return is_home() || is_archive() || is_search();
+}
+
+/**
+ * Доступные анимации фона: значение настройки => подпись.
+ *
+ * @return array<string, string>
+ */
+function sdon_bg_animation_choices() {
+	return array(
+		'none'      => __( 'Отключить анимацию', 'sd-on-theme' ),
+		'stars'     => __( 'Звёзды — «Сквозь вселенную»', 'sd-on-theme' ),
+		'matrix'    => __( 'Матрица', 'sd-on-theme' ),
+		'maze'      => __( 'Лабиринт', 'sd-on-theme' ),
+		'pipes'     => __( 'Трубопровод', 'sd-on-theme' ),
+		'snow1'     => __( 'Падающие снежинки — вариант 1', 'sd-on-theme' ),
+		'snow2'     => __( 'Падающие снежинки — вариант 2', 'sd-on-theme' ),
+		'leaves'    => __( 'Листопад', 'sd-on-theme' ),
+		'arcade'    => __( 'Аркада', 'sd-on-theme' ),
+		'circuit'   => __( 'Электро плата', 'sd-on-theme' ),
+		'microchip' => __( 'Микрочип', 'sd-on-theme' ),
+		'cyberpunk' => __( 'Киберпанк', 'sd-on-theme' ),
+		'signals'   => __( 'Сеть каналов с бегущими сигналами', 'sd-on-theme' ),
+		'nebula'    => __( 'Пролёт сквозь облако частиц', 'sd-on-theme' ),
+		'warp'      => __( 'Искривление пространства', 'sd-on-theme' ),
+		'tunnel'    => __( 'Туннель из звёзд и колец', 'sd-on-theme' ),
+		'music'     => __( 'Дух музыки', 'sd-on-theme' ),
+	);
+}
+
+/**
+ * Составляющие RGB из шестнадцатиричного цвета.
+ *
+ * @param string $hex Цвет вида #fff или #ffffff.
+ * @return array<int, int> Пустой массив для некорректного значения.
+ */
+function sdon_hex_to_rgb( $hex ) {
+	$hex = ltrim( (string) $hex, '#' );
+
+	if ( 3 === strlen( $hex ) ) {
+		$hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+	}
+
+	if ( ! preg_match( '/^[0-9a-fA-F]{6}$/', $hex ) ) {
+		return array();
+	}
+
+	return array(
+		hexdec( substr( $hex, 0, 2 ) ),
+		hexdec( substr( $hex, 2, 2 ) ),
+		hexdec( substr( $hex, 4, 2 ) ),
+	);
+}
+
+/**
+ * Значение object-position для картинки в карточке новости.
+ *
+ * @return string
+ */
+function sdon_card_image_position() {
+	$map = array(
+		'center'        => 'center center',
+		'center-top'    => 'center top',
+		'center-bottom' => 'center bottom',
+	);
+
+	$value = (string) sdon_opt( 'news_image_position' );
+
+	return isset( $map[ $value ] ) ? $map[ $value ] : $map['center'];
 }
 
 /**

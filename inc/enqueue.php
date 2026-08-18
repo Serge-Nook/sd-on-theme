@@ -29,6 +29,12 @@ function sdon_enqueue_deferred_script( $handle, $file, $deps = array() ) {
  * @return void
  */
 function sdon_enqueue_assets() {
+	$google = sdon_google_fonts_url();
+
+	if ( '' !== $google ) {
+		wp_enqueue_style( 'sdon-google-fonts', $google, array(), SDON_VERSION );
+	}
+
 	wp_enqueue_style( 'sdon-main', SDON_URI . '/assets/css/main.css', array(), SDON_VERSION );
 	wp_add_inline_style( 'sdon-main', sdon_dynamic_css() );
 
@@ -76,10 +82,13 @@ function sdon_enqueue_assets() {
 			'sdon-bg-animation',
 			'sdonBg',
 			array(
-				'type'          => sdon_opt( 'bg_animation' ),
-				'opacity'       => (int) sdon_opt( 'bg_animation_opacity' ) / 100,
-				'enableMobile'  => sdon_is( 'bg_animation_mobile' ),
-				'reducedMotion' => sdon_respect_reduced_motion(),
+				'type'            => sdon_opt( 'bg_animation' ),
+				'opacity'         => (int) sdon_opt( 'bg_animation_opacity' ) / 100,
+				'speed'           => max( 10, (int) sdon_opt( 'bg_animation_speed' ) ) / 100,
+				'shuffle'         => sdon_is( 'bg_animation_shuffle' ),
+				'shuffleInterval' => max( 10, (int) sdon_opt( 'bg_animation_shuffle_interval' ) ) * 1000,
+				'enableMobile'    => sdon_is( 'bg_animation_mobile' ),
+				'reducedMotion'   => sdon_respect_reduced_motion(),
 			)
 		);
 	}
