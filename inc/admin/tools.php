@@ -186,7 +186,7 @@ function sdon_sanitize_imported_settings( $settings ) {
 			|| 'bg_color' === $key
 			|| in_array(
 				$key,
-				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'monster_color', 'monster_accent', 'cookie_cat_color', 'cookie_cat_accent' ),
+				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'news_card_glow_color', 'monster_color', 'monster_accent', 'cookie_cat_color', 'cookie_cat_accent' ),
 				true
 			);
 
@@ -195,6 +195,14 @@ function sdon_sanitize_imported_settings( $settings ) {
 
 			if ( $color ) {
 				$result[ $key ] = $color;
+			}
+
+			continue;
+		}
+
+		if ( 'news_card_glow_animation' === $key ) {
+			if ( array_key_exists( $value, sdon_card_glow_animations() ) ) {
+				$result[ $key ] = $value;
 			}
 
 			continue;

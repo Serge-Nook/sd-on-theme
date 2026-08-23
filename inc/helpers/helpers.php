@@ -161,15 +161,18 @@ function sdon_footer_copyright() {
  */
 function sdon_social_networks() {
 	return array(
-		'social_vk'       => __( 'ВКонтакте', 'sd-on-theme' ),
-		'social_telegram' => __( 'Telegram', 'sd-on-theme' ),
-		'social_max'      => __( 'МАКС', 'sd-on-theme' ),
-		'social_youtube'  => __( 'YouTube', 'sd-on-theme' ),
-		'social_rutube'   => __( 'Rutube', 'sd-on-theme' ),
-		'social_x'        => __( 'X (Twitter)', 'sd-on-theme' ),
-		'social_github'   => __( 'GitHub', 'sd-on-theme' ),
-		'social_gitverse' => __( 'GitVerse', 'sd-on-theme' ),
-		'social_rss'      => __( 'RSS', 'sd-on-theme' ),
+		'social_vk'        => __( 'ВКонтакте', 'sd-on-theme' ),
+		'social_telegram'  => __( 'Telegram', 'sd-on-theme' ),
+		'social_max'       => __( 'МАКС', 'sd-on-theme' ),
+		'social_youtube'   => __( 'YouTube', 'sd-on-theme' ),
+		'social_rutube'    => __( 'Rutube', 'sd-on-theme' ),
+		'social_x'         => __( 'X (Twitter)', 'sd-on-theme' ),
+		'social_facebook'  => __( 'Facebook', 'sd-on-theme' ),
+		'social_instagram' => __( 'Instagram', 'sd-on-theme' ),
+		'social_steam'     => __( 'Steam', 'sd-on-theme' ),
+		'social_github'    => __( 'GitHub', 'sd-on-theme' ),
+		'social_gitverse'  => __( 'GitVerse', 'sd-on-theme' ),
+		'social_rss'       => __( 'RSS', 'sd-on-theme' ),
 	);
 }
 
@@ -303,6 +306,48 @@ function sdon_card_image_position() {
 	$value = (string) sdon_opt( 'news_image_position' );
 
 	return isset( $map[ $value ] ) ? $map[ $value ] : $map['center'];
+}
+
+/**
+ * Доступные анимации свечения обводки карточек: значение => подпись.
+ *
+ * @return array<string, string>
+ */
+function sdon_card_glow_animations() {
+	return array(
+		'pulse'  => __( 'Пульсация', 'sd-on-theme' ),
+		'neon'   => __( 'Неоновое мигание', 'sd-on-theme' ),
+		'chase'  => __( 'Бегущий огонёк по контуру', 'sd-on-theme' ),
+		'ripple' => __( 'Расходящиеся волны', 'sd-on-theme' ),
+		'aurora' => __( 'Перелив цвета', 'sd-on-theme' ),
+	);
+}
+
+/**
+ * Выбранная анимация свечения обводки карточек.
+ *
+ * @return string
+ */
+function sdon_card_glow_animation() {
+	$value = (string) sdon_opt( 'news_card_glow_animation' );
+
+	return array_key_exists( $value, sdon_card_glow_animations() ) ? $value : 'pulse';
+}
+
+/**
+ * Классы карточки новости с учётом настроек свечения.
+ *
+ * @return array<int, string>
+ */
+function sdon_card_classes() {
+	$classes = array( 'sdon-card' );
+
+	if ( sdon_is( 'news_card_glow' ) ) {
+		$classes[] = 'sdon-card--glow';
+		$classes[] = 'sdon-card--glow-' . sdon_card_glow_animation();
+	}
+
+	return $classes;
 }
 
 /**

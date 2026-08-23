@@ -1346,6 +1346,44 @@ function sdon_customize_news( $wp_customize ) {
 
 	sdon_customize_add(
 		$wp_customize,
+		'news_card_glow',
+		array(
+			'section'     => 'sdon_news',
+			'label'       => __( 'Свечение обводки при наведении', 'sd-on-theme' ),
+			'description' => __( 'При наведении курсора на блок новости обводка начинает светиться.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	$has_glow = static function () {
+		return (bool) sdon_opt( 'news_card_glow' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'news_card_glow_animation',
+		array(
+			'section'         => 'sdon_news',
+			'label'           => __( 'Анимация свечения', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_card_glow_animations(),
+			'active_callback' => $has_glow,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'news_card_glow_color',
+		array(
+			'section'         => 'sdon_news',
+			'label'           => __( 'Цвет свечения', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $has_glow,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
 		'single_show_image',
 		array(
 			'section'     => 'sdon_news',
@@ -1787,6 +1825,24 @@ function sdon_customize_cookie( $wp_customize ) {
 				'min'  => 1,
 				'max'  => 365,
 				'step' => 1,
+			),
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_opacity',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Прозрачность фона блока', 'sd-on-theme' ),
+			'description'     => __( '100% — полностью непрозрачный фон окна. Меньшие значения показывают страницу сквозь окно.', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => '%',
+			'input_attrs'     => array(
+				'min'  => 5,
+				'max'  => 100,
+				'step' => 5,
 			),
 			'active_callback' => $cookie_visible,
 		)

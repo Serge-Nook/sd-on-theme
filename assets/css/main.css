@@ -650,6 +650,162 @@ button.sdon-button {
 	box-shadow: var(--sdon-shadow);
 }
 
+/*
+ * Свечение обводки карточки при наведении. Карточка обрезает содержимое
+ * (overflow: hidden), поэтому «мягкие» варианты рисуются box-shadow, а
+ * бегущий огонёк и перелив — кольцом внутри карточки через маску.
+ */
+.sdon-card--glow {
+	position: relative;
+	transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.sdon-card--glow:hover,
+.sdon-card--glow:focus-within {
+	border-color: var(--sdon-card-glow);
+}
+
+.sdon-card--glow-chase::after,
+.sdon-card--glow-aurora::after {
+	position: absolute;
+	z-index: 2;
+	inset: 0;
+	padding: 3px;
+	border-radius: inherit;
+	content: "";
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.35s ease;
+	-webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+	mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+.sdon-card--glow-chase:hover::after,
+.sdon-card--glow-chase:focus-within::after,
+.sdon-card--glow-aurora:hover::after,
+.sdon-card--glow-aurora:focus-within::after {
+	opacity: 1;
+}
+
+/* 1. Пульсация: свечение ровно разгорается и гаснет. */
+.sdon-card--glow-pulse:hover,
+.sdon-card--glow-pulse:focus-within {
+	animation: sdon-card-glow-pulse 1.8s ease-in-out infinite;
+}
+
+/* 2. Неоновое мигание: короткие срывы яркости, как у неоновой трубки. */
+.sdon-card--glow-neon:hover,
+.sdon-card--glow-neon:focus-within {
+	animation: sdon-card-glow-neon 2.4s steps(1, end) infinite;
+}
+
+/* 3. Бегущий огонёк: светящаяся дуга обходит контур карточки. */
+@property --sdon-card-glow-angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+.sdon-card--glow-chase::after {
+	background: conic-gradient(
+		from var(--sdon-card-glow-angle),
+		rgba(var(--sdon-card-glow-rgb), 0) 0deg,
+		var(--sdon-card-glow) 45deg,
+		rgba(var(--sdon-card-glow-rgb), 0) 110deg,
+		rgba(var(--sdon-card-glow-rgb), 0) 360deg
+	);
+}
+
+.sdon-card--glow-chase:hover,
+.sdon-card--glow-chase:focus-within {
+	box-shadow: 0 0 18px 0 rgba(var(--sdon-card-glow-rgb), 0.4);
+}
+
+.sdon-card--glow-chase:hover::after,
+.sdon-card--glow-chase:focus-within::after {
+	animation: sdon-card-glow-chase 2.6s linear infinite;
+}
+
+/* 4. Расходящиеся волны: от обводки отходят кольца свечения. */
+.sdon-card--glow-ripple:hover,
+.sdon-card--glow-ripple:focus-within {
+	animation: sdon-card-glow-ripple 1.9s ease-out infinite;
+}
+
+/* 5. Перелив цвета: оттенок кольца плавно уходит по кругу. */
+.sdon-card--glow-aurora::after {
+	background: linear-gradient(
+		120deg,
+		var(--sdon-card-glow),
+		rgba(var(--sdon-card-glow-rgb), 0.35),
+		var(--sdon-card-glow)
+	);
+}
+
+.sdon-card--glow-aurora:hover,
+.sdon-card--glow-aurora:focus-within {
+	box-shadow: 0 0 20px 2px rgba(var(--sdon-card-glow-rgb), 0.45);
+}
+
+.sdon-card--glow-aurora:hover::after,
+.sdon-card--glow-aurora:focus-within::after {
+	animation: sdon-card-glow-aurora 6s linear infinite;
+}
+
+@keyframes sdon-card-glow-pulse {
+	0%,
+	100% {
+		box-shadow: 0 0 8px 0 rgba(var(--sdon-card-glow-rgb), 0.35);
+	}
+
+	50% {
+		box-shadow: 0 0 26px 4px rgba(var(--sdon-card-glow-rgb), 0.75);
+	}
+}
+
+@keyframes sdon-card-glow-neon {
+	0%,
+	42%,
+	58%,
+	72%,
+	100% {
+		box-shadow: 0 0 24px 3px rgba(var(--sdon-card-glow-rgb), 0.8);
+	}
+
+	48%,
+	66% {
+		box-shadow: 0 0 4px 0 rgba(var(--sdon-card-glow-rgb), 0.15);
+	}
+}
+
+@keyframes sdon-card-glow-chase {
+	to {
+		--sdon-card-glow-angle: 360deg;
+	}
+}
+
+@keyframes sdon-card-glow-ripple {
+	0% {
+		box-shadow: 0 0 0 0 rgba(var(--sdon-card-glow-rgb), 0.55);
+	}
+
+	100% {
+		box-shadow: 0 0 0 14px rgba(var(--sdon-card-glow-rgb), 0);
+	}
+}
+
+@keyframes sdon-card-glow-aurora {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
 .sdon-card__image img {
 	width: 100%;
 	height: auto;
@@ -1393,8 +1549,9 @@ button.sdon-button {
 	padding: 20px;
 	border: 1px solid var(--sdon-border);
 	border-radius: var(--sdon-radius);
-	background: var(--sdon-card-bg);
+	background: var(--sdon-cookie-bg, var(--sdon-card-bg));
 	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+	backdrop-filter: blur(8px);
 }
 
 .sdon-cookie__title {

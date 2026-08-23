@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $sdon_excerpt = sdon_trimmed_excerpt();
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'sdon-card' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( sdon_card_classes() ); ?>>
 	<?php sdon_card_thumbnail(); ?>
 
 	<div class="sdon-card__body">

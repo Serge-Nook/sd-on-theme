@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SD-ON Theme 1.3.0\n"
 "Report-Msgid-Bugs-To: https://sd-on.ru/\n"
-"POT-Creation-Date: 2026-08-23 14:42+0000\n"
+"POT-Creation-Date: 2026-08-23 19:25+0000\n"
 "PO-Revision-Date: 2026-08-23 14:45+0000\n"
 "Last-Translator: SD-ON Theme <https://sd-on.ru/>\n"
 "Language-Team: zh_CN\n"
@@ -358,7 +358,7 @@ msgstr "您没有权限导出设置。"
 msgid "Недостаточно прав для импорта настроек."
 msgstr "您没有权限导入设置。"
 
-#: inc/admin/tools.php:239
+#: inc/admin/tools.php:247
 msgid "Недостаточно прав для сброса настроек."
 msgstr "您没有权限重置设置。"
 
@@ -781,7 +781,7 @@ msgstr "第 %d 张幻灯片——显示按钮"
 msgid "Слайд %d — текст кнопки"
 msgstr "第 %d 张幻灯片——按钮文字"
 
-#: inc/customizer/customizer.php:745 inc/customizer/customizer.php:1364
+#: inc/customizer/customizer.php:745 inc/customizer/customizer.php:1402
 msgid "По умолчанию: «Читать далее»."
 msgstr "默认值：“阅读更多”。"
 
@@ -1220,254 +1220,276 @@ msgid "Цвет обводки"
 msgstr "描边颜色"
 
 #: inc/customizer/customizer.php:1352
+msgid "Свечение обводки при наведении"
+msgstr "悬停时边框发光"
+
+#: inc/customizer/customizer.php:1353
+msgid "При наведении курсора на блок новости обводка начинает светиться."
+msgstr "当鼠标悬停在新闻卡片上时，卡片边框开始发光。"
+
+#: inc/customizer/customizer.php:1367
+msgid "Анимация свечения"
+msgstr "发光动画"
+
+#: inc/customizer/customizer.php:1379 inc/customizer/customizer.php:1587
+msgid "Цвет свечения"
+msgstr "发光颜色"
+
+#: inc/customizer/customizer.php:1390
 msgid "Картинка в начале открытой новости"
 msgstr "打开文章顶部的图片"
 
-#: inc/customizer/customizer.php:1353
+#: inc/customizer/customizer.php:1391
 msgid "Отключите, если изображение не нужно показывать на странице материала."
 msgstr "如果不想在文章页显示图片，请关闭此项。"
 
-#: inc/customizer/customizer.php:1363
+#: inc/customizer/customizer.php:1401
 msgid "Текст кнопки перехода"
 msgstr "跳转按钮文字"
 
-#: inc/customizer/customizer.php:1385
+#: inc/customizer/customizer.php:1423
 msgid "Колонок виджетов в футере"
 msgstr "页脚小工具栏数"
 
-#: inc/customizer/customizer.php:1386
+#: inc/customizer/customizer.php:1424
 msgid "Виджеты добавляются в разделе «Внешний вид → Виджеты»."
 msgstr "小工具在“外观 → 小工具”中添加。"
 
-#: inc/customizer/customizer.php:1401
+#: inc/customizer/customizer.php:1439
 msgid "Показывать меню в футере"
 msgstr "显示页脚菜单"
 
-#: inc/customizer/customizer.php:1411
+#: inc/customizer/customizer.php:1449
 msgid "Текст в футере"
 msgstr "页脚文本"
 
-#: inc/customizer/customizer.php:1412
+#: inc/customizer/customizer.php:1450
 msgid "Короткое описание сайта или дополнительная информация."
 msgstr "网站简短介绍或补充信息。"
 
-#: inc/customizer/customizer.php:1422
+#: inc/customizer/customizer.php:1460
 msgid "Копирайт"
 msgstr "版权信息"
 
-#: inc/customizer/customizer.php:1423
+#: inc/customizer/customizer.php:1461
 msgid ""
 "Допускается простое HTML-форматирование и ссылки. Если пусто — подставляется"
 " «© год, название сайта»."
 msgstr "允许使用简单的 HTML 格式和链接。若留空，将显示“© 年份，站点名称”。"
 
-#: inc/customizer/customizer.php:1433
+#: inc/customizer/customizer.php:1471
 msgid "Показывать ссылки на социальные сети"
 msgstr "显示社交网络链接"
 
-#: inc/customizer/customizer.php:1474
+#: inc/customizer/customizer.php:1512
 msgid "Монстр на компьютерах"
 msgstr "桌面端怪物"
 
-#: inc/customizer/customizer.php:1475
+#: inc/customizer/customizer.php:1513
 msgid "Монстр выезжает из-за края экрана через случайные интервалы времени."
 msgstr "怪物会以随机的时间间隔从屏幕边缘滑出。"
 
-#: inc/customizer/customizer.php:1485
+#: inc/customizer/customizer.php:1523
 msgid "Монстр на мобильных устройствах"
 msgstr "移动端怪物"
 
-#: inc/customizer/customizer.php:1486
+#: inc/customizer/customizer.php:1524
 msgid "Настраивается независимо от компьютерной версии."
 msgstr "与桌面端版本独立设置。"
 
-#: inc/customizer/customizer.php:1496
+#: inc/customizer/customizer.php:1534
 msgid "Откуда выезжает"
 msgstr "从哪一侧滑出"
 
-#: inc/customizer/customizer.php:1508
+#: inc/customizer/customizer.php:1546
 msgid "Персонаж"
 msgstr "角色"
 
-#: inc/customizer/customizer.php:1509
+#: inc/customizer/customizer.php:1547
 msgid ""
 "В хаотичном режиме персонаж выбирается случайно перед каждым появлением."
 msgstr "在混乱模式下，每次出现前都会随机选择角色。"
 
-#: inc/customizer/customizer.php:1521
+#: inc/customizer/customizer.php:1559
 msgid "Размер монстра"
 msgstr "怪物大小"
 
-#: inc/customizer/customizer.php:1538
+#: inc/customizer/customizer.php:1576
 msgid "Основной цвет монстра"
 msgstr "怪物主色"
 
-#: inc/customizer/customizer.php:1549
-msgid "Цвет свечения"
-msgstr "光晕颜色"
-
-#: inc/customizer/customizer.php:1560
+#: inc/customizer/customizer.php:1598
 msgid "Минимальная пауза до появления"
 msgstr "出现前的最短间隔"
 
-#: inc/customizer/customizer.php:1561
+#: inc/customizer/customizer.php:1599
 msgid ""
 "Время появления выбирается случайно между минимальной и максимальной паузой."
 msgstr "出现时间在最短与最长间隔之间随机选择。"
 
-#: inc/customizer/customizer.php:1563 inc/customizer/customizer.php:1580
-#: inc/customizer/customizer.php:1598
+#: inc/customizer/customizer.php:1601 inc/customizer/customizer.php:1618
+#: inc/customizer/customizer.php:1636
 msgid "с"
 msgstr "秒"
 
-#: inc/customizer/customizer.php:1578
+#: inc/customizer/customizer.php:1616
 msgid "Максимальная пауза до появления"
 msgstr "出现前的最长间隔"
 
-#: inc/customizer/customizer.php:1595
+#: inc/customizer/customizer.php:1633
 msgid "Пауза после клика по монстру"
 msgstr "点击怪物后的暂停时间"
 
-#: inc/customizer/customizer.php:1596
+#: inc/customizer/customizer.php:1634
 msgid "После клика монстр не показывается заданное время."
 msgstr "点击后，怪物在指定时间内不会出现。"
 
-#: inc/customizer/customizer.php:1613
+#: inc/customizer/customizer.php:1651
 msgid "Расстояние, с которого монстр прячется"
 msgstr "怪物开始躲藏的距离"
 
-#: inc/customizer/customizer.php:1614
+#: inc/customizer/customizer.php:1652
 msgid ""
 "Монстр начинает прятаться, когда курсор медленно подбирается к нему ближе "
 "этого расстояния."
 msgstr "当光标缓慢靠近到小于该距离时，怪物开始躲藏。"
 
-#: inc/customizer/customizer.php:1631
+#: inc/customizer/customizer.php:1669
 msgid "Звук при клике"
 msgstr "点击音效"
 
-#: inc/customizer/customizer.php:1632
+#: inc/customizer/customizer.php:1670
 msgid "Встроенные звуки синтезируются браузером и не требуют загрузки файлов."
 msgstr "内置音效由浏览器合成，无需上传文件。"
 
-#: inc/customizer/customizer.php:1644
+#: inc/customizer/customizer.php:1682
 msgid "Свой звук (MP3, OGG, WAV)"
 msgstr "自定义音效（MP3、OGG、WAV）"
 
-#: inc/customizer/customizer.php:1645
+#: inc/customizer/customizer.php:1683
 msgid "Используется, если выбран вариант «Свой звук»."
 msgstr "选择“自定义音效”时使用。"
 
-#: inc/customizer/customizer.php:1658
+#: inc/customizer/customizer.php:1696
 msgid "Громкость звука"
 msgstr "音量"
 
-#: inc/customizer/customizer.php:1689
+#: inc/customizer/customizer.php:1727
 msgid "Показывать окно соглашения"
 msgstr "显示协议窗口"
 
-#: inc/customizer/customizer.php:1690
+#: inc/customizer/customizer.php:1728
 msgid "Окно выплывает снизу один раз, повторно — не чаще указанного срока."
 msgstr "窗口会从底部滑出一次，之后不会比设定的周期更频繁地出现。"
 
-#: inc/customizer/customizer.php:1700
+#: inc/customizer/customizer.php:1738
 msgid "Заголовок окна"
 msgstr "窗口标题"
 
-#: inc/customizer/customizer.php:1701
+#: inc/customizer/customizer.php:1739
 msgid "По умолчанию: «Временные файлы»."
 msgstr "默认值：“临时文件（Cookie）”。"
 
-#: inc/customizer/customizer.php:1712
+#: inc/customizer/customizer.php:1750
 msgid "Текст соглашения"
 msgstr "协议文本"
 
-#: inc/customizer/customizer.php:1723
+#: inc/customizer/customizer.php:1761
 msgid "Текст кнопки согласия"
 msgstr "同意按钮文字"
 
-#: inc/customizer/customizer.php:1724
+#: inc/customizer/customizer.php:1762
 msgid "По умолчанию: «Принимаю»."
 msgstr "默认值：“接受”。"
 
-#: inc/customizer/customizer.php:1735
+#: inc/customizer/customizer.php:1773
 msgid "Показывать кнопку отказа"
 msgstr "显示拒绝按钮"
 
-#: inc/customizer/customizer.php:1746
+#: inc/customizer/customizer.php:1784
 msgid "Текст кнопки отказа"
 msgstr "拒绝按钮文字"
 
-#: inc/customizer/customizer.php:1747
+#: inc/customizer/customizer.php:1785
 msgid "По умолчанию: «Отказаться»."
 msgstr "默认值：“拒绝”。"
 
-#: inc/customizer/customizer.php:1760
+#: inc/customizer/customizer.php:1798
 msgid "Ссылка на соглашение и политику"
 msgstr "使用协议与政策链接"
 
-#: inc/customizer/customizer.php:1761
+#: inc/customizer/customizer.php:1799
 msgid ""
 "Если пусто — используется страница политики конфиденциальности WordPress."
 msgstr "若留空，则使用 WordPress 的隐私政策页面。"
 
-#: inc/customizer/customizer.php:1772
+#: inc/customizer/customizer.php:1810
 msgid "Текст ссылки"
 msgstr "链接文字"
 
-#: inc/customizer/customizer.php:1783
+#: inc/customizer/customizer.php:1821
 msgid "Через сколько дней показать снова"
 msgstr "多少天后再次显示"
 
-#: inc/customizer/customizer.php:1785
+#: inc/customizer/customizer.php:1823
 msgid "дн."
 msgstr "天"
 
-#: inc/customizer/customizer.php:1800
+#: inc/customizer/customizer.php:1838
+msgid "Прозрачность фона блока"
+msgstr "窗口背景不透明度"
+
+#: inc/customizer/customizer.php:1839
+msgid ""
+"100% — полностью непрозрачный фон окна. Меньшие значения показывают страницу"
+" сквозь окно."
+msgstr "100% 表示窗口背景完全不透明。数值越低，页面越能透过窗口显示。"
+
+#: inc/customizer/customizer.php:1856
 msgid "Анимированный кот на окне"
 msgstr "窗口上的动画猫"
 
-#: inc/customizer/customizer.php:1811
+#: inc/customizer/customizer.php:1867
 msgid "Цвет кота"
 msgstr "猫的颜色"
 
-#: inc/customizer/customizer.php:1824
+#: inc/customizer/customizer.php:1880
 msgid "Дополнительный цвет кота"
 msgstr "猫的辅助颜色"
 
-#: inc/customizer/customizer.php:1825
+#: inc/customizer/customizer.php:1881
 msgid "Уши и нос."
 msgstr "耳朵与鼻子。"
 
-#: inc/customizer/customizer.php:1842
+#: inc/customizer/customizer.php:1898
 msgid "Ленивая загрузка изображений"
 msgstr "图片延迟加载"
 
-#: inc/customizer/customizer.php:1842
+#: inc/customizer/customizer.php:1898
 msgid "Изображения загружаются по мере прокрутки страницы."
 msgstr "图片随页面滚动逐步加载。"
 
-#: inc/customizer/customizer.php:1843
+#: inc/customizer/customizer.php:1899
 msgid "Разметка Open Graph"
 msgstr "Open Graph 标记"
 
-#: inc/customizer/customizer.php:1843
+#: inc/customizer/customizer.php:1899
 msgid "Отключается автоматически, если разметку добавляет SEO-плагин."
 msgstr "当 SEO 插件已添加该标记时会自动关闭。"
 
-#: inc/customizer/customizer.php:1844
+#: inc/customizer/customizer.php:1900
 msgid "Микроразметка Schema.org"
 msgstr "Schema.org 结构化数据"
 
-#: inc/customizer/customizer.php:1845
+#: inc/customizer/customizer.php:1901
 msgid "Учитывать системную настройку prefers-reduced-motion"
 msgstr "遵循系统的 prefers-reduced-motion 设置"
 
-#: inc/customizer/customizer.php:1845
+#: inc/customizer/customizer.php:1901
 msgid "Анимации отключаются, если посетитель просил уменьшить движение."
 msgstr "当访客要求减少动态效果时会关闭动画。"
 
-#: inc/customizer/customizer.php:1846
+#: inc/customizer/customizer.php:1902
 msgid "Показывать индикатор загрузки страницы"
 msgstr "显示页面加载指示器"
 
@@ -1555,84 +1577,116 @@ msgid "X (Twitter)"
 msgstr "X（Twitter）"
 
 #: inc/helpers/helpers.php:170
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/helpers/helpers.php:171
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/helpers/helpers.php:172
+msgid "Steam"
+msgstr "Steam"
+
+#: inc/helpers/helpers.php:173
 msgid "GitHub"
 msgstr "GitHub"
 
-#: inc/helpers/helpers.php:171
+#: inc/helpers/helpers.php:174
 msgid "GitVerse"
 msgstr "GitVerse"
 
-#: inc/helpers/helpers.php:172
+#: inc/helpers/helpers.php:175
 msgid "RSS"
 msgstr "RSS"
 
-#: inc/helpers/helpers.php:223
+#: inc/helpers/helpers.php:226
 msgid "Отключить анимацию"
 msgstr "关闭动画"
 
-#: inc/helpers/helpers.php:224
+#: inc/helpers/helpers.php:227
 msgid "Звёзды — «Сквозь вселенную»"
 msgstr "星空——“穿越宇宙”"
 
-#: inc/helpers/helpers.php:225
+#: inc/helpers/helpers.php:228
 msgid "Матрица"
 msgstr "矩阵"
 
-#: inc/helpers/helpers.php:226
+#: inc/helpers/helpers.php:229
 msgid "Лабиринт"
 msgstr "迷宫"
 
-#: inc/helpers/helpers.php:227
+#: inc/helpers/helpers.php:230
 msgid "Трубопровод"
 msgstr "管道"
 
-#: inc/helpers/helpers.php:228
+#: inc/helpers/helpers.php:231
 msgid "Падающие снежинки — вариант 1"
 msgstr "飘落的雪花——样式 1"
 
-#: inc/helpers/helpers.php:229
+#: inc/helpers/helpers.php:232
 msgid "Падающие снежинки — вариант 2"
 msgstr "飘落的雪花——样式 2"
 
-#: inc/helpers/helpers.php:230
+#: inc/helpers/helpers.php:233
 msgid "Листопад"
 msgstr "落叶"
 
-#: inc/helpers/helpers.php:231
+#: inc/helpers/helpers.php:234
 msgid "Аркада"
 msgstr "街机"
 
-#: inc/helpers/helpers.php:232
+#: inc/helpers/helpers.php:235
 msgid "Электро плата"
 msgstr "电路板"
 
-#: inc/helpers/helpers.php:233
+#: inc/helpers/helpers.php:236
 msgid "Микрочип"
 msgstr "微芯片"
 
-#: inc/helpers/helpers.php:234
+#: inc/helpers/helpers.php:237
 msgid "Киберпанк"
 msgstr "赛博朋克"
 
-#: inc/helpers/helpers.php:235
+#: inc/helpers/helpers.php:238
 msgid "Сеть каналов с бегущими сигналами"
 msgstr "带流动信号的通道网络"
 
-#: inc/helpers/helpers.php:236
+#: inc/helpers/helpers.php:239
 msgid "Пролёт сквозь облако частиц"
 msgstr "穿越粒子云的飞行"
 
-#: inc/helpers/helpers.php:237
+#: inc/helpers/helpers.php:240
 msgid "Искривление пространства"
 msgstr "空间扭曲"
 
-#: inc/helpers/helpers.php:238
+#: inc/helpers/helpers.php:241
 msgid "Туннель из звёзд и колец"
 msgstr "星与环组成的隧道"
 
-#: inc/helpers/helpers.php:239
+#: inc/helpers/helpers.php:242
 msgid "Дух музыки"
 msgstr "音乐之魂"
+
+#: inc/helpers/helpers.php:318
+msgid "Пульсация"
+msgstr "脉动"
+
+#: inc/helpers/helpers.php:319
+msgid "Неоновое мигание"
+msgstr "霓虹闪烁"
+
+#: inc/helpers/helpers.php:320
+msgid "Бегущий огонёк по контуру"
+msgstr "沿边框流动的光点"
+
+#: inc/helpers/helpers.php:321
+msgid "Расходящиеся волны"
+msgstr "扩散波纹"
+
+#: inc/helpers/helpers.php:322
+msgid "Перелив цвета"
+msgstr "色彩流转"
 
 #: inc/menu/menu.php:25
 msgid "Меню не создано — создать меню"

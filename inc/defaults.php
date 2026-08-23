@@ -141,6 +141,9 @@ function sdon_defaults() {
 		'news_card_border_width'        => 1,
 		'news_card_border_color'        => '#e4e8f2',
 		'news_image_position'           => 'center',
+		'news_card_glow'                => false,
+		'news_card_glow_color'          => '#5b8dff',
+		'news_card_glow_animation'      => 'pulse',
 
 		// Одиночный материал.
 		'single_show_image'             => true,
@@ -159,6 +162,9 @@ function sdon_defaults() {
 		'social_gitverse'               => '',
 		'social_max'                    => '',
 		'social_rutube'                 => '',
+		'social_facebook'               => '',
+		'social_instagram'              => '',
+		'social_steam'                  => '',
 		'social_rss'                    => '',
 
 		// 11. Монстр.
@@ -190,6 +196,7 @@ function sdon_defaults() {
 		'cookie_cat'                    => true,
 		'cookie_cat_color'              => '#f59e0b',
 		'cookie_cat_accent'             => '#fde68a',
+		'cookie_opacity'                => 100,
 
 		// 13. Дополнительные настройки.
 		'lazy_loading'                  => true,

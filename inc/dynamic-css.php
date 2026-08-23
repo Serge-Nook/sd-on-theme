@@ -113,7 +113,18 @@ function sdon_background_css() {
  * @return string Значение для CSS-свойства background.
  */
 function sdon_surface_background( $hex ) {
-	$opacity = min( 100, max( 5, (int) sdon_opt( 'content_opacity' ) ) );
+	return sdon_translucent_background( $hex, (int) sdon_opt( 'content_opacity' ) );
+}
+
+/**
+ * Цвет фона с заданной прозрачностью.
+ *
+ * @param string $hex     Цвет в шестнадцатиричном виде.
+ * @param int    $percent Прозрачность в процентах.
+ * @return string Значение для CSS-свойства background.
+ */
+function sdon_translucent_background( $hex, $percent ) {
+	$opacity = min( 100, max( 5, (int) $percent ) );
 	$rgb     = sdon_hex_to_rgb( $hex );
 
 	if ( 100 === $opacity || empty( $rgb ) ) {
@@ -159,6 +170,18 @@ function sdon_dynamic_css() {
 	$root .= sprintf( '--sdon-card-border-color:%s;', sdon_opt( 'news_card_border_color' ) );
 	$root .= sprintf( '--sdon-card-image-position:%s;', sdon_card_image_position() );
 
+	if ( sdon_is( 'news_card_glow' ) ) {
+		$glow = sanitize_hex_color( (string) sdon_opt( 'news_card_glow_color' ) );
+		$glow = $glow ? $glow : (string) sdon_default( 'news_card_glow_color' );
+		$rgb  = sdon_hex_to_rgb( $glow );
+
+		$root .= sprintf( '--sdon-card-glow:%s;', $glow );
+
+		if ( ! empty( $rgb ) ) {
+			$root .= sprintf( '--sdon-card-glow-rgb:%1$d,%2$d,%3$d;', $rgb[0], $rgb[1], $rgb[2] );
+		}
+	}
+
 	if ( sdon_monster_is_enabled() ) {
 		$monster = sanitize_hex_color( (string) sdon_opt( 'monster_color' ) );
 		$monster = $monster ? $monster : (string) sdon_default( 'monster_color' );
@@ -182,6 +205,13 @@ function sdon_dynamic_css() {
 		$root .= sprintf( '--sdon-cat-shadow:%s;', sdon_darken_hex( $cat, 30 ) );
 	}
 
+	if ( sdon_cookie_is_enabled() ) {
+		$root .= sprintf(
+			'--sdon-cookie-bg:%s;',
+			sdon_translucent_background( sdon_opt( 'color_surface' ), (int) sdon_opt( 'cookie_opacity' ) )
+		);
+	}
+
 	$css = ':root{' . $root . '}';
 
 	$dark = sdon_vars_to_css( sdon_dark_scheme_vars() );
@@ -190,6 +220,13 @@ function sdon_dynamic_css() {
 		$mode = sdon_opt( 'color_scheme_mode' );
 
 		$dark .= sprintf( '--sdon-surface-bg:%s;', sdon_surface_background( sdon_opt( 'dark_color_surface' ) ) );
+
+		if ( sdon_cookie_is_enabled() ) {
+			$dark .= sprintf(
+				'--sdon-cookie-bg:%s;',
+				sdon_translucent_background( sdon_opt( 'dark_color_surface' ), (int) sdon_opt( 'cookie_opacity' ) )
+			);
+		}
 
 		if ( 'dark' === $mode ) {
 			$css .= ':root{' . $dark . '}';
