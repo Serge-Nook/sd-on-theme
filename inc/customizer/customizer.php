@@ -217,7 +217,8 @@ function sdon_customize_register( $wp_customize ) {
 		'sdon_news'       => array( __( '9. Новости', 'sd-on-theme' ), __( 'Сетка новостей и содержимое карточки материала.', 'sd-on-theme' ) ),
 		'sdon_footer'     => array( __( '10. Футер', 'sd-on-theme' ), __( 'Колонки виджетов, меню, соцсети и копирайт.', 'sd-on-theme' ) ),
 		'sdon_monster'    => array( __( '11. Монстр', 'sd-on-theme' ), __( 'Анимированный монстр, выезжающий из-за края экрана.', 'sd-on-theme' ) ),
-		'sdon_extra'      => array( __( '12. Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, производительность и доступность.', 'sd-on-theme' ) ),
+		'sdon_cookie'     => array( __( '12. Соглашение о cookie', 'sd-on-theme' ), __( 'Выплывающее снизу окно с соглашением об использовании временных файлов.', 'sd-on-theme' ) ),
+		'sdon_extra'      => array( __( '13. Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, производительность и доступность.', 'sd-on-theme' ) ),
 	);
 
 	$priority = 10;
@@ -247,6 +248,7 @@ function sdon_customize_register( $wp_customize ) {
 	sdon_customize_news( $wp_customize );
 	sdon_customize_footer( $wp_customize );
 	sdon_customize_monster( $wp_customize );
+	sdon_customize_cookie( $wp_customize );
 	sdon_customize_extra( $wp_customize );
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -1500,6 +1502,19 @@ function sdon_customize_monster( $wp_customize ) {
 
 	sdon_customize_add(
 		$wp_customize,
+		'monster_creature',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Персонаж', 'sd-on-theme' ),
+			'description'     => __( 'В хаотичном режиме персонаж выбирается случайно перед каждым появлением.', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_monster_creature_choices(),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
 		'monster_size',
 		array(
 			'section'         => 'sdon_monster',
@@ -1650,6 +1665,167 @@ function sdon_customize_monster( $wp_customize ) {
 			),
 			'active_callback' => static function () {
 				return sdon_monster_is_enabled() && 'none' !== sdon_opt( 'monster_sound' );
+			},
+		)
+	);
+}
+
+/**
+ * Раздел «Соглашение о cookie».
+ *
+ * @param WP_Customize_Manager $wp_customize Менеджер настроек.
+ * @return void
+ */
+function sdon_customize_cookie( $wp_customize ) {
+	$cookie_visible = static function () {
+		return sdon_cookie_is_enabled();
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_notice',
+		array(
+			'section'     => 'sdon_cookie',
+			'label'       => __( 'Показывать окно соглашения', 'sd-on-theme' ),
+			'description' => __( 'Окно выплывает снизу один раз, повторно — не чаще указанного срока.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_title',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Заголовок окна', 'sd-on-theme' ),
+			'description'     => __( 'По умолчанию: «Временные файлы».', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_text',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Текст соглашения', 'sd-on-theme' ),
+			'type'            => 'textarea',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_accept_text',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Текст кнопки согласия', 'sd-on-theme' ),
+			'description'     => __( 'По умолчанию: «Принимаю».', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_decline',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Показывать кнопку отказа', 'sd-on-theme' ),
+			'type'            => 'checkbox',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_decline_text',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Текст кнопки отказа', 'sd-on-theme' ),
+			'description'     => __( 'По умолчанию: «Отказаться».', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => static function () {
+				return sdon_cookie_is_enabled() && sdon_is( 'cookie_decline' );
+			},
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_link',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Ссылка на соглашение и политику', 'sd-on-theme' ),
+			'description'     => __( 'Если пусто — используется страница политики конфиденциальности WordPress.', 'sd-on-theme' ),
+			'type'            => 'url',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_link_text',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Текст ссылки', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_days',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Через сколько дней показать снова', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'дн.', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 1,
+				'max'  => 365,
+				'step' => 1,
+			),
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_cat',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Анимированный кот на окне', 'sd-on-theme' ),
+			'type'            => 'checkbox',
+			'active_callback' => $cookie_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_cat_color',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Цвет кота', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => static function () {
+				return sdon_cookie_is_enabled() && sdon_is( 'cookie_cat' );
+			},
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'cookie_cat_accent',
+		array(
+			'section'         => 'sdon_cookie',
+			'label'           => __( 'Дополнительный цвет кота', 'sd-on-theme' ),
+			'description'     => __( 'Уши и нос.', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => static function () {
+				return sdon_cookie_is_enabled() && sdon_is( 'cookie_cat' );
 			},
 		)
 	);

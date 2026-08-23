@@ -1,1838 +1,1880 @@
-# Шаблон перевода темы SD-ON Theme.
+# English translation for the SD-ON Theme.
 # Copyright (C) 2026 Serge Nook
 # This file is distributed under the same license as the SD-ON Theme package.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: SD-ON Theme 1.3.0\n"
 "Report-Msgid-Bugs-To: https://sd-on.ru/\n"
 "POT-Creation-Date: 2026-08-23 14:42+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2026-08-23 14:45+0000\n"
+"Last-Translator: SD-ON Theme <https://sd-on.ru/>\n"
+"Language-Team: en_US\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: sd-on-theme\n"
 
 #: 404.php:14 inc/template-tags.php:183
 msgid "Страница не найдена"
-msgstr ""
+msgstr "Page not found"
 
 #: 404.php:15
 msgid "Возможно, страница была удалена или адрес указан неверно."
-msgstr ""
+msgstr "The page may have been deleted or the address is incorrect."
 
 #: 404.php:17
 msgid "На главную"
-msgstr ""
+msgstr "Back to home"
 
 #: comments.php:20 inc/template-tags.php:68
 #, php-format
 msgid "%s комментарий"
 msgid_plural "%s комментариев"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s comment"
+msgstr[1] "%s comments"
 
 #: comments.php:41 inc/template-tags.php:124 templates/template-news.php:56
 msgid "Назад"
-msgstr ""
+msgstr "Previous"
 
 #: comments.php:42 inc/template-tags.php:125 templates/template-news.php:57
 msgid "Вперёд"
-msgstr ""
+msgstr "Next"
 
 #: comments.php:49
 msgid "Комментарии закрыты."
-msgstr ""
+msgstr "Comments are closed."
 
 #: comments.php:55
 msgid "Оставить комментарий"
-msgstr ""
+msgstr "Leave a comment"
 
 #: footer.php:40 inc/setup.php:51
 msgid "Меню в футере"
-msgstr ""
+msgstr "Footer menu"
 
 #: header.php:22
 msgid "Перейти к содержимому"
-msgstr ""
+msgstr "Skip to content"
 
 #: header.php:62 inc/setup.php:50
 msgid "Главное меню"
-msgstr ""
+msgstr "Main menu"
 
 #: inc/admin/admin-page.php:20 inc/admin/admin-page.php:21
 #: inc/customizer/customizer.php:202
 msgid "Настройки темы"
-msgstr ""
+msgstr "Theme settings"
 
 #: inc/admin/admin-page.php:78
 msgid "Недостаточно прав для изменения настроек темы."
-msgstr ""
+msgstr "You do not have permission to change theme settings."
 
 #: inc/admin/admin-page.php:83
 msgid "Разделы настроек"
-msgstr ""
+msgstr "Settings sections"
 
 #: inc/admin/admin-page.php:84
 msgid "Свои шрифты"
-msgstr ""
+msgstr "Custom fonts"
 
 #: inc/admin/admin-page.php:85
 msgid "Сброс, экспорт и импорт"
-msgstr ""
+msgstr "Reset, export and import"
 
 #: inc/admin/admin-page.php:89
 msgid "Настройки темы SD-ON"
-msgstr ""
+msgstr "SD-ON theme settings"
 
 #: inc/admin/admin-page.php:124
 msgid "Основные настройки"
-msgstr ""
+msgstr "General settings"
 
 #: inc/admin/admin-page.php:124
 msgid "Цветовая схема, кнопка «Наверх», хлебные крошки."
-msgstr ""
+msgstr "Colour scheme, “back to top” button, breadcrumbs."
 
 #: inc/admin/admin-page.php:125
 msgid "Макет сайта"
-msgstr ""
+msgstr "Site layout"
 
 #: inc/admin/admin-page.php:125
 msgid "Одна, две или три колонки, максимальная ширина сайта."
-msgstr ""
+msgstr "One, two or three columns, maximum site width."
 
 #: inc/admin/admin-page.php:126
 msgid "Шапка сайта"
-msgstr ""
+msgstr "Site header"
 
 #: inc/admin/admin-page.php:126
 msgid "Логотип, название, подпись, поиск."
-msgstr ""
+msgstr "Logo, title, tagline, search."
 
 #: inc/admin/admin-page.php:127
 msgid "Меню"
-msgstr ""
+msgstr "Menu"
 
 #: inc/admin/admin-page.php:127
 msgid "Закреплённое или обычное, многоуровневое или раздвижное."
-msgstr ""
+msgstr "Sticky or regular, multilevel or slide-out."
 
 #: inc/admin/admin-page.php:128
 msgid "Слайдер"
-msgstr ""
+msgstr "Slider"
 
 #: inc/admin/admin-page.php:128
 msgid "До 10 слайдов, затемнение, кнопки и автопрокрутка."
-msgstr ""
+msgstr "Up to 10 slides, overlay, buttons and autoplay."
 
 #: inc/admin/admin-page.php:129
 msgid "Фон"
-msgstr ""
+msgstr "Background"
 
 #: inc/admin/admin-page.php:129
 msgid "Цвет, градиент, изображение, анимации."
-msgstr ""
+msgstr "Colour, gradient, image, animations."
 
 #: inc/admin/admin-page.php:130
 msgid "Шрифты"
-msgstr ""
+msgstr "Fonts"
 
 #: inc/admin/admin-page.php:130
 msgid "Шрифты текста, заголовков и меню, размеры и насыщенность."
-msgstr ""
+msgstr "Body, heading and menu fonts, sizes and weights."
 
 #: inc/admin/admin-page.php:131
 msgid "Цвета"
-msgstr ""
+msgstr "Colours"
 
 #: inc/admin/admin-page.php:131 inc/customizer/customizer.php:216
 msgid "Светлая и тёмная цветовые схемы."
-msgstr ""
+msgstr "Light and dark colour schemes."
 
 #: inc/admin/admin-page.php:132
 msgid "Новости"
-msgstr ""
+msgstr "News"
 
 #: inc/admin/admin-page.php:132
 msgid "Сетка материалов и содержимое карточки."
-msgstr ""
+msgstr "Post grid and card contents."
 
 #: inc/admin/admin-page.php:133
 msgid "Футер"
-msgstr ""
+msgstr "Footer"
 
 #: inc/admin/admin-page.php:133
 msgid "Виджеты, меню, соцсети, копирайт."
-msgstr ""
+msgstr "Widgets, menu, social networks, copyright."
 
 #: inc/admin/admin-page.php:134
 msgid "Дополнительные настройки"
-msgstr ""
+msgstr "Additional settings"
 
 #: inc/admin/admin-page.php:134
 msgid "SEO, ленивая загрузка, доступность."
-msgstr ""
+msgstr "SEO, lazy loading, accessibility."
 
 #: inc/admin/admin-page.php:138
 msgid ""
 "Все настройки открываются в предпросмотре: изменения видны сразу, без "
 "сохранения и перезагрузки страницы."
 msgstr ""
+"All settings open in the preview: changes are visible instantly, without "
+"saving or reloading the page."
 
 #: inc/admin/admin-page.php:147
 msgid "Настроить"
-msgstr ""
+msgstr "Customize"
 
 #: inc/admin/admin-page.php:153
 msgid "Что ещё пригодится"
-msgstr ""
+msgstr "What else may be useful"
 
 #: inc/admin/admin-page.php:155
 msgid "Меню сайта"
-msgstr ""
+msgstr "Site menus"
 
 #: inc/admin/admin-page.php:156
 msgid "Виджеты боковых колонок и футера"
-msgstr ""
+msgstr "Sidebar and footer widgets"
 
 #: inc/admin/admin-page.php:157
 msgid "Добавить новость"
-msgstr ""
+msgstr "Add a post"
 
 #: inc/admin/admin-page.php:175
 msgid "Шрифт загружен и доступен в настройках шрифтов."
-msgstr ""
+msgstr "The font has been uploaded and is available in the font settings."
 
 #: inc/admin/admin-page.php:176
 msgid "Шрифт удалён."
-msgstr ""
+msgstr "The font has been deleted."
 
 #: inc/admin/admin-page.php:177
 msgid ""
-"Не удалось загрузить шрифт. Проверьте формат файла: WOFF2, WOFF, TTF или OTF."
+"Не удалось загрузить шрифт. Проверьте формат файла: WOFF2, WOFF, TTF или "
+"OTF."
 msgstr ""
+"The font could not be uploaded. Check the file format: WOFF2, WOFF, TTF or "
+"OTF."
 
 #: inc/admin/admin-page.php:178
 msgid "Настройки темы возвращены к значениям по умолчанию."
-msgstr ""
+msgstr "Theme settings have been reset to their default values."
 
 #: inc/admin/admin-page.php:179
 msgid "Настройки импортированы."
-msgstr ""
+msgstr "Settings have been imported."
 
 #: inc/admin/admin-page.php:180
 msgid ""
 "Не удалось импортировать настройки: файл повреждён или это не файл настроек "
 "темы."
 msgstr ""
+"The settings could not be imported: the file is damaged or is not a theme "
+"settings file."
 
 #: inc/admin/fonts-manager.php:32
 msgid "Загрузка собственного шрифта"
-msgstr ""
+msgstr "Uploading a custom font"
 
 #: inc/admin/fonts-manager.php:34
 msgid ""
 "Поддерживаются форматы WOFF2, WOFF, TTF и OTF. Приоритетным для веба "
 "считается WOFF2 — он весит меньше и загружается быстрее."
 msgstr ""
+"WOFF2, WOFF, TTF and OTF formats are supported. WOFF2 is preferred for the "
+"web — it is smaller and loads faster."
 
 #: inc/admin/fonts-manager.php:43
 msgid "Название шрифта"
-msgstr ""
+msgstr "Font name"
 
 #: inc/admin/fonts-manager.php:46
 msgid "Под этим названием шрифт появится в списке доступных шрифтов темы."
 msgstr ""
+"The font will appear under this name in the list of available theme fonts."
 
 #: inc/admin/fonts-manager.php:50
 msgid "Файлы шрифта"
-msgstr ""
+msgstr "Font files"
 
 #: inc/admin/fonts-manager.php:53
 msgid "Можно загрузить несколько форматов одного шрифта одновременно."
-msgstr ""
+msgstr "Several formats of the same font can be uploaded at once."
 
 #: inc/admin/fonts-manager.php:58
 msgid "Загрузить шрифт"
-msgstr ""
+msgstr "Upload font"
 
 #: inc/admin/fonts-manager.php:61
 msgid "Загруженные шрифты"
-msgstr ""
+msgstr "Uploaded fonts"
 
 #: inc/admin/fonts-manager.php:64
 msgid "Пользовательские шрифты пока не загружены."
-msgstr ""
+msgstr "No custom fonts have been uploaded yet."
 
 #: inc/admin/fonts-manager.php:69
 msgid "Название"
-msgstr ""
+msgstr "Name"
 
 #: inc/admin/fonts-manager.php:70
 msgid "Форматы"
-msgstr ""
+msgstr "Formats"
 
 #: inc/admin/fonts-manager.php:71
 msgid "Действия"
-msgstr ""
+msgstr "Actions"
 
 #: inc/admin/fonts-manager.php:83
 msgid ""
 "Удалить этот шрифт? Настройки, использующие его, вернутся к системному "
 "шрифту."
 msgstr ""
+"Delete this font? Settings that use it will fall back to the system font."
 
 #: inc/admin/fonts-manager.php:85
 msgid "Удалить"
-msgstr ""
+msgstr "Delete"
 
 #: inc/admin/fonts-manager.php:94
 msgid ""
 "Выбрать шрифт для заголовков или основного текста можно в разделе «Шрифты» "
 "настроек темы."
 msgstr ""
+"You can choose a font for headings or body text in the “Fonts” section of "
+"the theme settings."
 
 #: inc/admin/fonts-manager.php:121
 msgid "Недостаточно прав для загрузки шрифтов."
-msgstr ""
+msgstr "You do not have permission to upload fonts."
 
 #: inc/admin/fonts-manager.php:216
 msgid "Недостаточно прав для удаления шрифтов."
-msgstr ""
+msgstr "You do not have permission to delete fonts."
 
 #: inc/admin/tools.php:17
 msgid "Резервная копия настроек"
-msgstr ""
+msgstr "Settings backup"
 
 #: inc/admin/tools.php:18
 msgid ""
-"Файл в формате JSON содержит все настройки темы и позволяет быстро перенести "
-"оформление на другой сайт."
+"Файл в формате JSON содержит все настройки темы и позволяет быстро перенести"
+" оформление на другой сайт."
 msgstr ""
+"The JSON file contains all theme settings and lets you quickly move the "
+"design to another site."
 
 #: inc/admin/tools.php:23
 msgid "Экспортировать настройки (JSON)"
-msgstr ""
+msgstr "Export settings (JSON)"
 
 #: inc/admin/tools.php:26
 msgid "Импорт настроек"
-msgstr ""
+msgstr "Import settings"
 
 #: inc/admin/tools.php:31
 msgid "Импортировать настройки"
-msgstr ""
+msgstr "Import the settings"
 
 #: inc/admin/tools.php:34
 msgid "Сброс настроек темы"
-msgstr ""
+msgstr "Reset theme settings"
 
 #: inc/admin/tools.php:36
 msgid ""
 "Все пользовательские настройки темы будут возвращены к значениям по "
 "умолчанию."
-msgstr ""
+msgstr "All custom theme settings will be reset to their default values."
 
 #: inc/admin/tools.php:45
 msgid "Я подтверждаю сброс настроек темы"
-msgstr ""
+msgstr "I confirm the reset of the theme settings"
 
 #: inc/admin/tools.php:52
 msgid ""
 "Все пользовательские настройки темы будут возвращены к значениям по "
 "умолчанию. Продолжить?"
 msgstr ""
+"All custom theme settings will be reset to their default values. Continue?"
 
 #: inc/admin/tools.php:54
 msgid "Сбросить настройки темы"
-msgstr ""
+msgstr "Reset the theme settings"
 
 #: inc/admin/tools.php:68
 msgid "Недостаточно прав для экспорта настроек."
-msgstr ""
+msgstr "You do not have permission to export settings."
 
 #: inc/admin/tools.php:103
 msgid "Недостаточно прав для импорта настроек."
-msgstr ""
+msgstr "You do not have permission to import settings."
 
 #: inc/admin/tools.php:239
 msgid "Недостаточно прав для сброса настроек."
-msgstr ""
+msgstr "You do not have permission to reset settings."
 
 #: inc/cookie-notice.php:123
 msgid "Временные файлы"
-msgstr ""
+msgstr "Cookies"
 
 #: inc/cookie-notice.php:126
 msgid ""
 "Сайт использует временные файлы (cookie), чтобы запоминать настройки "
 "внешнего вида и собирать обезличенную статистику."
 msgstr ""
+"This site uses temporary files (cookies) to remember appearance settings and"
+" collect anonymous statistics."
 
 #: inc/cookie-notice.php:128
 msgid "Принимаю"
-msgstr ""
+msgstr "Accept"
 
 #: inc/cookie-notice.php:129
 msgid "Отказаться"
-msgstr ""
+msgstr "Decline"
 
 #: inc/cookie-notice.php:131
 msgid "Соглашение и политика конфиденциальности"
-msgstr ""
+msgstr "Agreement and privacy policy"
 
 #: inc/customizer/customizer.php:203
 msgid ""
 "Внешний вид сайта настраивается полностью здесь — без правки PHP, CSS или "
 "JavaScript."
 msgstr ""
+"The whole site appearance is configured here — without editing PHP, CSS or "
+"JavaScript."
 
 #: inc/customizer/customizer.php:209
 msgid "1. Основные настройки"
-msgstr ""
+msgstr "1. General settings"
 
 #: inc/customizer/customizer.php:209
 msgid "Цветовая схема сайта и общие элементы интерфейса."
-msgstr ""
+msgstr "Site colour scheme and common interface elements."
 
 #: inc/customizer/customizer.php:210
 msgid "2. Макет сайта"
-msgstr ""
+msgstr "2. Site layout"
 
 #: inc/customizer/customizer.php:210
 msgid "Количество колонок и максимальная ширина контейнера."
-msgstr ""
+msgstr "Number of columns and maximum container width."
 
 #: inc/customizer/customizer.php:211
 msgid "3. Шапка сайта"
-msgstr ""
+msgstr "3. Site header"
 
 #: inc/customizer/customizer.php:211
 msgid "Логотип, название, подпись и поиск."
-msgstr ""
+msgstr "Logo, title, tagline and search."
 
 #: inc/customizer/customizer.php:212
 msgid "4. Меню"
-msgstr ""
+msgstr "4. Menu"
 
 #: inc/customizer/customizer.php:212
 msgid "Тип главного меню и его поведение при прокрутке."
-msgstr ""
+msgstr "Main menu type and its behaviour on scroll."
 
 #: inc/customizer/customizer.php:213
 msgid "5. Слайдер"
-msgstr ""
+msgstr "5. Slider"
 
 #: inc/customizer/customizer.php:213
 msgid "Слайдер главной страницы: до 10 слайдов с отдельными настройками."
-msgstr ""
+msgstr "Front page slider: up to 10 slides with individual settings."
 
 #: inc/customizer/customizer.php:214
 msgid "6. Фон"
-msgstr ""
+msgstr "6. Background"
 
 #: inc/customizer/customizer.php:214
 msgid "Цвет, градиент, изображение и анимация фона."
-msgstr ""
+msgstr "Background colour, gradient, image and animation."
 
 #: inc/customizer/customizer.php:215
 msgid "7. Шрифты"
-msgstr ""
+msgstr "7. Fonts"
 
 #: inc/customizer/customizer.php:215
 msgid ""
-"Шрифты текста, заголовков и меню. Свои шрифты загружаются в разделе «Внешний "
-"вид → Настройки темы»."
+"Шрифты текста, заголовков и меню. Свои шрифты загружаются в разделе «Внешний"
+" вид → Настройки темы»."
 msgstr ""
+"Body, heading and menu fonts. Custom fonts are uploaded in “Appearance → "
+"Theme settings”."
 
 #: inc/customizer/customizer.php:216
 msgid "8. Цвета"
-msgstr ""
+msgstr "8. Colours"
 
 #: inc/customizer/customizer.php:217
 msgid "9. Новости"
-msgstr ""
+msgstr "9. News"
 
 #: inc/customizer/customizer.php:217
 msgid "Сетка новостей и содержимое карточки материала."
-msgstr ""
+msgstr "Post grid and contents of the post card."
 
 #: inc/customizer/customizer.php:218
 msgid "10. Футер"
-msgstr ""
+msgstr "10. Footer"
 
 #: inc/customizer/customizer.php:218
 msgid "Колонки виджетов, меню, соцсети и копирайт."
-msgstr ""
+msgstr "Widget columns, menu, social networks and copyright."
 
 #: inc/customizer/customizer.php:219
 msgid "11. Монстр"
-msgstr ""
+msgstr "11. Monster"
 
 #: inc/customizer/customizer.php:219
 msgid "Анимированный монстр, выезжающий из-за края экрана."
-msgstr ""
+msgstr "An animated monster sliding in from the edge of the screen."
 
 #: inc/customizer/customizer.php:220
 msgid "12. Соглашение о cookie"
-msgstr ""
+msgstr "12. Cookie agreement"
 
 #: inc/customizer/customizer.php:220
-msgid "Выплывающее снизу окно с соглашением об использовании временных файлов."
+msgid ""
+"Выплывающее снизу окно с соглашением об использовании временных файлов."
 msgstr ""
+"A window sliding up from the bottom with the temporary files agreement."
 
 #: inc/customizer/customizer.php:221
 msgid "13. Дополнительные настройки"
-msgstr ""
+msgstr "13. Additional settings"
 
 #: inc/customizer/customizer.php:221
 msgid "SEO, производительность и доступность."
-msgstr ""
+msgstr "SEO, performance and accessibility."
 
 #: inc/customizer/customizer.php:280
 msgid "Цветовая схема"
-msgstr ""
+msgstr "Colour scheme"
 
 #: inc/customizer/customizer.php:281
 msgid "Светлая, тёмная или автоматически по системной настройке устройства."
-msgstr ""
+msgstr "Light, dark or automatically following the device setting."
 
 #: inc/customizer/customizer.php:284
 msgid "Светлая"
-msgstr ""
+msgstr "Light"
 
 #: inc/customizer/customizer.php:285
 msgid "Тёмная"
-msgstr ""
+msgstr "Dark"
 
 #: inc/customizer/customizer.php:286
 msgid "Автоматически (по настройке устройства)"
-msgstr ""
+msgstr "Automatic (device setting)"
 
 #: inc/customizer/customizer.php:296
 msgid "Показывать переключатель тёмной темы"
-msgstr ""
+msgstr "Show the dark mode switch"
 
 #: inc/customizer/customizer.php:297
 msgid "Кнопка в шапке сайта, позволяющая посетителю сменить схему."
-msgstr ""
+msgstr "A button in the site header that lets visitors change the scheme."
 
 #: inc/customizer/customizer.php:307
 msgid "Кнопка «Наверх»"
-msgstr ""
+msgstr "“Back to top” button"
 
 #: inc/customizer/customizer.php:317 inc/template-tags.php:197
 msgid "Хлебные крошки"
-msgstr ""
+msgstr "Breadcrumbs"
 
 #: inc/customizer/customizer.php:318
 msgid "Навигационная цепочка с микроразметкой Schema.org."
-msgstr ""
+msgstr "A breadcrumb trail with Schema.org markup."
 
 #: inc/customizer/customizer.php:336
 msgid "Количество колонок"
-msgstr ""
+msgstr "Number of columns"
 
 #: inc/customizer/customizer.php:337
 msgid ""
 "На мобильных устройствах колонки автоматически выстраиваются вертикально."
-msgstr ""
+msgstr "On mobile devices the columns are stacked vertically automatically."
 
 #: inc/customizer/customizer.php:340
 msgid "1 колонка — контент во всю ширину"
-msgstr ""
+msgstr "1 column — full width content"
 
 #: inc/customizer/customizer.php:341
 msgid "2 колонки — контент и боковая колонка"
-msgstr ""
+msgstr "2 columns — content and a sidebar"
 
 #: inc/customizer/customizer.php:342
 msgid "3 колонки — контент и две боковые колонки"
-msgstr ""
+msgstr "3 columns — content and two sidebars"
 
 #: inc/customizer/customizer.php:352
 msgid "Положение боковой колонки"
-msgstr ""
+msgstr "Sidebar position"
 
 #: inc/customizer/customizer.php:355 inc/customizer/customizer.php:919
 #: inc/monster.php:32
 msgid "Справа"
-msgstr ""
+msgstr "Right"
 
 #: inc/customizer/customizer.php:356 inc/customizer/customizer.php:918
 #: inc/monster.php:31
 msgid "Слева"
-msgstr ""
+msgstr "Left"
 
 #: inc/customizer/customizer.php:366
 msgid "Порядок блоков на мобильных"
-msgstr ""
+msgstr "Block order on mobile"
 
 #: inc/customizer/customizer.php:367
 msgid "Что показывать первым при вертикальном расположении блоков."
-msgstr ""
+msgstr "What to show first when the blocks are stacked vertically."
 
 #: inc/customizer/customizer.php:370
 msgid "Сначала контент"
-msgstr ""
+msgstr "Content first"
 
 #: inc/customizer/customizer.php:371
 msgid "Сначала боковые колонки"
-msgstr ""
+msgstr "Sidebars first"
 
 #: inc/customizer/customizer.php:381
 msgid "Максимальная ширина сайта"
-msgstr ""
+msgstr "Maximum site width"
 
 #: inc/customizer/customizer.php:389
 msgid "Собственное значение"
-msgstr ""
+msgstr "Custom value"
 
 #: inc/customizer/customizer.php:390
 msgid "Во всю ширину экрана"
-msgstr ""
+msgstr "Full screen width"
 
 #: inc/customizer/customizer.php:400
 msgid "Своя ширина, px"
-msgstr ""
+msgstr "Custom width, px"
 
 #: inc/customizer/customizer.php:415
 msgid "«Прилипающая» боковая колонка"
-msgstr ""
+msgstr "Sticky sidebar"
 
 #: inc/customizer/customizer.php:433
 msgid "Расположение шапки"
-msgstr ""
+msgstr "Header layout"
 
 #: inc/customizer/customizer.php:436
 msgid "Логотип слева, меню справа"
-msgstr ""
+msgstr "Logo on the left, menu on the right"
 
 #: inc/customizer/customizer.php:437
 msgid "Логотип по центру, меню под ним"
-msgstr ""
+msgstr "Logo centred, menu below it"
 
 #: inc/customizer/customizer.php:447
 msgid "Показывать логотип"
-msgstr ""
+msgstr "Show the logo"
 
 #: inc/customizer/customizer.php:448
 msgid ""
 "Загрузить, заменить или удалить логотип можно в разделе «Свойства сайта → "
 "Логотип»."
-msgstr ""
+msgstr "You can upload, replace or delete the logo in “Site Identity → Logo”."
 
 #: inc/customizer/customizer.php:458
 msgid "Максимальная ширина логотипа"
-msgstr ""
+msgstr "Maximum logo width"
 
 #: inc/customizer/customizer.php:474
 msgid "Показывать название сайта"
-msgstr ""
+msgstr "Show the site title"
 
 #: inc/customizer/customizer.php:484
 msgid "Своё название в шапке"
-msgstr ""
+msgstr "Custom title in the header"
 
 #: inc/customizer/customizer.php:485
 msgid "Если пусто — используется название сайта из общих настроек WordPress."
-msgstr ""
+msgstr "If empty, the site title from the general WordPress settings is used."
 
 #: inc/customizer/customizer.php:495
 msgid "Подпись под названием"
-msgstr ""
+msgstr "Tagline under the title"
 
 #: inc/customizer/customizer.php:496
 msgid "Например: Игры • Новости • Обзоры"
-msgstr ""
+msgstr "For example: Games • News • Reviews"
 
 #: inc/customizer/customizer.php:506
 msgid "Поиск в шапке"
-msgstr ""
+msgstr "Search in the header"
 
 #: inc/customizer/customizer.php:524
 msgid "Закреплённое меню"
-msgstr ""
+msgstr "Sticky menu"
 
 #: inc/customizer/customizer.php:525
 msgid "Меню остаётся в верхней части экрана при прокрутке страницы."
-msgstr ""
+msgstr "The menu stays at the top of the screen while the page is scrolled."
 
 #: inc/customizer/customizer.php:535
 msgid "Тип главного меню"
-msgstr ""
+msgstr "Main menu type"
 
 #: inc/customizer/customizer.php:536
 msgid ""
 "Многоуровневое поддерживает до трёх уровней вложенности. Раздвижное "
 "открывает боковую панель."
 msgstr ""
+"The multilevel menu supports up to three nesting levels. The slide-out menu "
+"opens a side panel."
 
 #: inc/customizer/customizer.php:539
 msgid "Многоуровневое"
-msgstr ""
+msgstr "Multilevel"
 
 #: inc/customizer/customizer.php:540
 msgid "Раздвижное"
-msgstr ""
+msgstr "Slide-out"
 
 #: inc/customizer/customizer.php:550
 msgid "Открытие подменю на ПК"
-msgstr ""
+msgstr "Submenu opening on desktop"
 
 #: inc/customizer/customizer.php:553
 msgid "При наведении"
-msgstr ""
+msgstr "On hover"
 
 #: inc/customizer/customizer.php:554
 msgid "По нажатию"
-msgstr ""
+msgstr "On click"
 
 #: inc/customizer/customizer.php:564
 msgid "Пункты меню заглавными буквами"
-msgstr ""
+msgstr "Menu items in uppercase"
 
 #: inc/customizer/customizer.php:582
 msgid "Включить слайдер на главной странице"
-msgstr ""
+msgstr "Enable the slider on the front page"
 
 #: inc/customizer/customizer.php:584
 msgid "Скрипт слайдера не загружается, если он отключён."
-msgstr ""
+msgstr "The slider script is not loaded when it is disabled."
 
 #: inc/customizer/customizer.php:597
 msgid "Количество слайдов"
-msgstr ""
+msgstr "Number of slides"
 
 #: inc/customizer/customizer.php:613
 msgid "Высота слайдера"
-msgstr ""
+msgstr "Slider height"
 
 #: inc/customizer/customizer.php:616
 msgid "Широкоформатный"
-msgstr ""
+msgstr "Widescreen"
 
 #: inc/customizer/customizer.php:617
 msgid "Высокий"
-msgstr ""
+msgstr "Tall"
 
 #: inc/customizer/customizer.php:618
 msgid "Полноэкранный"
-msgstr ""
+msgstr "Full screen"
 
 #: inc/customizer/customizer.php:625
 msgid "Кнопки «предыдущий / следующий»"
-msgstr ""
+msgstr "“Previous / next” buttons"
 
 #: inc/customizer/customizer.php:626
 msgid "Индикаторы текущего слайда"
-msgstr ""
+msgstr "Current slide indicators"
 
 #: inc/customizer/customizer.php:627
 msgid "Автоматическое переключение"
-msgstr ""
+msgstr "Automatic switching"
 
 #: inc/customizer/customizer.php:628
 msgid "Переключение свайпом на смартфонах"
-msgstr ""
+msgstr "Swipe switching on smartphones"
 
 #: inc/customizer/customizer.php:629
 msgid "Переключение стрелками клавиатуры"
-msgstr ""
+msgstr "Switching with keyboard arrows"
 
 #: inc/customizer/customizer.php:650
 msgid "Время показа слайда"
-msgstr ""
+msgstr "Slide display time"
 
 #: inc/customizer/customizer.php:652 inc/customizer/customizer.php:669
 msgid "мс"
-msgstr ""
+msgstr "ms"
 
 #: inc/customizer/customizer.php:667 inc/customizer/customizer.php:977
 msgid "Скорость анимации"
-msgstr ""
+msgstr "Animation speed"
 
 #: inc/customizer/customizer.php:696
 #, php-format
 msgid "Слайд %d — изображение фона"
-msgstr ""
+msgstr "Slide %d — background image"
 
 #: inc/customizer/customizer.php:708
 #, php-format
 msgid "Слайд %d — заголовок"
-msgstr ""
+msgstr "Slide %d — title"
 
 #: inc/customizer/customizer.php:720
 #, php-format
 msgid "Слайд %d — текст"
-msgstr ""
+msgstr "Slide %d — text"
 
 #: inc/customizer/customizer.php:732
 #, php-format
 msgid "Слайд %d — показывать кнопку"
-msgstr ""
+msgstr "Slide %d — show the button"
 
 #: inc/customizer/customizer.php:744
 #, php-format
 msgid "Слайд %d — текст кнопки"
-msgstr ""
+msgstr "Slide %d — button text"
 
 #: inc/customizer/customizer.php:745 inc/customizer/customizer.php:1364
 msgid "По умолчанию: «Читать далее»."
-msgstr ""
+msgstr "Default: “Read more”."
 
 #: inc/customizer/customizer.php:757
 #, php-format
 msgid "Слайд %d — ссылка кнопки"
-msgstr ""
+msgstr "Slide %d — button link"
 
 #: inc/customizer/customizer.php:769
 #, php-format
 msgid "Слайд %d — затемнение изображения"
-msgstr ""
+msgstr "Slide %d — image overlay"
 
 #: inc/customizer/customizer.php:770
 msgid "Помогает сохранить читаемость текста на светлых изображениях."
-msgstr ""
+msgstr "Helps keep the text readable on light images."
 
 #: inc/customizer/customizer.php:792
 msgid "Тип фона"
-msgstr ""
+msgstr "Background type"
 
 #: inc/customizer/customizer.php:795
 msgid "Один цвет"
-msgstr ""
+msgstr "Solid colour"
 
 #: inc/customizer/customizer.php:796
 msgid "Градиент из двух цветов"
-msgstr ""
+msgstr "Gradient of two colours"
 
 #: inc/customizer/customizer.php:797
 msgid "Изображение"
-msgstr ""
+msgstr "Image"
 
 #: inc/customizer/customizer.php:807
 msgid "Цвет фона"
-msgstr ""
+msgstr "Background colour"
 
 #: inc/customizer/customizer.php:821
 msgid "Градиент — цвет №1"
-msgstr ""
+msgstr "Gradient — colour 1"
 
 #: inc/customizer/customizer.php:832
 msgid "Градиент — цвет №2"
-msgstr ""
+msgstr "Gradient — colour 2"
 
 #: inc/customizer/customizer.php:843
 msgid "Направление градиента"
-msgstr ""
+msgstr "Gradient direction"
 
 #: inc/customizer/customizer.php:847
 msgid "Сверху вниз"
-msgstr ""
+msgstr "Top to bottom"
 
 #: inc/customizer/customizer.php:848
 msgid "Снизу вверх"
-msgstr ""
+msgstr "Bottom to top"
 
 #: inc/customizer/customizer.php:849
 msgid "Слева направо"
-msgstr ""
+msgstr "Left to right"
 
 #: inc/customizer/customizer.php:850
 msgid "Справа налево"
-msgstr ""
+msgstr "Right to left"
 
 #: inc/customizer/customizer.php:851
 msgid "По диагонали"
-msgstr ""
+msgstr "Diagonally"
 
 #: inc/customizer/customizer.php:866
 msgid "Изображение фона"
-msgstr ""
+msgstr "Background image"
 
 #: inc/customizer/customizer.php:877
 msgid "Масштабирование изображения"
-msgstr ""
+msgstr "Image scaling"
 
 #: inc/customizer/customizer.php:880
 msgid "Заполнить экран"
-msgstr ""
+msgstr "Fill the screen"
 
 #: inc/customizer/customizer.php:881
 msgid "Поместить целиком"
-msgstr ""
+msgstr "Fit entirely"
 
 #: inc/customizer/customizer.php:882
 msgid "Исходный размер"
-msgstr ""
+msgstr "Original size"
 
 #: inc/customizer/customizer.php:893
 msgid "Повтор изображения"
-msgstr ""
+msgstr "Image repeat"
 
 #: inc/customizer/customizer.php:897
 msgid "Без повтора"
-msgstr ""
+msgstr "No repeat"
 
 #: inc/customizer/customizer.php:898
 msgid "Повторять"
-msgstr ""
+msgstr "Repeat"
 
 #: inc/customizer/customizer.php:899
 msgid "Повторять по горизонтали"
-msgstr ""
+msgstr "Repeat horizontally"
 
 #: inc/customizer/customizer.php:900
 msgid "Повторять по вертикали"
-msgstr ""
+msgstr "Repeat vertically"
 
 #: inc/customizer/customizer.php:911
 msgid "Положение изображения"
-msgstr ""
+msgstr "Image position"
 
 #: inc/customizer/customizer.php:915
 msgid "По центру"
-msgstr ""
+msgstr "Centre"
 
 #: inc/customizer/customizer.php:916
 msgid "Сверху"
-msgstr ""
+msgstr "Top"
 
 #: inc/customizer/customizer.php:917
 msgid "Снизу"
-msgstr ""
+msgstr "Bottom"
 
 #: inc/customizer/customizer.php:930
 msgid "Прокрутка фона"
-msgstr ""
+msgstr "Background scrolling"
 
 #: inc/customizer/customizer.php:933
 msgid "Прокручивается вместе со страницей"
-msgstr ""
+msgstr "Scrolls with the page"
 
 #: inc/customizer/customizer.php:934
 msgid "Фиксирован"
-msgstr ""
+msgstr "Fixed"
 
 #: inc/customizer/customizer.php:944
 msgid "Анимированный фон"
-msgstr ""
+msgstr "Animated background"
 
 #: inc/customizer/customizer.php:945
-msgid "Анимация рисуется на canvas и останавливается, когда вкладка неактивна."
-msgstr ""
+msgid ""
+"Анимация рисуется на canvas и останавливается, когда вкладка неактивна."
+msgstr "The animation is drawn on canvas and stops when the tab is inactive."
 
 #: inc/customizer/customizer.php:960
 msgid "Насыщенность анимации"
-msgstr ""
+msgstr "Animation intensity"
 
 #: inc/customizer/customizer.php:978
 msgid "100% — обычная скорость."
-msgstr ""
+msgstr "100% — normal speed."
 
 #: inc/customizer/customizer.php:995
 msgid "Автоматически менять анимации"
-msgstr ""
+msgstr "Change animations automatically"
 
 #: inc/customizer/customizer.php:996
 msgid "Анимации переключаются в случайном порядке."
-msgstr ""
+msgstr "The animations are switched in random order."
 
 #: inc/customizer/customizer.php:1007
 msgid "Интервал переключения"
-msgstr ""
+msgstr "Switching interval"
 
 #: inc/customizer/customizer.php:1009
 msgid "сек"
-msgstr ""
+msgstr "s"
 
 #: inc/customizer/customizer.php:1026
 msgid "Анимация на мобильных устройствах"
-msgstr ""
+msgstr "Animation on mobile devices"
 
 #: inc/customizer/customizer.php:1027
 msgid ""
 "По умолчанию отключена: экономит батарею и не влияет на скорость загрузки."
 msgstr ""
+"Disabled by default: it saves battery and does not affect loading speed."
 
 #: inc/customizer/customizer.php:1042
 msgid "Шрифт основного текста"
-msgstr ""
+msgstr "Body font"
 
 #: inc/customizer/customizer.php:1043
 msgid "Шрифт заголовков"
-msgstr ""
+msgstr "Heading font"
 
 #: inc/customizer/customizer.php:1044
 msgid "Шрифт меню"
-msgstr ""
+msgstr "Menu font"
 
 #: inc/customizer/customizer.php:1064
 msgid "Базовый размер текста"
-msgstr ""
+msgstr "Base text size"
 
 #: inc/customizer/customizer.php:1080
 msgid "Насыщенность основного текста"
-msgstr ""
+msgstr "Body text weight"
 
 #: inc/customizer/customizer.php:1083
 msgid "Светлый (300)"
-msgstr ""
+msgstr "Light (300)"
 
 #: inc/customizer/customizer.php:1084
 msgid "Обычный (400)"
-msgstr ""
+msgstr "Regular (400)"
 
 #: inc/customizer/customizer.php:1085 inc/customizer/customizer.php:1098
 msgid "Средний (500)"
-msgstr ""
+msgstr "Medium (500)"
 
 #: inc/customizer/customizer.php:1095
 msgid "Насыщенность заголовков"
-msgstr ""
+msgstr "Heading weight"
 
 #: inc/customizer/customizer.php:1099
 msgid "Полужирный (600)"
-msgstr ""
+msgstr "Semi-bold (600)"
 
 #: inc/customizer/customizer.php:1100
 msgid "Жирный (700)"
-msgstr ""
+msgstr "Bold (700)"
 
 #: inc/customizer/customizer.php:1101
 msgid "Очень жирный (800)"
-msgstr ""
+msgstr "Extra bold (800)"
 
 #: inc/customizer/customizer.php:1111
 msgid "Межстрочный интервал"
-msgstr ""
+msgstr "Line height"
 
 #: inc/customizer/customizer.php:1131
 msgid "Основной цвет"
-msgstr ""
+msgstr "Primary colour"
 
 #: inc/customizer/customizer.php:1132
 msgid "Дополнительный цвет"
-msgstr ""
+msgstr "Secondary colour"
 
 #: inc/customizer/customizer.php:1133
 msgid "Цвет текста"
-msgstr ""
+msgstr "Text colour"
 
 #: inc/customizer/customizer.php:1134
 msgid "Цвет заголовков"
-msgstr ""
+msgstr "Heading colour"
 
 #: inc/customizer/customizer.php:1135
 msgid "Цвет ссылок"
-msgstr ""
+msgstr "Link colour"
 
 #: inc/customizer/customizer.php:1136
 msgid "Цвет ссылок при наведении"
-msgstr ""
+msgstr "Link hover colour"
 
 #: inc/customizer/customizer.php:1137
 msgid "Цвет блоков и карточек"
-msgstr ""
+msgstr "Colour of blocks and cards"
 
 #: inc/customizer/customizer.php:1138
 msgid "Цвет фона меню"
-msgstr ""
+msgstr "Menu background colour"
 
 #: inc/customizer/customizer.php:1139
 msgid "Цвет текста меню"
-msgstr ""
+msgstr "Menu text colour"
 
 #: inc/customizer/customizer.php:1140
 msgid "Цвет кнопок"
-msgstr ""
+msgstr "Button colour"
 
 #: inc/customizer/customizer.php:1141
 msgid "Цвет текста кнопок"
-msgstr ""
+msgstr "Button text colour"
 
 #: inc/customizer/customizer.php:1142
 msgid "Цвет кнопок при наведении"
-msgstr ""
+msgstr "Button hover colour"
 
 #: inc/customizer/customizer.php:1143
 msgid "Цвет футера"
-msgstr ""
+msgstr "Footer colour"
 
 #: inc/customizer/customizer.php:1144
 msgid "Цвет текста футера"
-msgstr ""
+msgstr "Footer text colour"
 
 #: inc/customizer/customizer.php:1160
 msgid "Тёмная схема — основной цвет"
-msgstr ""
+msgstr "Dark scheme — primary colour"
 
 #: inc/customizer/customizer.php:1161
 msgid "Тёмная схема — фон"
-msgstr ""
+msgstr "Dark scheme — background"
 
 #: inc/customizer/customizer.php:1162
 msgid "Тёмная схема — блоки и карточки"
-msgstr ""
+msgstr "Dark scheme — blocks and cards"
 
 #: inc/customizer/customizer.php:1163
 msgid "Тёмная схема — текст"
-msgstr ""
+msgstr "Dark scheme — text"
 
 #: inc/customizer/customizer.php:1164
 msgid "Тёмная схема — заголовки"
-msgstr ""
+msgstr "Dark scheme — headings"
 
 #: inc/customizer/customizer.php:1165
 msgid "Тёмная схема — ссылки"
-msgstr ""
+msgstr "Dark scheme — links"
 
 #: inc/customizer/customizer.php:1166
 msgid "Тёмная схема — ссылки при наведении"
-msgstr ""
+msgstr "Dark scheme — links on hover"
 
 #: inc/customizer/customizer.php:1167
 msgid "Тёмная схема — фон меню"
-msgstr ""
+msgstr "Dark scheme — menu background"
 
 #: inc/customizer/customizer.php:1168
 msgid "Тёмная схема — текст меню"
-msgstr ""
+msgstr "Dark scheme — menu text"
 
 #: inc/customizer/customizer.php:1169
 msgid "Тёмная схема — кнопки"
-msgstr ""
+msgstr "Dark scheme — buttons"
 
 #: inc/customizer/customizer.php:1170
 msgid "Тёмная схема — текст кнопок"
-msgstr ""
+msgstr "Dark scheme — button text"
 
 #: inc/customizer/customizer.php:1171
 msgid "Тёмная схема — футер"
-msgstr ""
+msgstr "Dark scheme — footer"
 
 #: inc/customizer/customizer.php:1172
 msgid "Тёмная схема — текст футера"
-msgstr ""
+msgstr "Dark scheme — footer text"
 
 #: inc/customizer/customizer.php:1197
 msgid "Прозрачность фона блоков с контентом"
-msgstr ""
+msgstr "Background opacity of content blocks"
 
 #: inc/customizer/customizer.php:1198
 msgid ""
 "100% — полностью непрозрачный фон. Меньшие значения показывают фон сайта "
 "сквозь блоки."
 msgstr ""
+"100% — a fully opaque background. Lower values let the site background show "
+"through the blocks."
 
 #: inc/customizer/customizer.php:1222
 msgid "Блоков в одном ряду (ПК)"
-msgstr ""
+msgstr "Blocks per row (desktop)"
 
 #: inc/customizer/customizer.php:1223
 msgid "На планшете и смартфоне количество колонок уменьшается автоматически."
 msgstr ""
+"On tablets and smartphones the number of columns is reduced automatically."
 
 #: inc/customizer/customizer.php:1238
 msgid "Материалов на странице"
-msgstr ""
+msgstr "Posts per page"
 
 #: inc/customizer/customizer.php:1253
 msgid "Количество символов в превью"
-msgstr ""
+msgstr "Number of characters in the excerpt"
 
 #: inc/customizer/customizer.php:1256
 msgid "100 символов"
-msgstr ""
+msgstr "100 characters"
 
 #: inc/customizer/customizer.php:1257
 msgid "150 символов"
-msgstr ""
+msgstr "150 characters"
 
 #: inc/customizer/customizer.php:1258
 msgid "200 символов"
-msgstr ""
+msgstr "200 characters"
 
 #: inc/customizer/customizer.php:1259
 msgid "300 символов"
-msgstr ""
+msgstr "300 characters"
 
 #: inc/customizer/customizer.php:1260
 msgid "Без ограничения"
-msgstr ""
+msgstr "No limit"
 
 #: inc/customizer/customizer.php:1267
 msgid "Показывать изображение"
-msgstr ""
+msgstr "Show the image"
 
 #: inc/customizer/customizer.php:1268
 msgid "Показывать категорию"
-msgstr ""
+msgstr "Show the category"
 
 #: inc/customizer/customizer.php:1269
 msgid "Показывать дату"
-msgstr ""
+msgstr "Show the date"
 
 #: inc/customizer/customizer.php:1270
 msgid "Показывать автора"
-msgstr ""
+msgstr "Show the author"
 
 #: inc/customizer/customizer.php:1271
 msgid "Показывать количество комментариев"
-msgstr ""
+msgstr "Show the number of comments"
 
 #: inc/customizer/customizer.php:1272
 msgid "Показывать кнопку перехода"
-msgstr ""
+msgstr "Show the read more button"
 
 #: inc/customizer/customizer.php:1292
 msgid "Положение картинки в блоке"
-msgstr ""
+msgstr "Image position in the block"
 
 #: inc/customizer/customizer.php:1295
 msgid "Посередине"
-msgstr ""
+msgstr "Centred"
 
 #: inc/customizer/customizer.php:1296
 msgid "Посередине сверху"
-msgstr ""
+msgstr "Centred, top"
 
 #: inc/customizer/customizer.php:1297
 msgid "Посередине снизу"
-msgstr ""
+msgstr "Centred, bottom"
 
 #: inc/customizer/customizer.php:1310
 msgid "Обводка блоков новостей"
-msgstr ""
+msgstr "Border around news blocks"
 
 #: inc/customizer/customizer.php:1324
 msgid "Толщина обводки"
-msgstr ""
+msgstr "Border width"
 
 #: inc/customizer/customizer.php:1341
 msgid "Цвет обводки"
-msgstr ""
+msgstr "Border colour"
 
 #: inc/customizer/customizer.php:1352
 msgid "Картинка в начале открытой новости"
-msgstr ""
+msgstr "Image at the beginning of an open post"
 
 #: inc/customizer/customizer.php:1353
 msgid "Отключите, если изображение не нужно показывать на странице материала."
-msgstr ""
+msgstr "Turn off if the image should not be shown on the post page."
 
 #: inc/customizer/customizer.php:1363
 msgid "Текст кнопки перехода"
-msgstr ""
+msgstr "Read more button text"
 
 #: inc/customizer/customizer.php:1385
 msgid "Колонок виджетов в футере"
-msgstr ""
+msgstr "Widget columns in the footer"
 
 #: inc/customizer/customizer.php:1386
 msgid "Виджеты добавляются в разделе «Внешний вид → Виджеты»."
-msgstr ""
+msgstr "Widgets are added in “Appearance → Widgets”."
 
 #: inc/customizer/customizer.php:1401
 msgid "Показывать меню в футере"
-msgstr ""
+msgstr "Show the footer menu"
 
 #: inc/customizer/customizer.php:1411
 msgid "Текст в футере"
-msgstr ""
+msgstr "Footer text"
 
 #: inc/customizer/customizer.php:1412
 msgid "Короткое описание сайта или дополнительная информация."
-msgstr ""
+msgstr "A short site description or additional information."
 
 #: inc/customizer/customizer.php:1422
 msgid "Копирайт"
-msgstr ""
+msgstr "Copyright"
 
 #: inc/customizer/customizer.php:1423
 msgid ""
-"Допускается простое HTML-форматирование и ссылки. Если пусто — подставляется "
-"«© год, название сайта»."
+"Допускается простое HTML-форматирование и ссылки. Если пусто — подставляется"
+" «© год, название сайта»."
 msgstr ""
+"Simple HTML formatting and links are allowed. If empty, “© year, site title”"
+" is used."
 
 #: inc/customizer/customizer.php:1433
 msgid "Показывать ссылки на социальные сети"
-msgstr ""
+msgstr "Show links to social networks"
 
 #: inc/customizer/customizer.php:1474
 msgid "Монстр на компьютерах"
-msgstr ""
+msgstr "Monster on desktops"
 
 #: inc/customizer/customizer.php:1475
 msgid "Монстр выезжает из-за края экрана через случайные интервалы времени."
 msgstr ""
+"The monster slides in from the edge of the screen at random intervals."
 
 #: inc/customizer/customizer.php:1485
 msgid "Монстр на мобильных устройствах"
-msgstr ""
+msgstr "Monster on mobile devices"
 
 #: inc/customizer/customizer.php:1486
 msgid "Настраивается независимо от компьютерной версии."
-msgstr ""
+msgstr "Configured independently from the desktop version."
 
 #: inc/customizer/customizer.php:1496
 msgid "Откуда выезжает"
-msgstr ""
+msgstr "Where it slides in from"
 
 #: inc/customizer/customizer.php:1508
 msgid "Персонаж"
-msgstr ""
+msgstr "Character"
 
 #: inc/customizer/customizer.php:1509
 msgid ""
 "В хаотичном режиме персонаж выбирается случайно перед каждым появлением."
 msgstr ""
+"In chaotic mode the character is picked at random before every appearance."
 
 #: inc/customizer/customizer.php:1521
 msgid "Размер монстра"
-msgstr ""
+msgstr "Monster size"
 
 #: inc/customizer/customizer.php:1538
 msgid "Основной цвет монстра"
-msgstr ""
+msgstr "Main monster colour"
 
 #: inc/customizer/customizer.php:1549
 msgid "Цвет свечения"
-msgstr ""
+msgstr "Glow colour"
 
 #: inc/customizer/customizer.php:1560
 msgid "Минимальная пауза до появления"
-msgstr ""
+msgstr "Minimum pause before appearing"
 
 #: inc/customizer/customizer.php:1561
 msgid ""
 "Время появления выбирается случайно между минимальной и максимальной паузой."
 msgstr ""
+"The appearance time is chosen at random between the minimum and the maximum "
+"pause."
 
 #: inc/customizer/customizer.php:1563 inc/customizer/customizer.php:1580
 #: inc/customizer/customizer.php:1598
 msgid "с"
-msgstr ""
+msgstr "s"
 
 #: inc/customizer/customizer.php:1578
 msgid "Максимальная пауза до появления"
-msgstr ""
+msgstr "Maximum pause before appearing"
 
 #: inc/customizer/customizer.php:1595
 msgid "Пауза после клика по монстру"
-msgstr ""
+msgstr "Pause after clicking the monster"
 
 #: inc/customizer/customizer.php:1596
 msgid "После клика монстр не показывается заданное время."
-msgstr ""
+msgstr "After a click the monster is not shown for the specified time."
 
 #: inc/customizer/customizer.php:1613
 msgid "Расстояние, с которого монстр прячется"
-msgstr ""
+msgstr "Distance at which the monster hides"
 
 #: inc/customizer/customizer.php:1614
 msgid ""
 "Монстр начинает прятаться, когда курсор медленно подбирается к нему ближе "
 "этого расстояния."
 msgstr ""
+"The monster starts hiding when the cursor slowly approaches closer than this"
+" distance."
 
 #: inc/customizer/customizer.php:1631
 msgid "Звук при клике"
-msgstr ""
+msgstr "Sound on click"
 
 #: inc/customizer/customizer.php:1632
 msgid "Встроенные звуки синтезируются браузером и не требуют загрузки файлов."
 msgstr ""
+"The built-in sounds are synthesised by the browser and do not require file "
+"uploads."
 
 #: inc/customizer/customizer.php:1644
 msgid "Свой звук (MP3, OGG, WAV)"
-msgstr ""
+msgstr "Custom sound (MP3, OGG, WAV)"
 
 #: inc/customizer/customizer.php:1645
 msgid "Используется, если выбран вариант «Свой звук»."
-msgstr ""
+msgstr "Used when the “Custom sound” option is selected."
 
 #: inc/customizer/customizer.php:1658
 msgid "Громкость звука"
-msgstr ""
+msgstr "Sound volume"
 
 #: inc/customizer/customizer.php:1689
 msgid "Показывать окно соглашения"
-msgstr ""
+msgstr "Show the agreement window"
 
 #: inc/customizer/customizer.php:1690
 msgid "Окно выплывает снизу один раз, повторно — не чаще указанного срока."
 msgstr ""
+"The window slides up from the bottom once, and afterwards no more often than"
+" the specified period."
 
 #: inc/customizer/customizer.php:1700
 msgid "Заголовок окна"
-msgstr ""
+msgstr "Window title"
 
 #: inc/customizer/customizer.php:1701
 msgid "По умолчанию: «Временные файлы»."
-msgstr ""
+msgstr "Default: “Cookies”."
 
 #: inc/customizer/customizer.php:1712
 msgid "Текст соглашения"
-msgstr ""
+msgstr "Agreement text"
 
 #: inc/customizer/customizer.php:1723
 msgid "Текст кнопки согласия"
-msgstr ""
+msgstr "Accept button text"
 
 #: inc/customizer/customizer.php:1724
 msgid "По умолчанию: «Принимаю»."
-msgstr ""
+msgstr "Default: “Accept”."
 
 #: inc/customizer/customizer.php:1735
 msgid "Показывать кнопку отказа"
-msgstr ""
+msgstr "Show the decline button"
 
 #: inc/customizer/customizer.php:1746
 msgid "Текст кнопки отказа"
-msgstr ""
+msgstr "Decline button text"
 
 #: inc/customizer/customizer.php:1747
 msgid "По умолчанию: «Отказаться»."
-msgstr ""
+msgstr "Default: “Decline”."
 
 #: inc/customizer/customizer.php:1760
 msgid "Ссылка на соглашение и политику"
-msgstr ""
+msgstr "Link to the agreement and policy"
 
 #: inc/customizer/customizer.php:1761
 msgid ""
 "Если пусто — используется страница политики конфиденциальности WordPress."
-msgstr ""
+msgstr "If empty, the WordPress privacy policy page is used."
 
 #: inc/customizer/customizer.php:1772
 msgid "Текст ссылки"
-msgstr ""
+msgstr "Link text"
 
 #: inc/customizer/customizer.php:1783
 msgid "Через сколько дней показать снова"
-msgstr ""
+msgstr "Days before showing it again"
 
 #: inc/customizer/customizer.php:1785
 msgid "дн."
-msgstr ""
+msgstr "days"
 
 #: inc/customizer/customizer.php:1800
 msgid "Анимированный кот на окне"
-msgstr ""
+msgstr "Animated cat on the window"
 
 #: inc/customizer/customizer.php:1811
 msgid "Цвет кота"
-msgstr ""
+msgstr "Cat colour"
 
 #: inc/customizer/customizer.php:1824
 msgid "Дополнительный цвет кота"
-msgstr ""
+msgstr "Secondary cat colour"
 
 #: inc/customizer/customizer.php:1825
 msgid "Уши и нос."
-msgstr ""
+msgstr "Ears and nose."
 
 #: inc/customizer/customizer.php:1842
 msgid "Ленивая загрузка изображений"
-msgstr ""
+msgstr "Lazy loading of images"
 
 #: inc/customizer/customizer.php:1842
 msgid "Изображения загружаются по мере прокрутки страницы."
-msgstr ""
+msgstr "Images are loaded as the page is scrolled."
 
 #: inc/customizer/customizer.php:1843
 msgid "Разметка Open Graph"
-msgstr ""
+msgstr "Open Graph markup"
 
 #: inc/customizer/customizer.php:1843
 msgid "Отключается автоматически, если разметку добавляет SEO-плагин."
-msgstr ""
+msgstr "Disabled automatically when an SEO plugin adds the markup."
 
 #: inc/customizer/customizer.php:1844
 msgid "Микроразметка Schema.org"
-msgstr ""
+msgstr "Schema.org microdata"
 
 #: inc/customizer/customizer.php:1845
 msgid "Учитывать системную настройку prefers-reduced-motion"
-msgstr ""
+msgstr "Respect the system prefers-reduced-motion setting"
 
 #: inc/customizer/customizer.php:1845
 msgid "Анимации отключаются, если посетитель просил уменьшить движение."
-msgstr ""
+msgstr "Animations are disabled when the visitor has asked to reduce motion."
 
 #: inc/customizer/customizer.php:1846
 msgid "Показывать индикатор загрузки страницы"
-msgstr ""
+msgstr "Show the page loading indicator"
 
 #: inc/enqueue.php:56 inc/menu/menu.php:61
 msgid "Открыть меню"
-msgstr ""
+msgstr "Open the menu"
 
 #: inc/enqueue.php:57
 msgid "Закрыть меню"
-msgstr ""
+msgstr "Close the menu"
 
 #: inc/enqueue.php:58 inc/menu/class-sdon-menu-walker.php:32
 msgid "Раскрыть подменю"
-msgstr ""
+msgstr "Expand the submenu"
 
 #: inc/enqueue.php:115
 msgid "Включить тёмную тему"
-msgstr ""
+msgstr "Switch to dark mode"
 
 #: inc/enqueue.php:116
 msgid "Включить светлую тему"
-msgstr ""
+msgstr "Switch to light mode"
 
 #: inc/helpers/fonts.php:25
 msgid "Системный (быстрый, без загрузки)"
-msgstr ""
+msgstr "System (fast, no downloads)"
 
 #: inc/helpers/fonts.php:29
 msgid "Georgia (с засечками)"
-msgstr ""
+msgstr "Georgia (serif)"
 
 #: inc/helpers/fonts.php:33
 msgid "Verdana (без засечек)"
-msgstr ""
+msgstr "Verdana (sans-serif)"
 
 #: inc/helpers/fonts.php:37
 msgid "Tahoma"
-msgstr ""
+msgstr "Tahoma"
 
 #: inc/helpers/fonts.php:41
 msgid "Trebuchet MS"
-msgstr ""
+msgstr "Trebuchet MS"
 
 #: inc/helpers/fonts.php:45
 msgid "Моноширинный"
-msgstr ""
+msgstr "Monospace"
 
 #: inc/helpers/fonts.php:164
 #, php-format
 msgid "%s (Google Fonts)"
-msgstr ""
+msgstr "%s (Google Fonts)"
 
 #: inc/helpers/fonts.php:172
 #, php-format
 msgid "%s (загруженный)"
-msgstr ""
+msgstr "%s (uploaded)"
 
 #: inc/helpers/helpers.php:148
 #, php-format
 msgid "&copy; %1$s %2$s. Все права защищены."
-msgstr ""
+msgstr "&copy; %1$s %2$s. All rights reserved."
 
 #: inc/helpers/helpers.php:164
 msgid "ВКонтакте"
-msgstr ""
+msgstr "VKontakte"
 
 #: inc/helpers/helpers.php:165
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #: inc/helpers/helpers.php:166
 msgid "МАКС"
-msgstr ""
+msgstr "MAX"
 
 #: inc/helpers/helpers.php:167
 msgid "YouTube"
-msgstr ""
+msgstr "YouTube"
 
 #: inc/helpers/helpers.php:168
 msgid "Rutube"
-msgstr ""
+msgstr "Rutube"
 
 #: inc/helpers/helpers.php:169
 msgid "X (Twitter)"
-msgstr ""
+msgstr "X (Twitter)"
 
 #: inc/helpers/helpers.php:170
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: inc/helpers/helpers.php:171
 msgid "GitVerse"
-msgstr ""
+msgstr "GitVerse"
 
 #: inc/helpers/helpers.php:172
 msgid "RSS"
-msgstr ""
+msgstr "RSS"
 
 #: inc/helpers/helpers.php:223
 msgid "Отключить анимацию"
-msgstr ""
+msgstr "Disable the animation"
 
 #: inc/helpers/helpers.php:224
 msgid "Звёзды — «Сквозь вселенную»"
-msgstr ""
+msgstr "Stars — “Through the universe”"
 
 #: inc/helpers/helpers.php:225
 msgid "Матрица"
-msgstr ""
+msgstr "Matrix"
 
 #: inc/helpers/helpers.php:226
 msgid "Лабиринт"
-msgstr ""
+msgstr "Labyrinth"
 
 #: inc/helpers/helpers.php:227
 msgid "Трубопровод"
-msgstr ""
+msgstr "Pipeline"
 
 #: inc/helpers/helpers.php:228
 msgid "Падающие снежинки — вариант 1"
-msgstr ""
+msgstr "Falling snowflakes — variant 1"
 
 #: inc/helpers/helpers.php:229
 msgid "Падающие снежинки — вариант 2"
-msgstr ""
+msgstr "Falling snowflakes — variant 2"
 
 #: inc/helpers/helpers.php:230
 msgid "Листопад"
-msgstr ""
+msgstr "Falling leaves"
 
 #: inc/helpers/helpers.php:231
 msgid "Аркада"
-msgstr ""
+msgstr "Arcade"
 
 #: inc/helpers/helpers.php:232
 msgid "Электро плата"
-msgstr ""
+msgstr "Circuit board"
 
 #: inc/helpers/helpers.php:233
 msgid "Микрочип"
-msgstr ""
+msgstr "Microchip"
 
 #: inc/helpers/helpers.php:234
 msgid "Киберпанк"
-msgstr ""
+msgstr "Cyberpunk"
 
 #: inc/helpers/helpers.php:235
 msgid "Сеть каналов с бегущими сигналами"
-msgstr ""
+msgstr "Network of channels with running signals"
 
 #: inc/helpers/helpers.php:236
 msgid "Пролёт сквозь облако частиц"
-msgstr ""
+msgstr "Flight through a particle cloud"
 
 #: inc/helpers/helpers.php:237
 msgid "Искривление пространства"
-msgstr ""
+msgstr "Space warp"
 
 #: inc/helpers/helpers.php:238
 msgid "Туннель из звёзд и колец"
-msgstr ""
+msgstr "Tunnel of stars and rings"
 
 #: inc/helpers/helpers.php:239
 msgid "Дух музыки"
-msgstr ""
+msgstr "Spirit of music"
 
 #: inc/menu/menu.php:25
 msgid "Меню не создано — создать меню"
-msgstr ""
+msgstr "No menu has been created — create a menu"
 
 #: inc/monster.php:33
 msgid "Случайно — слева или справа"
-msgstr ""
+msgstr "Randomly — from the left or the right"
 
 #: inc/monster.php:44
 msgid "Монстр"
-msgstr ""
+msgstr "Monster"
 
 #: inc/monster.php:45
 msgid "Девушка-вампир"
-msgstr ""
+msgstr "Vampire girl"
 
 #: inc/monster.php:46
 msgid "Ктулху"
-msgstr ""
+msgstr "Cthulhu"
 
 #: inc/monster.php:47
 msgid "Адский кот мейн-кун"
-msgstr ""
+msgstr "Hellish Maine Coon cat"
 
 #: inc/monster.php:48
 msgid "Робот-убийца"
-msgstr ""
+msgstr "Killer robot"
 
 #: inc/monster.php:49
 msgid "Хаотично — случайный персонаж"
-msgstr ""
+msgstr "Chaotically — a random character"
 
 #: inc/monster.php:94
 msgid "Писк (испуганный)"
-msgstr ""
+msgstr "Squeak (frightened)"
 
 #: inc/monster.php:95
 msgid "Рык"
-msgstr ""
+msgstr "Growl"
 
 #: inc/monster.php:96
 msgid "Пружина"
-msgstr ""
+msgstr "Spring"
 
 #: inc/monster.php:97
 msgid "Глитч"
-msgstr ""
+msgstr "Glitch"
 
 #: inc/monster.php:98
 msgid "Свой звук (загрузить файл)"
-msgstr ""
+msgstr "Custom sound (upload a file)"
 
 #: inc/monster.php:99
 msgid "Без звука"
-msgstr ""
+msgstr "No sound"
 
 #: inc/monster.php:187
 msgid "Прогнать монстра"
-msgstr ""
+msgstr "Chase the monster away"
 
 #: inc/setup.php:52
 msgid "Меню социальных сетей"
-msgstr ""
+msgstr "Social networks menu"
 
 #: inc/setup.php:76 sidebar.php:14
 msgid "Боковая колонка"
-msgstr ""
+msgstr "Sidebar"
 
 #: inc/setup.php:78
 msgid "Основная боковая колонка (макет из 2 или 3 колонок)."
-msgstr ""
+msgstr "The main sidebar (2 or 3 column layout)."
 
 #: inc/setup.php:88 sidebar-secondary.php:14
 msgid "Вторая боковая колонка"
-msgstr ""
+msgstr "Second sidebar"
 
 #: inc/setup.php:90
 msgid "Используется только в макете из 3 колонок."
-msgstr ""
+msgstr "Used only in the 3 column layout."
 
 #: inc/setup.php:103
 #, php-format
 msgid "Футер — колонка %d"
-msgstr ""
+msgstr "Footer — column %d"
 
 #: inc/slider/slider.php:36 inc/template-tags.php:112
 msgid "Читать далее"
-msgstr ""
+msgstr "Read more"
 
 #: inc/slider/slider.php:74
 msgid "Главные материалы"
-msgstr ""
+msgstr "Top stories"
 
 #: inc/slider/slider.php:82
 msgid "слайд"
-msgstr ""
+msgstr "slide"
 
 #: inc/slider/slider.php:83
 #, php-format
 msgid "%1$d из %2$d"
-msgstr ""
+msgstr "%1$d of %2$d"
 
 #: inc/slider/slider.php:121
 msgid "Предыдущий слайд"
-msgstr ""
+msgstr "Previous slide"
 
 #: inc/slider/slider.php:125
 msgid "Следующий слайд"
-msgstr ""
+msgstr "Next slide"
 
 #: inc/slider/slider.php:130
 msgid "Выбор слайда"
-msgstr ""
+msgstr "Slide selection"
 
 #: inc/slider/slider.php:143
 #, php-format
 msgid "Слайд %d"
-msgstr ""
+msgstr "Slide %d"
 
 #: inc/template-tags.php:126
 msgid "Навигация по страницам"
-msgstr ""
+msgstr "Page navigation"
 
 #: inc/template-tags.php:127
 msgid "Страницы"
-msgstr ""
+msgstr "Pages"
 
 #: inc/template-tags.php:144
 msgid "Главная"
-msgstr ""
+msgstr "Home"
 
 #: inc/template-tags.php:178 template-parts/content/archive-header.php:15
 #, php-format
 msgid "Результаты поиска: %s"
-msgstr ""
+msgstr "Search results: %s"
 
 #: inc/template-tags.php:234
 msgid "Переключить тёмную тему"
-msgstr ""
+msgstr "Toggle dark mode"
 
 #: inc/template-tags.php:251
 msgid "Наверх"
-msgstr ""
+msgstr "To top"
 
 #: inc/widgets/class-sdon-recent-posts-widget.php:21
 msgid "SD-ON: последние материалы"
-msgstr ""
+msgstr "SD-ON: latest posts"
 
 #: inc/widgets/class-sdon-recent-posts-widget.php:23
 msgid "Последние записи с миниатюрами и датой публикации."
-msgstr ""
+msgstr "Latest posts with thumbnails and the publication date."
 
 #: inc/widgets/class-sdon-recent-posts-widget.php:37
 msgid "Последние материалы"
-msgstr ""
+msgstr "Latest posts"
 
 #: inc/widgets/class-sdon-recent-posts-widget.php:93
 msgid "Заголовок:"
-msgstr ""
+msgstr "Title:"
 
 #: inc/widgets/class-sdon-recent-posts-widget.php:103
 msgid "Количество записей:"
-msgstr ""
+msgstr "Number of posts:"
 
 #: searchform.php:14
 msgid "Поиск по сайту"
-msgstr ""
+msgstr "Search the site"
 
 #: searchform.php:22
 msgid "Поиск…"
-msgstr ""
+msgstr "Search…"
 
 #: searchform.php:25
 msgid "Найти"
-msgstr ""
+msgstr "Search"
 
 #: single.php:20
 msgid "Предыдущий материал"
-msgstr ""
+msgstr "Previous post"
 
 #: single.php:21
 msgid "Следующий материал"
-msgstr ""
+msgstr "Next post"
 
 #: template-parts/content/none.php:11
 msgid "Ничего не найдено"
-msgstr ""
+msgstr "Nothing found"
 
 #: template-parts/content/none.php:14
 msgid "По вашему запросу ничего не найдено. Попробуйте изменить формулировку."
-msgstr ""
+msgstr "Nothing was found for your query. Try changing the wording."
 
 #: template-parts/content/none.php:16
 msgid "Здесь пока нет материалов."
-msgstr ""
+msgstr "There are no posts here yet."
 
 #: template-parts/content/single.php:33
 msgid "Страницы:"
-msgstr ""
+msgstr "Pages:"
 
 #: templates/template-news.php:58
 msgid "Страница"
-msgstr ""
+msgstr "Page"

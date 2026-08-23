@@ -165,6 +165,7 @@ function sdon_defaults() {
 		'monster_desktop'               => false,
 		'monster_mobile'                => false,
 		'monster_side'                  => 'random',
+		'monster_creature'              => 'random',
 		'monster_size'                  => 200,
 		'monster_color'                 => '#7c3aed',
 		'monster_accent'                => '#22d3ee',
@@ -176,7 +177,21 @@ function sdon_defaults() {
 		'monster_sound_file'            => '',
 		'monster_volume'                => 60,
 
-		// 12. Дополнительные настройки.
+		// 12. Согласие на использование временных файлов.
+		'cookie_notice'                 => false,
+		'cookie_title'                  => '',
+		'cookie_text'                   => '',
+		'cookie_accept_text'            => '',
+		'cookie_decline'                => true,
+		'cookie_decline_text'           => '',
+		'cookie_link'                   => '',
+		'cookie_link_text'              => '',
+		'cookie_days'                   => 7,
+		'cookie_cat'                    => true,
+		'cookie_cat_color'              => '#f59e0b',
+		'cookie_cat_accent'             => '#fde68a',
+
+		// 13. Дополнительные настройки.
 		'lazy_loading'                  => true,
 		'seo_open_graph'                => true,
 		'seo_schema'                    => true,

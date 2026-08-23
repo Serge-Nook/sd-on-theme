@@ -186,7 +186,7 @@ function sdon_sanitize_imported_settings( $settings ) {
 			|| 'bg_color' === $key
 			|| in_array(
 				$key,
-				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'monster_color', 'monster_accent' ),
+				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'monster_color', 'monster_accent', 'cookie_cat_color', 'cookie_cat_accent' ),
 				true
 			);
 
@@ -200,8 +200,21 @@ function sdon_sanitize_imported_settings( $settings ) {
 			continue;
 		}
 
-		if ( 0 === strpos( $key, 'social_' ) || false !== strpos( $key, '_url' ) || false !== strpos( $key, '_image' ) || 'monster_sound_file' === $key ) {
+		if ( 'monster_creature' === $key ) {
+			if ( array_key_exists( $value, sdon_monster_creature_choices() ) ) {
+				$result[ $key ] = $value;
+			}
+
+			continue;
+		}
+
+		if ( 0 === strpos( $key, 'social_' ) || false !== strpos( $key, '_url' ) || false !== strpos( $key, '_image' ) || 'monster_sound_file' === $key || 'cookie_link' === $key ) {
 			$result[ $key ] = esc_url_raw( $value );
+			continue;
+		}
+
+		if ( 'cookie_text' === $key ) {
+			$result[ $key ] = sdon_sanitize_textarea( $value );
 			continue;
 		}
 

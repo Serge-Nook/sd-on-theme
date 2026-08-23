@@ -171,6 +171,17 @@ function sdon_dynamic_css() {
 		$root .= sprintf( '--sdon-monster-shadow:%s;', sdon_darken_hex( $monster, 35 ) );
 	}
 
+	if ( sdon_cookie_is_enabled() && sdon_is( 'cookie_cat' ) ) {
+		$cat        = sanitize_hex_color( (string) sdon_opt( 'cookie_cat_color' ) );
+		$cat        = $cat ? $cat : (string) sdon_default( 'cookie_cat_color' );
+		$cat_accent = sanitize_hex_color( (string) sdon_opt( 'cookie_cat_accent' ) );
+		$cat_accent = $cat_accent ? $cat_accent : (string) sdon_default( 'cookie_cat_accent' );
+
+		$root .= sprintf( '--sdon-cat-color:%s;', $cat );
+		$root .= sprintf( '--sdon-cat-accent:%s;', $cat_accent );
+		$root .= sprintf( '--sdon-cat-shadow:%s;', sdon_darken_hex( $cat, 30 ) );
+	}
+
 	$css = ':root{' . $root . '}';
 
 	$dark = sdon_vars_to_css( sdon_dark_scheme_vars() );

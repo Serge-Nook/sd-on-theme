@@ -26,7 +26,8 @@
 	}
 
 	var hit = root.querySelector( '[data-sdon-monster-hit]' );
-	var pupils = root.querySelectorAll( '[data-sdon-monster-pupil]' );
+	var bodies = root.querySelectorAll( '[data-sdon-monster-creature]' );
+	var pupils = bodies.length ? bodies[ 0 ].querySelectorAll( '[data-sdon-monster-pupil]' ) : [];
 	var minDelay = Math.max( 1000, settings.minDelay || 25000 );
 	var maxDelay = Math.max( minDelay, settings.maxDelay || 120000 );
 	var cooldown = Math.max( 0, 'number' === typeof settings.cooldown ? settings.cooldown : 300000 );
@@ -47,6 +48,21 @@
 		}
 
 		return Math.random() < 0.5 ? 'left' : 'right';
+	}
+
+	// Хаотичный режим: перед каждым выходом на сцену выбирается случайный персонаж.
+	function pickCreature() {
+		var chosen = bodies.length < 2 ? 0 : Math.floor( Math.random() * bodies.length );
+		var i;
+
+		for ( i = 0; i < bodies.length; i++ ) {
+			bodies[ i ].hidden = i !== chosen;
+		}
+
+		if ( bodies.length ) {
+			pupils = bodies[ chosen ].querySelectorAll( '[data-sdon-monster-pupil]' );
+			root.dataset.shown = bodies[ chosen ].dataset.sdonMonsterCreature;
+		}
 	}
 
 	function offset( fraction ) {
@@ -96,6 +112,7 @@
 			return;
 		}
 
+		pickCreature();
 		root.dataset.current = side();
 		root.hidden = false;
 		shyness = 0;
