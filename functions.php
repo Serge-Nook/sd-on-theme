@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SDON_VERSION', '1.1.0' );
+define( 'SDON_VERSION', '1.2.0' );
 define( 'SDON_DIR', get_template_directory() );
 define( 'SDON_URI', get_template_directory_uri() );
 
@@ -24,6 +24,7 @@ require_once SDON_DIR . '/inc/template-tags.php';
 require_once SDON_DIR . '/inc/menu/menu.php';
 require_once SDON_DIR . '/inc/slider/slider.php';
 require_once SDON_DIR . '/inc/widgets/widgets.php';
+require_once SDON_DIR . '/inc/monster.php';
 require_once SDON_DIR . '/inc/seo.php';
 require_once SDON_DIR . '/inc/customizer/sanitize.php';
 require_once SDON_DIR . '/inc/customizer/customizer.php';

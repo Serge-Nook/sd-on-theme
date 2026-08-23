@@ -161,7 +161,22 @@ function sdon_defaults() {
 		'social_rutube'                 => '',
 		'social_rss'                    => '',
 
-		// 10. Дополнительные настройки.
+		// 11. Монстр.
+		'monster_desktop'               => false,
+		'monster_mobile'                => false,
+		'monster_side'                  => 'random',
+		'monster_size'                  => 200,
+		'monster_color'                 => '#7c3aed',
+		'monster_accent'                => '#22d3ee',
+		'monster_min_delay'             => 25,
+		'monster_max_delay'             => 120,
+		'monster_cooldown'              => 300,
+		'monster_shy_distance'          => 220,
+		'monster_sound'                 => 'squeak',
+		'monster_sound_file'            => '',
+		'monster_volume'                => 60,
+
+		// 12. Дополнительные настройки.
 		'lazy_loading'                  => true,
 		'seo_open_graph'                => true,
 		'seo_schema'                    => true,

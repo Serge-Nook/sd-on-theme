@@ -159,6 +159,18 @@ function sdon_dynamic_css() {
 	$root .= sprintf( '--sdon-card-border-color:%s;', sdon_opt( 'news_card_border_color' ) );
 	$root .= sprintf( '--sdon-card-image-position:%s;', sdon_card_image_position() );
 
+	if ( sdon_monster_is_enabled() ) {
+		$monster = sanitize_hex_color( (string) sdon_opt( 'monster_color' ) );
+		$monster = $monster ? $monster : (string) sdon_default( 'monster_color' );
+		$accent  = sanitize_hex_color( (string) sdon_opt( 'monster_accent' ) );
+		$accent  = $accent ? $accent : (string) sdon_default( 'monster_accent' );
+
+		$root .= sprintf( '--sdon-monster-size:%dpx;', min( 480, max( 100, (int) sdon_opt( 'monster_size' ) ) ) );
+		$root .= sprintf( '--sdon-monster-color:%s;', $monster );
+		$root .= sprintf( '--sdon-monster-accent:%s;', $accent );
+		$root .= sprintf( '--sdon-monster-shadow:%s;', sdon_darken_hex( $monster, 35 ) );
+	}
+
 	$css = ':root{' . $root . '}';
 
 	$dark = sdon_vars_to_css( sdon_dark_scheme_vars() );

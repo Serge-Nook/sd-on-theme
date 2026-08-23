@@ -93,6 +93,11 @@ function sdon_enqueue_assets() {
 		);
 	}
 
+	if ( sdon_monster_is_enabled() ) {
+		sdon_enqueue_deferred_script( 'sdon-monster', 'monster.js' );
+		wp_localize_script( 'sdon-monster', 'sdonMonster', sdon_monster_settings() );
+	}
+
 	if ( sdon_dark_mode_is_available() ) {
 		sdon_enqueue_deferred_script( 'sdon-dark-mode', 'dark-mode.js' );
 		wp_localize_script(

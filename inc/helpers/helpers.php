@@ -265,6 +265,30 @@ function sdon_hex_to_rgb( $hex ) {
 }
 
 /**
+ * Затемнённый вариант цвета.
+ *
+ * @param string $hex     Цвет вида #fff или #ffffff.
+ * @param int    $percent Насколько затемнить, в процентах.
+ * @return string
+ */
+function sdon_darken_hex( $hex, $percent ) {
+	$rgb = sdon_hex_to_rgb( $hex );
+
+	if ( empty( $rgb ) ) {
+		return (string) $hex;
+	}
+
+	$factor = 1 - min( 100, max( 0, (int) $percent ) ) / 100;
+
+	return sprintf(
+		'#%02x%02x%02x',
+		(int) round( $rgb[0] * $factor ),
+		(int) round( $rgb[1] * $factor ),
+		(int) round( $rgb[2] * $factor )
+	);
+}
+
+/**
  * Значение object-position для картинки в карточке новости.
  *
  * @return string

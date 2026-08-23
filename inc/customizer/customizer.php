@@ -105,6 +105,7 @@ function sdon_customize_add( $wp_customize, $id, $args ) {
 		'url'      => 'esc_url_raw',
 		'color'    => 'sanitize_hex_color',
 		'image'    => 'esc_url_raw',
+		'audio'    => 'esc_url_raw',
 		'html'     => 'sdon_sanitize_html',
 		'font'     => 'sdon_sanitize_font',
 	);
@@ -149,6 +150,11 @@ function sdon_customize_add( $wp_customize, $id, $args ) {
 
 		case 'image':
 			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $id, $control_args ) );
+			break;
+
+		case 'audio':
+			$control_args['mime_type'] = 'audio';
+			$wp_customize->add_control( new WP_Customize_Upload_Control( $wp_customize, $id, $control_args ) );
 			break;
 
 		case 'range':
@@ -210,7 +216,8 @@ function sdon_customize_register( $wp_customize ) {
 		'sdon_colors'     => array( __( '8. Цвета', 'sd-on-theme' ), __( 'Светлая и тёмная цветовые схемы.', 'sd-on-theme' ) ),
 		'sdon_news'       => array( __( '9. Новости', 'sd-on-theme' ), __( 'Сетка новостей и содержимое карточки материала.', 'sd-on-theme' ) ),
 		'sdon_footer'     => array( __( '10. Футер', 'sd-on-theme' ), __( 'Колонки виджетов, меню, соцсети и копирайт.', 'sd-on-theme' ) ),
-		'sdon_extra'      => array( __( '11. Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, производительность и доступность.', 'sd-on-theme' ) ),
+		'sdon_monster'    => array( __( '11. Монстр', 'sd-on-theme' ), __( 'Анимированный монстр, выезжающий из-за края экрана.', 'sd-on-theme' ) ),
+		'sdon_extra'      => array( __( '12. Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, производительность и доступность.', 'sd-on-theme' ) ),
 	);
 
 	$priority = 10;
@@ -239,6 +246,7 @@ function sdon_customize_register( $wp_customize ) {
 	sdon_customize_colors( $wp_customize );
 	sdon_customize_news( $wp_customize );
 	sdon_customize_footer( $wp_customize );
+	sdon_customize_monster( $wp_customize );
 	sdon_customize_extra( $wp_customize );
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -1443,6 +1451,208 @@ function sdon_customize_footer( $wp_customize ) {
 			)
 		);
 	}
+}
+
+/**
+ * Раздел «Монстр».
+ *
+ * @param WP_Customize_Manager $wp_customize Менеджер настроек.
+ * @return void
+ */
+function sdon_customize_monster( $wp_customize ) {
+	$monster_visible = static function () {
+		return sdon_monster_is_enabled();
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_desktop',
+		array(
+			'section'     => 'sdon_monster',
+			'label'       => __( 'Монстр на компьютерах', 'sd-on-theme' ),
+			'description' => __( 'Монстр выезжает из-за края экрана через случайные интервалы времени.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_mobile',
+		array(
+			'section'     => 'sdon_monster',
+			'label'       => __( 'Монстр на мобильных устройствах', 'sd-on-theme' ),
+			'description' => __( 'Настраивается независимо от компьютерной версии.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_side',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Откуда выезжает', 'sd-on-theme' ),
+			'type'            => 'radio',
+			'choices'         => sdon_monster_side_choices(),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_size',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Размер монстра', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => 'px',
+			'input_attrs'     => array(
+				'min'  => 100,
+				'max'  => 480,
+				'step' => 10,
+			),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_color',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Основной цвет монстра', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_accent',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Цвет свечения', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_min_delay',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Минимальная пауза до появления', 'sd-on-theme' ),
+			'description'     => __( 'Время появления выбирается случайно между минимальной и максимальной паузой.', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'с', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 3,
+				'max'  => 600,
+				'step' => 1,
+			),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_max_delay',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Максимальная пауза до появления', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'с', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 5,
+				'max'  => 1800,
+				'step' => 5,
+			),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_cooldown',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Пауза после клика по монстру', 'sd-on-theme' ),
+			'description'     => __( 'После клика монстр не показывается заданное время.', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'с', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 0,
+				'max'  => 3600,
+				'step' => 10,
+			),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_shy_distance',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Расстояние, с которого монстр прячется', 'sd-on-theme' ),
+			'description'     => __( 'Монстр начинает прятаться, когда курсор медленно подбирается к нему ближе этого расстояния.', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => 'px',
+			'input_attrs'     => array(
+				'min'  => 40,
+				'max'  => 600,
+				'step' => 10,
+			),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_sound',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Звук при клике', 'sd-on-theme' ),
+			'description'     => __( 'Встроенные звуки синтезируются браузером и не требуют загрузки файлов.', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_monster_sound_choices(),
+			'active_callback' => $monster_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_sound_file',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Свой звук (MP3, OGG, WAV)', 'sd-on-theme' ),
+			'description'     => __( 'Используется, если выбран вариант «Свой звук».', 'sd-on-theme' ),
+			'type'            => 'audio',
+			'active_callback' => static function () {
+				return sdon_monster_is_enabled() && 'custom' === sdon_opt( 'monster_sound' );
+			},
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'monster_volume',
+		array(
+			'section'         => 'sdon_monster',
+			'label'           => __( 'Громкость звука', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => '%',
+			'input_attrs'     => array(
+				'min'  => 0,
+				'max'  => 100,
+				'step' => 5,
+			),
+			'active_callback' => static function () {
+				return sdon_monster_is_enabled() && 'none' !== sdon_opt( 'monster_sound' );
+			},
+		)
+	);
 }
 
 /**
