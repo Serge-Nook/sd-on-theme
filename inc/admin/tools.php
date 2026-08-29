@@ -142,11 +142,20 @@ function sdon_handle_import() {
 add_action( 'admin_post_sdon_import_settings', 'sdon_handle_import' );
 
 /**
- * Проверяет и приводит импортируемые значения к типам настроек темы.
+ * Допустимые границы числовых настроек: ключ => массив из минимума и максимума.
  *
- * Ключи, которых нет в списке настроек темы, отбрасываются.
+ * @return array<string, array<int, int>>
+ */
+function sdon_imported_number_bounds() {
+	return array(
+		'seo_description_length' => array( 80, 320 ),
+	);
+}
+
+/**
+ * Приводит импортированные настройки к безопасным значениям.
  *
- * @param array<string, mixed> $settings Значения из файла.
+ * @param array<string, mixed> $settings Настройки из файла.
  * @return array<string, mixed>
  */
 function sdon_sanitize_imported_settings( $settings ) {
@@ -166,7 +175,14 @@ function sdon_sanitize_imported_settings( $settings ) {
 		}
 
 		if ( is_int( $default ) ) {
-			$result[ $key ] = (int) $value;
+			$bounds = sdon_imported_number_bounds();
+			$number = (int) $value;
+
+			if ( isset( $bounds[ $key ] ) ) {
+				$number = min( $bounds[ $key ][1], max( $bounds[ $key ][0], $number ) );
+			}
+
+			$result[ $key ] = $number;
 			continue;
 		}
 
@@ -200,6 +216,20 @@ function sdon_sanitize_imported_settings( $settings ) {
 			continue;
 		}
 
+		$whitelists = array(
+			'seo_separator'         => 'sdon_seo_separator_chars',
+			'seo_max_image_preview' => 'sdon_seo_preview_sizes',
+			'seo_schema_type'       => 'sdon_seo_schema_types',
+		);
+
+		if ( isset( $whitelists[ $key ] ) ) {
+			if ( array_key_exists( $value, call_user_func( $whitelists[ $key ] ) ) ) {
+				$result[ $key ] = $value;
+			}
+
+			continue;
+		}
+
 		if ( 'news_card_glow_animation' === $key ) {
 			if ( array_key_exists( $value, sdon_card_glow_animations() ) ) {
 				$result[ $key ] = $value;
@@ -216,12 +246,12 @@ function sdon_sanitize_imported_settings( $settings ) {
 			continue;
 		}
 
-		if ( 0 === strpos( $key, 'social_' ) || false !== strpos( $key, '_url' ) || false !== strpos( $key, '_image' ) || 'monster_sound_file' === $key || 'cookie_link' === $key ) {
+		if ( 0 === strpos( $key, 'social_' ) || false !== strpos( $key, '_url' ) || false !== strpos( $key, '_image' ) || 'monster_sound_file' === $key || 'cookie_link' === $key || 'seo_schema_logo' === $key ) {
 			$result[ $key ] = esc_url_raw( $value );
 			continue;
 		}
 
-		if ( 'cookie_text' === $key ) {
+		if ( in_array( $key, array( 'cookie_text', 'seo_home_description', 'seo_robots_txt_extra' ), true ) ) {
 			$result[ $key ] = sdon_sanitize_textarea( $value );
 			continue;
 		}

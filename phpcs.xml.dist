@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="SD-ON Theme">
+<ruleset name="SD-ON">
 	<description>WordPress Coding Standards для темы SD-ON.</description>
 
 	<file>.</file>

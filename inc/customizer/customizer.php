@@ -218,7 +218,8 @@ function sdon_customize_register( $wp_customize ) {
 		'sdon_footer'     => array( __( '10. Футер', 'sd-on-theme' ), __( 'Колонки виджетов, меню, соцсети и копирайт.', 'sd-on-theme' ) ),
 		'sdon_monster'    => array( __( '11. Монстр', 'sd-on-theme' ), __( 'Анимированный монстр, выезжающий из-за края экрана.', 'sd-on-theme' ) ),
 		'sdon_cookie'     => array( __( '12. Соглашение о cookie', 'sd-on-theme' ), __( 'Выплывающее снизу окно с соглашением об использовании временных файлов.', 'sd-on-theme' ) ),
-		'sdon_extra'      => array( __( '13. Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, производительность и доступность.', 'sd-on-theme' ) ),
+		'sdon_seo'        => array( __( '13. SEO', 'sd-on-theme' ), __( 'Заголовки, описания, индексация, социальные карточки, микроразметка, robots.txt и коды подтверждения.', 'sd-on-theme' ) ),
+		'sdon_extra'      => array( __( '14. Дополнительные настройки', 'sd-on-theme' ), __( 'Производительность и доступность.', 'sd-on-theme' ) ),
 	);
 
 	$priority = 10;
@@ -249,6 +250,7 @@ function sdon_customize_register( $wp_customize ) {
 	sdon_customize_footer( $wp_customize );
 	sdon_customize_monster( $wp_customize );
 	sdon_customize_cookie( $wp_customize );
+	sdon_customize_seo( $wp_customize );
 	sdon_customize_extra( $wp_customize );
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
@@ -1888,6 +1890,318 @@ function sdon_customize_cookie( $wp_customize ) {
 }
 
 /**
+ * Раздел «SEO».
+ *
+ * @param WP_Customize_Manager $wp_customize Менеджер настроек.
+ * @return void
+ */
+function sdon_customize_seo( $wp_customize ) {
+	sdon_customize_add(
+		$wp_customize,
+		'seo_titles',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Управлять заголовками страниц', 'sd-on-theme' ),
+			'description' => __( 'Разделитель и заголовок главной страницы. Отключается автоматически, если активен SEO-плагин.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	$titles_enabled = static function () {
+		return sdon_is( 'seo_titles' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_separator',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Разделитель в заголовке', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_seo_separators(),
+			'active_callback' => $titles_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_home_title',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Title главной страницы', 'sd-on-theme' ),
+			'description'     => __( 'Пустое поле — заголовок собирается из названия и описания сайта. Оптимальная длина — до 60 символов.', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $titles_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_meta_description',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Выводить meta description', 'sd-on-theme' ),
+			'description' => __( 'Описание берётся из отрывка записи, описания рубрики или поля ниже.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	$description_enabled = static function () {
+		return sdon_is( 'seo_meta_description' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_home_description',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Description главной страницы', 'sd-on-theme' ),
+			'description'     => __( 'Пустое поле — используется краткое описание сайта.', 'sd-on-theme' ),
+			'type'            => 'textarea',
+			'active_callback' => $description_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_description_length',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Длина автоматического описания', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => __( 'симв.', 'sd-on-theme' ),
+			'input_attrs'     => array(
+				'min'  => 80,
+				'max'  => 320,
+				'step' => 10,
+			),
+			'active_callback' => $description_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_canonical',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Выводить canonical-ссылку', 'sd-on-theme' ),
+			'description' => __( 'Сокращает число дубликатов в индексе поисковых систем.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_max_image_preview',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Размер превью в выдаче (max-image-preview)', 'sd-on-theme' ),
+			'type'        => 'select',
+			'choices'     => sdon_seo_preview_sizes(),
+			'description' => __( 'Какой размер картинки поисковикам разрешено показывать рядом со ссылкой.', 'sd-on-theme' ),
+		)
+	);
+
+	$noindex = array(
+		'seo_noindex_search' => array( __( 'Закрыть от индексации результаты поиска', 'sd-on-theme' ), '' ),
+		'seo_noindex_author' => array( __( 'Закрыть от индексации архивы авторов', 'sd-on-theme' ), __( 'Полезно для сайтов с одним автором.', 'sd-on-theme' ) ),
+		'seo_noindex_date'   => array( __( 'Закрыть от индексации архивы дат', 'sd-on-theme' ), '' ),
+		'seo_noindex_tag'    => array( __( 'Закрыть от индексации архивы меток', 'sd-on-theme' ), '' ),
+		'seo_noindex_paged'  => array( __( 'Закрыть от индексации страницы пагинации со второй', 'sd-on-theme' ), '' ),
+	);
+
+	foreach ( $noindex as $id => $data ) {
+		sdon_customize_add(
+			$wp_customize,
+			$id,
+			array(
+				'section'     => 'sdon_seo',
+				'label'       => $data[0],
+				'description' => $data[1],
+				'type'        => 'checkbox',
+			)
+		);
+	}
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_attachment_redirect',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Перенаправлять страницы вложений на запись', 'sd-on-theme' ),
+			'description' => __( 'Убирает из индекса пустые страницы отдельных картинок.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_open_graph',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Разметка Open Graph', 'sd-on-theme' ),
+			'description' => __( 'Отключается автоматически, если разметку добавляет SEO-плагин.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	$og_enabled = static function () {
+		return sdon_is( 'seo_open_graph' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_og_image',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Картинка для соцсетей по умолчанию', 'sd-on-theme' ),
+			'description'     => __( 'Используется, когда у записи нет изображения. Рекомендуется 1200×630.', 'sd-on-theme' ),
+			'type'            => 'image',
+			'active_callback' => $og_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_twitter_site',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Аккаунт в X (Twitter)', 'sd-on-theme' ),
+			'description'     => __( 'Например @nookbat — подставляется в twitter:site.', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $og_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema',
+		array(
+			'section' => 'sdon_seo',
+			'label'   => __( 'Микроразметка Schema.org (JSON-LD)', 'sd-on-theme' ),
+			'type'    => 'checkbox',
+		)
+	);
+
+	$schema_enabled = static function () {
+		return sdon_is( 'seo_schema' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema_type',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Сайт представляет', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_seo_schema_types(),
+			'active_callback' => $schema_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema_name',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Название организации или имя автора', 'sd-on-theme' ),
+			'description'     => __( 'Пустое поле — берётся название сайта.', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $schema_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema_logo',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Логотип для микроразметки', 'sd-on-theme' ),
+			'description'     => __( 'Пустое поле — используется логотип сайта.', 'sd-on-theme' ),
+			'type'            => 'image',
+			'active_callback' => $schema_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema_search',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Поле поиска в выдаче (SearchAction)', 'sd-on-theme' ),
+			'type'            => 'checkbox',
+			'active_callback' => $schema_enabled,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_schema_breadcrumbs',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Цепочка навигации в JSON-LD (BreadcrumbList)', 'sd-on-theme' ),
+			'type'            => 'checkbox',
+			'active_callback' => $schema_enabled,
+		)
+	);
+
+	$verify = array(
+		'seo_verify_google' => __( 'Код подтверждения Google Search Console', 'sd-on-theme' ),
+		'seo_verify_yandex' => __( 'Код подтверждения Яндекс.Вебмастер', 'sd-on-theme' ),
+		'seo_verify_bing'   => __( 'Код подтверждения Bing Webmaster Tools', 'sd-on-theme' ),
+		'seo_verify_mailru' => __( 'Код подтверждения Mail.ru', 'sd-on-theme' ),
+	);
+
+	foreach ( $verify as $id => $label ) {
+		sdon_customize_add(
+			$wp_customize,
+			$id,
+			array(
+				'section'     => 'sdon_seo',
+				'label'       => $label,
+				'description' => __( 'Только значение атрибута content, без тега meta.', 'sd-on-theme' ),
+				'type'        => 'text',
+			)
+		);
+	}
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_robots_txt',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Дополнять robots.txt', 'sd-on-theme' ),
+			'description' => __( 'Закрывает служебные адреса и добавляет ссылку на карту сайта. Работает, пока в корне сайта нет своего файла robots.txt.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_robots_txt_extra',
+		array(
+			'section'         => 'sdon_seo',
+			'label'           => __( 'Свои строки robots.txt', 'sd-on-theme' ),
+			'type'            => 'textarea',
+			'active_callback' => static function () {
+				return sdon_is( 'seo_robots_txt' );
+			},
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'seo_clean_head',
+		array(
+			'section'     => 'sdon_seo',
+			'label'       => __( 'Убрать лишние теги из head', 'sd-on-theme' ),
+			'description' => __( 'Версия WordPress, RSD, wlwmanifest и ссылки shortlink — поисковым системам они не нужны.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+}
+
+/**
  * Раздел «Дополнительные настройки».
  *
  * @param WP_Customize_Manager $wp_customize Менеджер настроек.
@@ -1896,8 +2210,6 @@ function sdon_customize_cookie( $wp_customize ) {
 function sdon_customize_extra( $wp_customize ) {
 	$toggles = array(
 		'lazy_loading'           => array( __( 'Ленивая загрузка изображений', 'sd-on-theme' ), __( 'Изображения загружаются по мере прокрутки страницы.', 'sd-on-theme' ) ),
-		'seo_open_graph'         => array( __( 'Разметка Open Graph', 'sd-on-theme' ), __( 'Отключается автоматически, если разметку добавляет SEO-плагин.', 'sd-on-theme' ) ),
-		'seo_schema'             => array( __( 'Микроразметка Schema.org', 'sd-on-theme' ), '' ),
 		'respect_reduced_motion' => array( __( 'Учитывать системную настройку prefers-reduced-motion', 'sd-on-theme' ), __( 'Анимации отключаются, если посетитель просил уменьшить движение.', 'sd-on-theme' ) ),
 		'preloader'              => array( __( 'Показывать индикатор загрузки страницы', 'sd-on-theme' ), '' ),
 	);

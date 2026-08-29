@@ -198,10 +198,40 @@ function sdon_defaults() {
 		'cookie_cat_accent'             => '#fde68a',
 		'cookie_opacity'                => 100,
 
-		// 13. Дополнительные настройки.
-		'lazy_loading'                  => true,
+		// 13. SEO.
+		'seo_titles'                    => true,
+		'seo_separator'                 => 'dash',
+		'seo_home_title'                => '',
+		'seo_home_description'          => '',
+		'seo_meta_description'          => true,
+		'seo_description_length'        => 160,
+		'seo_canonical'                 => true,
+		'seo_max_image_preview'         => 'large',
+		'seo_noindex_search'            => true,
+		'seo_noindex_author'            => false,
+		'seo_noindex_date'              => true,
+		'seo_noindex_tag'               => false,
+		'seo_noindex_paged'             => false,
+		'seo_attachment_redirect'       => true,
 		'seo_open_graph'                => true,
+		'seo_og_image'                  => '',
+		'seo_twitter_site'              => '',
 		'seo_schema'                    => true,
+		'seo_schema_type'               => 'organization',
+		'seo_schema_name'               => '',
+		'seo_schema_logo'               => '',
+		'seo_schema_search'             => true,
+		'seo_schema_breadcrumbs'        => true,
+		'seo_verify_google'             => '',
+		'seo_verify_yandex'             => '',
+		'seo_verify_bing'               => '',
+		'seo_verify_mailru'             => '',
+		'seo_robots_txt'                => true,
+		'seo_robots_txt_extra'          => '',
+		'seo_clean_head'                => true,
+
+		// 14. Дополнительные настройки.
+		'lazy_loading'                  => true,
 		'respect_reduced_motion'        => true,
 	);
 

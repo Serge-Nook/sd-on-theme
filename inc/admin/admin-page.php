@@ -131,7 +131,8 @@ function sdon_render_overview_tab() {
 		'sdon_colors'     => array( __( 'Цвета', 'sd-on-theme' ), __( 'Светлая и тёмная цветовые схемы.', 'sd-on-theme' ) ),
 		'sdon_news'       => array( __( 'Новости', 'sd-on-theme' ), __( 'Сетка материалов и содержимое карточки.', 'sd-on-theme' ) ),
 		'sdon_footer'     => array( __( 'Футер', 'sd-on-theme' ), __( 'Виджеты, меню, соцсети, копирайт.', 'sd-on-theme' ) ),
-		'sdon_extra'      => array( __( 'Дополнительные настройки', 'sd-on-theme' ), __( 'SEO, ленивая загрузка, доступность.', 'sd-on-theme' ) ),
+		'sdon_seo'        => array( __( 'SEO', 'sd-on-theme' ), __( 'Заголовки, описания, индексация, соцкарточки, микроразметка, robots.txt.', 'sd-on-theme' ) ),
+		'sdon_extra'      => array( __( 'Дополнительные настройки', 'sd-on-theme' ), __( 'Ленивая загрузка, доступность, индикатор загрузки.', 'sd-on-theme' ) ),
 	);
 	?>
 	<p class="sdon-admin__intro">

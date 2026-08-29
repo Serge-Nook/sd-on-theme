@@ -130,13 +130,13 @@ function sdon_pagination() {
 }
 
 /**
- * Хлебные крошки с микроразметкой Schema.org (BreadcrumbList).
+ * Цепочка навигации текущей страницы: от главной до текущего заголовка.
  *
- * @return void
+ * @return array<int, array{title: string, url: string}>
  */
-function sdon_breadcrumbs() {
-	if ( ! sdon_is( 'breadcrumbs' ) || is_front_page() ) {
-		return;
+function sdon_breadcrumb_items() {
+	if ( is_front_page() ) {
+		return array();
 	}
 
 	$items = array(
@@ -190,7 +190,18 @@ function sdon_breadcrumbs() {
 		);
 	}
 
-	if ( count( $items ) < 2 ) {
+	return count( $items ) < 2 ? array() : $items;
+}
+
+/**
+ * Хлебные крошки с микроразметкой Schema.org (BreadcrumbList).
+ *
+ * @return void
+ */
+function sdon_breadcrumbs() {
+	$items = sdon_is( 'breadcrumbs' ) ? sdon_breadcrumb_items() : array();
+
+	if ( empty( $items ) ) {
 		return;
 	}
 
