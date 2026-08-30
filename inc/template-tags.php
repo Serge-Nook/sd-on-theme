@@ -256,11 +256,46 @@ function sdon_back_to_top_button() {
 	if ( ! sdon_is( 'back_to_top' ) ) {
 		return;
 	}
+
+	$style     = sdon_choice( 'back_to_top_style', sdon_back_to_top_styles() );
+	$animation = sdon_choice( 'back_to_top_animation', sdon_back_to_top_animations() );
+	$icon      = sdon_choice( 'back_to_top_icon', sdon_back_to_top_icons() );
+	$position  = 'left' === sdon_opt( 'back_to_top_position' ) ? 'left' : 'right';
+
+	$classes = sprintf(
+		'sdon-to-top sdon-to-top--%1$s sdon-to-top--anim-%2$s sdon-to-top--%3$s',
+		$style,
+		$animation,
+		$position
+	);
 	?>
-	<button class="sdon-to-top" type="button" data-sdon-to-top hidden>
-		<span aria-hidden="true">&uarr;</span>
+	<button class="<?php echo esc_attr( $classes ); ?>" type="button" data-sdon-to-top hidden>
+		<?php sdon_back_to_top_icon( $icon ); ?>
 		<span class="screen-reader-text"><?php esc_html_e( 'Наверх', 'sd-on-theme' ); ?></span>
 	</button>
+	<?php
+}
+
+/**
+ * Значок кнопки «Наверх».
+ *
+ * @param string $icon Идентификатор значка.
+ * @return void
+ */
+function sdon_back_to_top_icon( $icon ) {
+	$paths = array(
+		'arrow'    => 'M12 5l7 7-1.4 1.4L13 8.8V19h-2V8.8l-4.6 4.6L5 12z',
+		'chevron'  => 'M12 8.2l7 7-1.4 1.4L12 11l-5.6 5.6L5 15.2z',
+		'double'   => 'M12 4.4l6.6 6.6-1.4 1.4L12 7.2 6.8 12.4 5.4 11zM12 11.6l6.6 6.6-1.4 1.4L12 14.4l-5.2 5.2-1.4-1.4z',
+		'triangle' => 'M12 6l8 12H4z',
+		'rocket'   => 'M12 2c3.2 2.4 5 6.1 5 10.2l-2.2 2.2H9.2L7 12.2C7 8.1 8.8 4.4 12 2zm-1 9.2a1.4 1.4 0 102.8 0 1.4 1.4 0 00-2.8 0zM9.4 16h5.2l-1 3.2-1.6 2.6-1.6-2.6z',
+	);
+
+	$path = isset( $paths[ $icon ] ) ? $paths[ $icon ] : $paths['arrow'];
+	?>
+	<svg class="sdon-to-top__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+		<path d="<?php echo esc_attr( $path ); ?>" fill="currentColor" />
+	</svg>
 	<?php
 }
 

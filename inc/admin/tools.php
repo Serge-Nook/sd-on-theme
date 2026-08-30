@@ -149,6 +149,7 @@ add_action( 'admin_post_sdon_import_settings', 'sdon_handle_import' );
 function sdon_imported_number_bounds() {
 	return array(
 		'seo_description_length' => array( 80, 320 ),
+		'back_to_top_size'       => array( 32, 80 ),
 	);
 }
 
@@ -202,7 +203,7 @@ function sdon_sanitize_imported_settings( $settings ) {
 			|| 'bg_color' === $key
 			|| in_array(
 				$key,
-				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'news_card_glow_color', 'monster_color', 'monster_accent', 'cookie_cat_color', 'cookie_cat_accent' ),
+				array( 'bg_gradient_from', 'bg_gradient_to', 'news_card_border_color', 'news_card_glow_color', 'monster_color', 'monster_accent', 'cookie_cat_color', 'cookie_cat_accent', 'back_to_top_bg', 'back_to_top_color' ),
 				true
 			);
 
@@ -220,6 +221,9 @@ function sdon_sanitize_imported_settings( $settings ) {
 			'seo_separator'         => 'sdon_seo_separator_chars',
 			'seo_max_image_preview' => 'sdon_seo_preview_sizes',
 			'seo_schema_type'       => 'sdon_seo_schema_types',
+			'back_to_top_style'     => 'sdon_back_to_top_styles',
+			'back_to_top_animation' => 'sdon_back_to_top_animations',
+			'back_to_top_icon'      => 'sdon_back_to_top_icons',
 		);
 
 		if ( isset( $whitelists[ $key ] ) ) {
@@ -243,6 +247,11 @@ function sdon_sanitize_imported_settings( $settings ) {
 				$result[ $key ] = $value;
 			}
 
+			continue;
+		}
+
+		if ( 'social_custom_label' === $key ) {
+			$result[ $key ] = sanitize_text_field( $value );
 			continue;
 		}
 

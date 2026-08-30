@@ -155,6 +155,72 @@ function sdon_footer_copyright() {
 }
 
 /**
+ * Значение настройки из списка допустимых вариантов.
+ *
+ * @param string                $key     Ключ настройки.
+ * @param array<string, string> $choices Допустимые варианты.
+ * @return string
+ */
+function sdon_choice( $key, $choices ) {
+	$value = (string) sdon_opt( $key );
+
+	if ( isset( $choices[ $value ] ) ) {
+		return $value;
+	}
+
+	return (string) sdon_default( $key );
+}
+
+/**
+ * Варианты оформления кнопки «Наверх».
+ *
+ * @return array<string, string>
+ */
+function sdon_back_to_top_styles() {
+	return array(
+		'circle'   => __( 'Круг', 'sd-on-theme' ),
+		'rounded'  => __( 'Скруглённый квадрат', 'sd-on-theme' ),
+		'square'   => __( 'Квадрат', 'sd-on-theme' ),
+		'outline'  => __( 'Только обводка', 'sd-on-theme' ),
+		'glass'    => __( 'Стекло с размытием', 'sd-on-theme' ),
+		'gradient' => __( 'Градиент', 'sd-on-theme' ),
+	);
+}
+
+/**
+ * Анимации кнопки «Наверх».
+ *
+ * @return array<string, string>
+ */
+function sdon_back_to_top_animations() {
+	return array(
+		'none'   => __( 'Без анимации', 'sd-on-theme' ),
+		'fade'   => __( 'Плавное появление', 'sd-on-theme' ),
+		'slide'  => __( 'Выезд снизу', 'sd-on-theme' ),
+		'zoom'   => __( 'Увеличение', 'sd-on-theme' ),
+		'flip'   => __( 'Поворот', 'sd-on-theme' ),
+		'bounce' => __( 'Пружинка', 'sd-on-theme' ),
+		'pulse'  => __( 'Пульсация', 'sd-on-theme' ),
+		'float'  => __( 'Парение', 'sd-on-theme' ),
+	);
+}
+
+/**
+ * Значки кнопки «Наверх».
+ *
+ * @return array<string, string>
+ */
+function sdon_back_to_top_icons() {
+	return array(
+		'arrow'    => __( 'Стрелка', 'sd-on-theme' ),
+		'chevron'  => __( 'Уголок', 'sd-on-theme' ),
+		'double'   => __( 'Двойной уголок', 'sd-on-theme' ),
+		'triangle' => __( 'Треугольник', 'sd-on-theme' ),
+		'rocket'   => __( 'Ракета', 'sd-on-theme' ),
+	);
+}
+
+/**
  * Поддерживаемые социальные сети: ключ настройки => подпись.
  *
  * @return array<string, string>
@@ -173,7 +239,19 @@ function sdon_social_networks() {
 		'social_github'    => __( 'GitHub', 'sd-on-theme' ),
 		'social_gitverse'  => __( 'GitVerse', 'sd-on-theme' ),
 		'social_rss'       => __( 'RSS', 'sd-on-theme' ),
+		'social_custom'    => sdon_custom_social_label(),
 	);
+}
+
+/**
+ * Подпись своей социальной сети.
+ *
+ * @return string
+ */
+function sdon_custom_social_label() {
+	$label = trim( (string) sdon_opt( 'social_custom_label' ) );
+
+	return '' !== $label ? $label : __( 'Своя сеть', 'sd-on-theme' );
 }
 
 /**

@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SDON_VERSION', '1.5.0' );
+define( 'SDON_VERSION', '1.6.0' );
 define( 'SDON_DIR', get_template_directory() );
 define( 'SDON_URI', get_template_directory_uri() );
 

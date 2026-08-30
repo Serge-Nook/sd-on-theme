@@ -311,6 +311,102 @@ function sdon_customize_general( $wp_customize ) {
 		)
 	);
 
+	$to_top_visible = static function () {
+		return (bool) sdon_opt( 'back_to_top' );
+	};
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_style',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Дизайн кнопки «Наверх»', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_back_to_top_styles(),
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_animation',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Анимация кнопки «Наверх»', 'sd-on-theme' ),
+			'description'     => __( 'Появление и поведение кнопки. При включённом системном режиме уменьшенной анимации эффекты отключаются.', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_back_to_top_animations(),
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_icon',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Значок кнопки «Наверх»', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => sdon_back_to_top_icons(),
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_position',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Расположение кнопки «Наверх»', 'sd-on-theme' ),
+			'type'            => 'select',
+			'choices'         => array(
+				'right' => __( 'Справа', 'sd-on-theme' ),
+				'left'  => __( 'Слева', 'sd-on-theme' ),
+			),
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_size',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Размер кнопки «Наверх»', 'sd-on-theme' ),
+			'type'            => 'range',
+			'unit'            => 'px',
+			'input_attrs'     => array(
+				'min'  => 32,
+				'max'  => 80,
+				'step' => 2,
+			),
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_bg',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Цвет фона кнопки «Наверх»', 'sd-on-theme' ),
+			'description'     => __( 'Оставьте пустым, чтобы использовать цвет кнопок из цветовой схемы.', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $to_top_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'back_to_top_color',
+		array(
+			'section'         => 'sdon_general',
+			'label'           => __( 'Цвет значка кнопки «Наверх»', 'sd-on-theme' ),
+			'type'            => 'color',
+			'active_callback' => $to_top_visible,
+		)
+	);
+
 	sdon_customize_add(
 		$wp_customize,
 		'breadcrumbs',
@@ -1397,6 +1493,28 @@ function sdon_customize_news( $wp_customize ) {
 
 	sdon_customize_add(
 		$wp_customize,
+		'single_show_title',
+		array(
+			'section'     => 'sdon_news',
+			'label'       => __( 'Заголовок на странице открытого материала', 'sd-on-theme' ),
+			'description' => __( 'Отключите, если название записи не нужно выводить при переходе на неё.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'page_show_title',
+		array(
+			'section'     => 'sdon_news',
+			'label'       => __( 'Заголовок на страницах', 'sd-on-theme' ),
+			'description' => __( 'Отключите, если название страницы не нужно выводить при переходе на неё.', 'sd-on-theme' ),
+			'type'        => 'checkbox',
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
 		'news_button_text',
 		array(
 			'section'         => 'sdon_news',
@@ -1482,6 +1600,10 @@ function sdon_customize_footer( $wp_customize ) {
 	};
 
 	foreach ( $socials as $id => $label ) {
+		if ( 'social_custom' === $id ) {
+			continue;
+		}
+
 		sdon_customize_add(
 			$wp_customize,
 			$id,
@@ -1493,6 +1615,29 @@ function sdon_customize_footer( $wp_customize ) {
 			)
 		);
 	}
+
+	sdon_customize_add(
+		$wp_customize,
+		'social_custom_label',
+		array(
+			'section'         => 'sdon_footer',
+			'label'           => __( 'Своя социальная сеть: название', 'sd-on-theme' ),
+			'description'     => __( 'Название любого другого сервиса, которого нет в списке.', 'sd-on-theme' ),
+			'type'            => 'text',
+			'active_callback' => $socials_visible,
+		)
+	);
+
+	sdon_customize_add(
+		$wp_customize,
+		'social_custom',
+		array(
+			'section'         => 'sdon_footer',
+			'label'           => __( 'Своя социальная сеть: ссылка', 'sd-on-theme' ),
+			'type'            => 'url',
+			'active_callback' => $socials_visible,
+		)
+	);
 }
 
 /**

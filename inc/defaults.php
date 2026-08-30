@@ -27,6 +27,13 @@ function sdon_defaults() {
 		'color_scheme_mode'             => 'light',
 		'dark_mode_toggle'              => true,
 		'back_to_top'                   => true,
+		'back_to_top_style'             => 'circle',
+		'back_to_top_animation'         => 'fade',
+		'back_to_top_icon'              => 'arrow',
+		'back_to_top_position'          => 'right',
+		'back_to_top_size'              => 46,
+		'back_to_top_bg'                => '',
+		'back_to_top_color'             => '',
 		'breadcrumbs'                   => true,
 		'preloader'                     => false,
 
@@ -147,6 +154,8 @@ function sdon_defaults() {
 
 		// Одиночный материал.
 		'single_show_image'             => true,
+		'single_show_title'             => true,
+		'page_show_title'               => true,
 
 		// 9. Футер.
 		'footer_widget_columns'         => 3,
@@ -166,6 +175,8 @@ function sdon_defaults() {
 		'social_instagram'              => '',
 		'social_steam'                  => '',
 		'social_rss'                    => '',
+		'social_custom_label'           => '',
+		'social_custom'                 => '',
 
 		// 11. Монстр.
 		'monster_desktop'               => false,

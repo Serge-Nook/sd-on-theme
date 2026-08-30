@@ -1139,21 +1139,169 @@ button.sdon-button {
 .sdon-to-top {
 	position: fixed;
 	z-index: 40;
-	right: 16px;
 	bottom: 16px;
-	width: 46px;
-	height: 46px;
+	display: flex;
+	width: var(--sdon-to-top-size, 46px);
+	height: var(--sdon-to-top-size, 46px);
+	align-items: center;
+	justify-content: center;
 	border: 0;
 	border-radius: 50%;
-	background: var(--sdon-button-bg);
-	color: var(--sdon-button-text);
+	background: var(--sdon-to-top-bg, var(--sdon-button-bg));
+	color: var(--sdon-to-top-color, var(--sdon-button-text));
 	font-size: 1.2rem;
 	cursor: pointer;
 	box-shadow: var(--sdon-shadow);
+	opacity: 0;
+	transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+}
+
+.sdon-to-top--right {
+	right: 16px;
+}
+
+.sdon-to-top--left {
+	left: 16px;
+}
+
+.sdon-to-top__icon {
+	width: 60%;
+	height: 60%;
 }
 
 .sdon-to-top[hidden] {
 	display: none;
+}
+
+.sdon-to-top.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+.sdon-to-top:focus-visible {
+	outline: 2px solid var(--sdon-primary);
+	outline-offset: 3px;
+}
+
+/* Дизайн */
+
+.sdon-to-top--rounded {
+	border-radius: 14px;
+}
+
+.sdon-to-top--square {
+	border-radius: 4px;
+}
+
+.sdon-to-top--outline {
+	border: 2px solid var(--sdon-to-top-bg, var(--sdon-button-bg));
+	background: transparent;
+	color: var(--sdon-to-top-color, var(--sdon-to-top-bg, var(--sdon-button-bg)));
+	box-shadow: none;
+}
+
+.sdon-to-top--outline:hover {
+	background: var(--sdon-to-top-bg, var(--sdon-button-bg));
+	color: var(--sdon-button-text);
+}
+
+.sdon-to-top--glass {
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.18);
+	color: var(--sdon-to-top-color, var(--sdon-headings));
+	backdrop-filter: blur(10px);
+}
+
+.sdon-to-top--gradient {
+	background: linear-gradient(135deg, var(--sdon-to-top-bg, var(--sdon-primary)), var(--sdon-to-top-bg-alt, var(--sdon-secondary)));
+}
+
+/* Анимации появления */
+
+.sdon-to-top--anim-none {
+	opacity: 1;
+	transition: none;
+}
+
+.sdon-to-top--anim-slide:not(.is-visible) {
+	transform: translateY(24px);
+}
+
+.sdon-to-top--anim-zoom:not(.is-visible) {
+	transform: scale(0.5);
+}
+
+.sdon-to-top--anim-flip:not(.is-visible) {
+	transform: rotate(-180deg) scale(0.6);
+}
+
+.sdon-to-top--anim-bounce.is-visible {
+	animation: sdon-to-top-bounce 0.7s cubic-bezier(0.28, 1.6, 0.4, 1);
+}
+
+.sdon-to-top--anim-pulse.is-visible {
+	animation: sdon-to-top-pulse 2.2s ease-in-out infinite;
+}
+
+.sdon-to-top--anim-float.is-visible {
+	animation: sdon-to-top-float 3s ease-in-out infinite;
+}
+
+.sdon-to-top:hover .sdon-to-top__icon {
+	transform: translateY(-2px);
+	transition: transform 0.2s ease;
+}
+
+@keyframes sdon-to-top-bounce {
+	0% {
+		transform: translateY(28px) scale(0.8);
+	}
+
+	60% {
+		transform: translateY(-8px) scale(1.05);
+	}
+
+	100% {
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes sdon-to-top-pulse {
+	0%,
+	100% {
+		box-shadow: var(--sdon-shadow);
+		transform: scale(1);
+	}
+
+	50% {
+		box-shadow: 0 0 0 10px rgba(47, 109, 246, 0.16);
+		transform: scale(1.06);
+	}
+}
+
+@keyframes sdon-to-top-float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-7px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sdon-to-top {
+		opacity: 1;
+		transition: none;
+	}
+
+	.sdon-to-top.is-visible,
+	.sdon-to-top:not(.is-visible) {
+		animation: none;
+		transform: none;
+	}
 }
 
 .sdon-bg-canvas {

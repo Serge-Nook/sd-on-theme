@@ -171,8 +171,41 @@
 			return;
 		}
 
+		var hideTimer = null;
+
+		function show() {
+			window.clearTimeout( hideTimer );
+			button.hidden = false;
+
+			window.requestAnimationFrame( function () {
+				button.classList.add( 'is-visible' );
+			} );
+		}
+
+		function hide() {
+			button.classList.remove( 'is-visible' );
+
+			window.clearTimeout( hideTimer );
+
+			hideTimer = window.setTimeout( function () {
+				if ( ! button.classList.contains( 'is-visible' ) ) {
+					button.hidden = true;
+				}
+			}, 300 );
+		}
+
 		function update() {
-			button.hidden = window.pageYOffset < 400;
+			var visible = window.pageYOffset >= 400;
+
+			if ( visible === button.classList.contains( 'is-visible' ) ) {
+				return;
+			}
+
+			if ( visible ) {
+				show();
+			} else {
+				hide();
+			}
 		}
 
 		window.addEventListener( 'scroll', update, { passive: true } );

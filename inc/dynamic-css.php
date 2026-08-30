@@ -170,6 +170,23 @@ function sdon_dynamic_css() {
 	$root .= sprintf( '--sdon-card-border-color:%s;', sdon_opt( 'news_card_border_color' ) );
 	$root .= sprintf( '--sdon-card-image-position:%s;', sdon_card_image_position() );
 
+	if ( sdon_is( 'back_to_top' ) ) {
+		$root .= sprintf( '--sdon-to-top-size:%dpx;', min( 80, max( 32, (int) sdon_opt( 'back_to_top_size' ) ) ) );
+
+		$to_top_bg = sanitize_hex_color( (string) sdon_opt( 'back_to_top_bg' ) );
+
+		if ( $to_top_bg ) {
+			$root .= sprintf( '--sdon-to-top-bg:%s;', $to_top_bg );
+			$root .= sprintf( '--sdon-to-top-bg-alt:%s;', sdon_darken_hex( $to_top_bg, 25 ) );
+		}
+
+		$to_top_color = sanitize_hex_color( (string) sdon_opt( 'back_to_top_color' ) );
+
+		if ( $to_top_color ) {
+			$root .= sprintf( '--sdon-to-top-color:%s;', $to_top_color );
+		}
+	}
+
 	if ( sdon_is( 'news_card_glow' ) ) {
 		$glow = sanitize_hex_color( (string) sdon_opt( 'news_card_glow_color' ) );
 		$glow = $glow ? $glow : (string) sdon_default( 'news_card_glow_color' );

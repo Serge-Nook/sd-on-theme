@@ -6,11 +6,15 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$sdon_show_title = is_page() ? sdon_is( 'page_show_title' ) : sdon_is( 'single_show_title' );
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'sdon-entry' ); ?>>
 	<header class="sdon-entry__header">
 		<?php sdon_post_categories(); ?>
-		<h1 class="sdon-entry__title"><?php the_title(); ?></h1>
+		<?php if ( $sdon_show_title ) : ?>
+			<h1 class="sdon-entry__title"><?php the_title(); ?></h1>
+		<?php endif; ?>
 		<?php if ( 'post' === get_post_type() ) : ?>
 			<?php sdon_post_meta(); ?>
 		<?php endif; ?>
