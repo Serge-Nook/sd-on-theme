@@ -1,0 +1,37 @@
+/**
+ * Стили контролов темы в панели «Настроить».
+ */
+
+.sdon-range {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.sdon-range__row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 4px;
+}
+
+.sdon-range__row input[type="range"] {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.sdon-range__value {
+	min-width: 3.5em;
+	padding: 2px 6px;
+	border-radius: 4px;
+	background: #f0f0f1;
+	font-variant-numeric: tabular-nums;
+	text-align: center;
+}
+
+.sdon-range__unit {
+	color: #646970;
+}
+
+#customize-theme-controls .customize-control-title {
+	font-size: 13px;
+}

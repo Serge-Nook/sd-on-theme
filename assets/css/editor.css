@@ -1,0 +1,44 @@
+/**
+ * Стили редактора блоков: контент в админке выглядит как на сайте.
+ */
+
+.editor-styles-wrapper {
+	background: var(--sdon-surface, #fff);
+	color: var(--sdon-text, #1f2430);
+	font-family: var(--sdon-font-body, sans-serif);
+	font-size: var(--sdon-font-size, 17px);
+	font-weight: var(--sdon-font-weight, 400);
+	line-height: var(--sdon-line-height, 1.65);
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	color: var(--sdon-headings, #101322);
+	font-family: var(--sdon-font-headings, sans-serif);
+	font-weight: var(--sdon-font-weight-headings, 700);
+	line-height: 1.25;
+}
+
+.editor-styles-wrapper a {
+	color: var(--sdon-link, #2f6df6);
+}
+
+.editor-styles-wrapper .wp-block {
+	max-width: var(--sdon-container, 1200px);
+}
+
+.editor-styles-wrapper blockquote {
+	padding-left: 18px;
+	border-left: 4px solid var(--sdon-primary, #2f6df6);
+	font-style: italic;
+}
+
+.editor-styles-wrapper .wp-block-button__link {
+	border-radius: 10px;
+	background: var(--sdon-button-bg, #2f6df6);
+	color: var(--sdon-button-text, #fff);
+}
